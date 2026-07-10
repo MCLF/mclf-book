@@ -1,0 +1,10 @@
+Better reference for [Arzdorf, Wewers] (i.e. no preprint) (don't forget to adjust theorem numbers in citations if necessary)
+
+Be consistent with pushouts (in part. base changes): \times or \otimes ?
+
+Be consistent with the denomination of the generic point: \eta or \xi ?
+
+
+Questions--------------------------------------------------------------------------------------------------------------------
+Proof of Lemma 1.26 is just sketched. Should we give a full proof?
+

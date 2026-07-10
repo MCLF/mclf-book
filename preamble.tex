@@ -24,15 +24,30 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{mathtools}
+\usepackage{stix}
+%\usepackage{unicode-math}
 
 % Classical list package.
 \usepackage{enumerate}
 
 % Commutative diagrams.
 \usepackage{tikz-cd}
+\newcommand{\cdpunkt}{\mathrlap{\, .}}
+\tikzset{
+    symbol/.style={
+        draw=none,
+        every to/.append style={
+            edge node={node [sloped, allow upside down, auto=false]{$#1$}}}
+    }
+}
+\usepackage{tikzit}
+\input{basic.tikzstyles}
+
+\usepackage{comment}
 
 % Graphics.
 \usepackage{graphicx}
+\usepackage{float}
 
 % References and hyperlinks.
 % Load hyperref near the end.
@@ -45,20 +60,20 @@
 
 % Theorem environments.
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{corollary}[equation]{Corollary}
 
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{construction}[theorem]{Construction}
-\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{example}[equation]{Example}
+\newtheorem{construction}[equation]{Construction}
+\newtheorem{assumption}[equation]{Assumption}
 
 \theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{remarks}[theorem]{Remarks}
+\newtheorem{remark}[equation]{Remark}
+\newtheorem{remarks}[equation]{Remarks}
 
 % Number equations by chapter.
 \numberwithin{equation}{chapter}

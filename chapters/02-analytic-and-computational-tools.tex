@@ -1,0 +1,160 @@
+\chapter{Analytic and Computational Tools}\label{ch:analytic-and-computational-tools}
+
+\section{MacLane Valuations}
+
+In his seminal work \cite{MacLane}, S.~MacLane considered and essentially solved the following problem.
+Let $v_K$ be a discrete valuation on a field $K$.
+What are the extensions of $v_K$ to an (arbitrary) pseudovaluation $v$ on the polynomial ring $K[x]$?
+How can we describe such pseudovaluation explicitly?
+These results have been applied to the problem of constructing models of curves in J.~Rüth's thesis, \cite{Rueth}. 
+In this section, we give a brief overview.
+We assume $K$ to be algebraically closed.
+
+
+\subsection{Basic Definitions}
+
+\begin{definition} \label{def:pseudo-valuation}
+    We call $v: K[x]: \to \hat{\RR}$ a pseudovaluation if $v(1) = 0$ and
+    \begin{enumerate}[(a)]
+        \item $v(fg) = v(f) + v(g)$,
+        \item $v(f + g) \geq \min\lbrace v(f), v(g) \rbrace$ for all $f,g\in K[x]$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    Let $v$ be a pseudovaluation on $K[x]$.
+    \begin{enumerate} [(i)]
+        \item As a consequence of the definition we get that $\p_v \coloneqq v^{-1}(\infty) < K[x]$ is a prime ideal
+            and that $v$ induces a valuation 
+            \begin{align}
+                \bar{v}: K[x]/\p_v \to \hat{\QQ}.
+            \end{align}
+            If $\p_v = (0)$, then $v=\bar{v}$ is a valuation in the usual sense.
+        \item Let $L|K$ be a finite field extension \textcolor{red}{[separable?]} with minimal polynomial $\varphi \in K[x]$.
+            Then we have a one-to-one correspondence between the valuations $v_L: L \to \hat{\RR}$ extending $v_K$ and 
+            and the pseudovaluations $v: K[x] \to \hat{\RR}$ with $v(\varphi)=\infty$.
+            It is given by the mutually inverse maps
+            \begin{align}
+                v_L \mapsto \left( K[x] \twoheadrightarrow L \overset{v}{\to} \hat{\RR} \right)
+            \end{align}
+            and
+            \begin{align}
+                v \mapsto \left(K[x]/\p_v \overset{\bar{v}}{\to} \hat{\RR}\right).
+            \end{align}
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}
+    A pseudovaluation $v: K[x] \to \QQ$ is called a \textit{MacLane pseudovaluation} if the following conditions hold.
+    \begin{enumerate}[(a)]
+        \setcounter{enumi}{2}
+        \item $v|_K = v_K$,
+        \item $v(x) \geq 0$,
+        \item $v$ is discrete, i.e. $v(K[x]) \cap \QQ = \frac{1}{e_v}\ZZ$ for some positive integer $e_v$,
+        \item if $\p_v = (0)$, then the extension $k(v)|k$ has transcendence degree one.
+    \end{enumerate}
+    We denote the set of all MacLane pseudovaluations of $K[x]$ by $V(K[x])^*$ and the subset of MacLane valuations of $K[x]$ by $V(K[x]) \subset V(K[x])^*$.
+\end{definition}
+
+For the valuations in $V(K[x])$, there is a partial order: we say that $v \leq v'$ if and only if $v(f) \leq v'(f)$ for all $f\in K[x]$.
+
+\begin{example}
+    The Gauß valuation $v_{\scriptscriptstyle G} \in V(K[x])^*$ is minimal with respect to that partial order.
+\end{example}
+
+\begin{definition}
+    Let $v\in V(K[x])$ be a MacLane valuation and let $f,g,h \in K[x]$.
+    \begin{enumerate}[(i)]
+        \item We say that $f$ and $g$ are \textit{$v$-equivalent} (written as $f \sim_v g$) if $v(f-g) > v(f) = v(g)$.
+        \item The polynomial $f$ is said to \textit{$v$-divide} $g$ (written as $f\, |_v\, g$) if $f \sim_v fh$ for some $h \in K[x]$.
+            It is called \textit{$v$-irreducible} if $f\, |_v\, gh$ implies $f\, |_v\, g$ or $f\, |_v\, h$,
+            and \textit{$v$-minimal} if $f\, |_v\, g$ implies $\deg f < \deg g$.
+        \item A polynomial $\phi \in K[x]$ is called a \textit{key polynomial} for $v$ is $\phi$ is monic, integral, $v$-irreducible and $v$-minimal.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    One immediate consequence of these definitions is that any key polynomial $\phi$ for $v$ is irreducible (as an element of $K[x]$).
+\end{remark}
+
+Let $\phi$ be a key polynomial for the a valuation $v \in V(K[x])$ and let $\lambda \in \hat{\QQ}$ with $\lambda \geq v(\phi)$.
+Then we can define a MacLane pseudovaluation 
+\begin{align} \label{eq:def-augmentation}
+    v' = [v, v'(\phi) = \lambda] \in V(K[x])^*
+\end{align}
+as follows.
+Any polynomial $f \in K[x]$ can be written uniquely as 
+\begin{align}
+    f = \sum_i f_i \phi^i
+\end{align}
+with $\deg f_i < \deg \phi$. Then let 
+\begin{align}
+    v'(f) \coloneqq \min_i(v(f_i) + i\cdot \lambda).
+\end{align}
+
+It holds that $v\leq v'$ and $v < v'$ if and only if $v(\phi) < \lambda$.
+
+\begin{definition}
+    The MacLane pseudovaluation $v'$ defined in (\refeq{eq:def-augmentation}) is called the \textit{augmentation} of $v$ with respect to $(\phi,\lambda)$.
+    If $v < v'$, $v'$ is called a \textit{proper augmentation}.
+\end{definition}
+
+\begin{definition}
+    A MacLane pseudovaluation $v$ is called \textit{inductive} if there exists a chain of MacLane pseudovaluations
+    \begin{align}
+        v_{\scriptscriptstyle G} = v_0 \leq v_1 \leq \cdots \leq v_n = v,
+    \end{align}
+    such that $v_i$ is a proper augmentation of $v_{i-1}$ for $i=1,\dots, n$.
+    We call $v_0,\dots,v_n$ the \textit{augmentation chain} representing $v$ and write \begin{align}
+        v = [v_0,v_1(\phi_1) = \lambda_1,\dots, v_n(\phi_n) = \lambda_n].
+    \end{align}
+    Here it is understood $v_0 = v_{\scriptscriptstyle G}$, $v_n = v$, that $\phi_i$ is a key polynomial for $v_{i-1}$, $\lambda_i > v_{i-1}(\phi_i)$
+    and that $v_i = [v_{i-1}, v_i(\phi_i) = \lambda_i]$. 
+    Also, $\lambda_i \neq \infty$ for $i < n$.
+    We say that the augmentation chain $v_0,\dots,v_n$ is \textit{minimal} if
+    \begin{align}
+        \deg \phi_i < \cdots < \deg \phi_n.
+    \end{align}
+\end{definition}
+
+\begin{theorem}[{\cite[Theorem 8.1 and Theorem 15.3]{MacLane}}]
+    Let $v \in V(K[x])^*$.
+    Then there exists a unique minimal augmentation chain representing $v$.
+    In particular, $v$ is inductive.
+\end{theorem}
+
+
+\subsection{Discs, Discoids and Inductive Valuations}
+
+\begin{definition}
+    \begin{enumerate}[(i)]
+        \item Let $\alpha \in K$ and let $\lambda \in \hat{\QQ}$. 
+            Then
+                \begin{align}
+                    D(\alpha, \lambda) \coloneqq \lbrace x \in K:\, v_K(x - \alpha) \geq \lambda\rbrace
+                \end{align}
+            is the \textit{(closed) disc} with centre $\alpha$ and radius $\lambda$.
+        \item Let $\phi \in K[x]$ be a monic irreducible polynomial and let $\lambda \in \hat{\QQ}$.
+            The set 
+            \begin{align}
+                D(\phi, \lambda) \coloneqq \lbrace x \in K:\, v_K(\phi(x)) \geq \lambda \rbrace
+            \end{align}
+            is called the \textit{discoid} with centre $\phi$ and radius $\lambda$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    Any disc with centre in $K$ is a discoid.
+    Coversely, if $\phi = x - \alpha$ then $D(\phi, \lambda)$ coincides with the disc $D(\alpha, \lambda)$.
+    For arbitrary non-constant $\phi$, we have the following generalisation:
+    Let $\alpha_1,\dots,\alpha_n$ be the (pairwise distinct) roots of $\phi \in K[x]$
+    and let $\mu_1,\dots,\mu_n \in \hat{\QQ}$ be minimal\footnote{
+        Our definition of discs imply that discs with large radius are smaller than those with small radius.
+        For instance, the disc with centre $0\in K$ and radius $0$ is rather big, as it consists of all integral elements.
+    } such that $D(\alpha_i,\mu_i) \subset D(\phi,\lambda)$.
+    Then
+    \begin{align}
+        D(\phi,\lambda) = \bigcup_{i=1}^n D(\alpha_i,\mu_i),
+    \end{align}
+    see \cite[Lemma 4.43]{Rueth}.
+\end{remark}

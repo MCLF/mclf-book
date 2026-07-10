@@ -1,0 +1,72 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-9.25, -6) {};
+		\node [style=none] (1) at (2.75, -6) {};
+		\node [style=none] (3) at (-9.25, 5.5) {};
+		\node [style=none] (4) at (3.25, 5.5) {};
+		\node [style=none] (6) at (-8.75, -2.75) {};
+		\node [style=none] (7) at (2.5, -2.75) {};
+		\node [style=none] (11) at (-13, 2.25) {$\X$};
+		\node [style=none] (12) at (-13, -6) {$\Spec \OO_K$};
+		\node [style=none] (13) at (-13, -4) {};
+		\node [style=none] (14) at (-13, 0.5) {};
+		\node [style=none] (15) at (-5, 0.75) {};
+		\node [style=none] (16) at (-5.25, 4.75) {};
+		\node [style=none] (17) at (-7, -1) {};
+		\node [style=none] (18) at (-7, 2.75) {};
+		\node [style=none] (19) at (-1.25, 4.25) {};
+		\node [style=none] (20) at (2.25, 2.75) {};
+		\node [style=none] (21) at (1.75, 4) {};
+		\node [style=none] (22) at (-1.5, -1) {};
+		\node [style=none] (23) at (-2.25, 0.75) {};
+		\node [style=none] (24) at (1.5, -1) {};
+		\node [style=none] (25) at (-7.75, 3.5) {};
+		\node [style=none] (27) at (-7.75, 1) {};
+		\node [style=none] (28) at (-3, 1.75) {};
+		\node [style=none] (29) at (1.5, 1.25) {};
+		\node [style=none] (30) at (-3, 3) {};
+		\node [style=none] (31) at (1, 4.5) {};
+		\node [style=none] (35) at (-6.25, -5) {};
+		\node [style=none] (37) at (-6.25, -3) {};
+		\node [style=none] (38) at (-0.5, -3) {};
+		\node [style=none] (40) at (-0.5, -5) {};
+		\node [style=none] (44) at (-6.25, 5.5) {$\X_g$};
+		\node [style=none] (45) at (0.5, 5.5) {$\X_s$};
+		\node [style=none] (46) at (-8.75, 3.25) {$D_1$};
+		\node [style=none] (47) at (-8.75, 1) {$D_2$};
+		\node [style={generic_point}] (48) at (-6.25, -6) {};
+		\node [style=closed] (49) at (-0.5, -6) {};
+		\node [style=none] (50) at (-6.25, -7) {$(0)$};
+		\node [style=none] (51) at (-0.5, -7) {$(\pi)$};
+		\node [style=none] (52) at (-0.5, 4.25) {$\scriptstyle Z_1$};
+		\node [style=none] (53) at (2.25, 3.75) {$\scriptstyle Z_2$};
+		\node [style=none] (54) at (1.5, -0.5) {$\scriptstyle W$};
+		\node [style=none] (55) at (8, 2) {$V = \{v_{Z_1}, v_{Z_2} \}$};
+		\node [style=none] (56) at (8, 4) {$V(\X) = \{v_{Z_1}, v_{Z_2}, v_{W}\}$};
+		\node [style=none] (57) at (7.25, 0) {$\mathcal{E} = \{W\}$};
+		\node [style=intersection] (58) at (-6.9, 3.65) {};
+		\node [style=intersection] (59) at (-4.95, 1.35) {};
+		\node [style=intersection] (60) at (0.5, 1.47) {};
+		\node [style=intersection] (62) at (-0.22, 3.41) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0.center) to (1.center);
+		\draw [in=105, out=75, looseness=0.25] (3.center) to (4.center);
+		\draw [in=-45, out=-60, looseness=0.75] (4.center) to (7.center);
+		\draw [in=30, out=150, looseness=0.50] (7.center) to (6.center);
+		\draw [in=-105, out=-150, looseness=0.75] (6.center) to (3.center);
+		\draw [style=arrow] (14.center) to (13.center);
+		\draw [in=150, out=-150] (16.center) to (18.center);
+		\draw [in=75, out=-30, looseness=1.25] (18.center) to (15.center);
+		\draw [in=45, out=-120] (15.center) to (17.center);
+		\draw [bend right, looseness=0.75] (19.center) to (20.center);
+		\draw [in=75, out=-90, looseness=1.50] (21.center) to (22.center);
+		\draw [in=135, out=-60, looseness=1.25] (23.center) to (24.center);
+		\draw [style=dashed, in=165, out=15] (25.center) to (30.center);
+		\draw [style=dashed, bend right] (30.center) to (31.center);
+		\draw [style=dashed, in=-180, out=-15] (27.center) to (28.center);
+		\draw [style=dashed, in=165, out=0, looseness=0.75] (28.center) to (29.center);
+		\draw [style=arrow] (37.center) to (35.center);
+		\draw [style=arrow] (38.center) to (40.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
