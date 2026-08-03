@@ -58,7 +58,7 @@ The initial plan was simply to revise and combine the notes prepared for these t
 As work on the project progressed, however, it became clear that the material would benefit from a broader and more systematic treatment.
 In particular, the relation between algebraic models, valuations, Berkovich geometry, Mac Lane theory, and explicit computations suggested a structure extending well beyond the original five talks.
 
-The present book is the result of this development. The original seminar notes were compiled, edited and extended by Maximilian Fülle. The content of the first four talks are the germ of Part I, \emph{Models and valuations}. The notes for the fifth talk will be incorporated into Part II, \emph{Analytic and computation tools}.
+The present book is the result of this development. The original seminar notes were compiled, edited and extended by Maximilian Fülle. The content of the first four talks is the germ of Part I, \emph{Models and valuations}. The notes for the fifth talk form the starting point of Part II, \emph{Analytic and computational tools}.
 
 The book is a collaborative and evolving project.
 Individual chapters identify their authors, while the volume as a whole is edited by Stefan Wewers.
@@ -73,16 +73,25 @@ Without the seminar and the work invested in its preparation, this book would no
 \large\normalfont
 Miriam Ní Chobhtaigh, Max Schwegele,\\
 Xiaodong Zhang, Kletus Stern, Robert Nowak,\\
-Stefan Wewers, and Maximilian Fülle}
+Stefan Wewers, and Maximilian Fülle\\[2em]
+\begin{minipage}{0.78\textwidth}
+\normalfont\normalsize\raggedright
+This part develops the algebraic foundations and valuation theory used throughout the book. It introduces models of curves, attaches geometric valuations to components of their special fibres, establishes the correspondence between models and finite sets of these valuations, and studies their behaviour under finite extensions of the base field.
+\end{minipage}}
 \label{part:models-and-valuations}
 
-\input{chapters/01-curves-over-valued-fields-and-their-models}
+\input{chapters/01-models-of-curves-over-valued-fields}
 \input{chapters/02-correspondence-between-models-and-valuations}
-\input{chapters/03-base-change-reduced-fibers-and-permanence}
+\input{chapters/03-base-change-and-permanent-models}
 
-\part{Analytic and computational tools}
+\part[Analytic and computational tools]{Analytic and computational tools\\[2em]
+\begin{minipage}{0.78\textwidth}
+\normalfont\normalsize\raggedright
+This part develops analytic and computational tools for describing and working with valuations arising from models. The material currently included, Chapter~\ref{ch:mac-lane-valuations}, is essentially the content of the last talk of the miniseminar from which this book originated. It begins the development with Mac Lane valuations, which provide explicit descriptions in terms of polynomials, augmentations, discs, and discoids. The remainder of Part~II will be added later.
+\end{minipage}}
 
-\input{chapters/04-analytic-and-computational-tools}
+\setcounter{chapter}{4}
+\input{chapters/05-mac-lane-valuations}
 
 \backmatter
 

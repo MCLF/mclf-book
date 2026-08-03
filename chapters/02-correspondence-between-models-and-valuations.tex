@@ -1,6 +1,160 @@
 \chapter{The correspondence between models and valuations}\label{ch:correspondence-between-models-and-valuations}
 \chaptermark{Models--valuations correspondence}
 
+Building on the valuations associated with components in Chapter~\ref{ch:models-of-curves-over-valued-fields}, this chapter proves that models of a fixed curve correspond to finite nonempty sets of geometric valuations of its function field. The proof is based on Chapter~3 of Julian Rüth's thesis~\cite{Rueth}.
+
+\section{Statement and interpretation of the correspondence theorem}\label{sec:statement-correspondence-theorem}
+
+The central result of this chapter says that the assignment $\X\mapsto V(\X)$ classifies models by finite nonempty sets of geometric valuations and respects the natural partial orders.
+
+\begin{theorem}\label{thm:bijectionModelsAndComponents}
+    The map
+    \begin{align} \label{eq:mapFromModelToValuation}
+        \X \mapsto V(\X).
+    \end{align}
+    defines a monotone\footnote{cf. Lemma \ref{lemma:induced-order-on-valuations}} bijection between
+    \begin{itemize}
+        \item the set of isomorphism classes of models of $X$, and
+        \item the set of finite, nonempty subsets of $V_\textrm{II}(F_X)$.
+    \end{itemize}
+\end{theorem}
+
+\section{Modifications and injectivity}\label{sec:modifications-and-injectivity}
+We first prove the injective part of the correspondence theorem. The relevant comparison maps between models are modifications, which induce inclusions between their sets of component valuations.
+
+\begin{definition}
+    A \textit{modification} of a model of $X$ is a morphism $\X' \to \X$ of $\OK $-schemes which induces the
+    identity on the generic fibre.
+\end{definition}
+
+\begin{remark}\label{rem:modifications-are-surjective-and-partial-order-of-models}
+    \begin{enumerate}[(i)]
+        \item Since a model is proper over $\OK $, a modification is a proper morphism.
+            Thus since it is dominant, it is also surjective.
+        \item We have a partial order of models of $X$ given by $\X \leq \X'$ if there exists a modification $\X' \to \X$.
+    \end{enumerate}
+\end{remark}
+
+In the remainder of this section, we prove injectivity of this map.
+
+\begin{lemma}\label{lem:preimageOfGenericPoint}
+    Let $\X$ be a model of $X$ and let $\X'$ be a model of another irreducible smooth projective curve $X'$.
+    Let $\varphi: \X' \to \X$ be a morphism of $\OK $-schemes which induces a cover $X' \to X$ on the generic fibre.
+    Let $\eta$ be a generic point of $\X_s$, then the preimage of $\eta$ under $\varphi$ is non-empty and consists of generic points of $\X_s'$.
+    If $\varphi$ is birational, then the preimage consists of precisely one generic point.
+\end{lemma}
+
+\begin{proof}{\cite[Lemma 3.6]{Rueth}}
+    Let $Z \subset \X_s$ be the irreducible component that contains $\eta$.
+    Since $\varphi$ is surjective (cf.\ Remark~\ref{rem:modifications-are-surjective-and-partial-order-of-models}),
+    there is a point $\eta'$ on an irreducible component $Z' \subset \X_s'$ which is mapped to $\eta$.
+    Since $\varphi$ is dominant, the induced ring homomorphism $\OO_{\X,\eta} \to \OO_{\X',\eta'}$ is injective.
+    This is an extension of discrete valuation rings and thus $\eta' \in Z'$ must be generic.
+    In particular, if $\varphi$ is birational, then both rings are integrally closed in the same field of fractions which makes them equal.
+    Therefore, $\eta'$ must be unique since $\X'$ is separated.
+\end{proof}
+
+\begin{lemma}[{\cite[Lemma 3.7]{Rueth}}]\label{lemma:induced-order-on-valuations}
+    Let $\varphi: \X' \to \X$ be a modification of models of $X$.
+    Then $V(\X) \subset V(\X')$.
+    In particular, the partial order $\X \leq \X'$ of models on $X$ induces a partial order on the corresponding finite
+    subsets of $V_{\mathrm{II}}(F_X)$ via inclusion maps.
+\end{lemma}
+
+\begin{proof}
+    This is a consequence of Proposition~\ref{prop:WellDefOfInducedValuation} and Lemma~\ref{lem:preimageOfGenericPoint}.
+\end{proof}
+
+\begin{proposition}[{\cite[Lemma 3.8]{Rueth}}]
+    Let $\X$ and $\X'$ be models of $X$ with $V(\X) \subset V(\X')$.
+    Then there is a modification $\X' \to \X$.
+\end{proposition}
+
+\begin{proof}
+    If $V(\X) \subset V(\X')$, then for every valuation $v_Z \in V(\X)$ corresponding to an irreducible component $Z\subset \X_s$ with generic point $\xi$,
+    there is an irreducible component $Z' \subset \X'_s$ with generic point $\xi'$, such that $\OO_{\X,\xi} = \OO_{\X',\xi'} \subset F_X$.
+    Together with the identification $\X_g = X = \X'_g$, this induces a birational map $\X' \dashrightarrow \X$ (cf. for example \cite[Lemma 29.50.2.]{Stacks}).
+    By \cite[Theorem 8.3.20]{Liu}, this map is a morphism. Since it identifies $\X_g$ and $\X'_g$, it is a modification.
+\end{proof}
+
+
+\begin{comment}
+    \begin{proof}[Sketch of the proof]
+    Let
+    \begin{align*}
+        U= \lbrace Z_\eta \subset \X_s: v_{Z_\eta} \in V(\X)\rbrace
+    \end{align*}
+    and
+    \begin{align*}
+        U'= \lbrace Z_{\eta'} \subset \X_s: v_{Z_{\eta'}} \in V(\X')\rbrace
+    \end{align*}
+    be covers of $\X_s$ (resp. $\X_s'$) of irreducible components, where the irreducible component
+    $Z_\eta$ has generic point $\eta$.
+    The inclusion $V(\X) \subset V(\X')$ induces an injective map $\iota$ from the generic points of the irreducible components of $\X_s$ to those of $\X'_s$, which induces
+    ring homomorphisms $\OO_{\X_s', \iota(\eta)} \to \OO_{\X_s, \eta}$.
+    Thus, we get a birational map $\X' \dbkarow \X$ which is a morphism by~\cite[Theorem 8.3.20]{Liu}.
+\end{proof}
+\end{comment}
+
+
+\begin{corollary}[{\cite[Proposition 3.9]{Rueth},\cite[Corollary 8.3.23]{Liu}}]
+    Two models $\X$ and $\X'$ of $X$ are isomorphic as models of $X$ if and only if $V(\X) = V(\X')$.
+    In particular, the map defined in~\eqref{eq:mapFromModelToValuation} is injective.
+\end{corollary}
+
+\begin{proof}
+    Suppose that $V(\X) = V(\X')$.
+    Then there exist morphisms $\X\to \X'$ and $\X' \to \X$.
+    Each composition agrees with the identity on the dense generic fibre.
+    Since the models are integral and separated, the compositions are therefore the identity morphisms.
+    Thus the two morphisms are mutually inverse.
+\end{proof}
+
+\begin{example}
+    We continue with Example~\ref{ex:model-of-plane-curve}.
+    Let $F\in \QQ_p[X,Y,Z]$ be irreducible, integral and primitive and such that
+    \begin{align}
+        \X = \Proj{\ZZ_p[X,Y,Z]/(F)}
+    \end{align}
+    is a model of the projective curve $X: 0=F(X,Y,Z)$ over $\QQ_p$.
+    Suppose that $\bar{F} \in \FF_p[X,Y,Z]$ is irreducible, then $\X_s$ has precisely one irreducible component $Z$
+    with generic point $\xi$ corresponding to the ideal $(p, \bar{F})$.
+    In particular, it holds $V(\X) = \lbrace v_Z\rbrace$.
+    The element $p$ is a uniformising parameter of $\OO_{\X, \xi}$, and the component valuation therefore has the intrinsic description
+    \begin{align}
+        v_Z(f)=\max\bigl\{n\in\ZZ : f\in p^n\OO_{\X,\xi}\bigr\},
+        \qquad f\in F_X^\times.
+    \end{align}
+
+    % AUTHOR WARNING:
+    \begin{authorwarning}
+    The coefficientwise formula for $v_Z$ is not well-defined without a specified normal form. The intended description of this valuation and its restriction to $\QQ_p(x)$ must be checked.
+    \end{authorwarning}
+\end{example}
+
+\begin{comment}
+    \begin{example}
+    We continue with Example~\ref{ex:particular-model-of-plane-curve} of the model
+    \begin{align*}
+        \mathcal{X} = \Proj \ZZ_p[X,Y,Z]/(F)
+    \end{align*}
+    with $F = Y^2 Z - X^3 - pXZ^2 \in \QQ_p[X,Y,Z]$ of the elliptic curve $X: y^2 = x^3 +px$ defined over $\QQ_p$.
+    We have already checked that it is a model.
+    Since $\bar{F} \in \FF_p[X,Y,Z]$ is irreducible, $\X_s$ consists of one irreducible component $Z$ with generic point $\xi$
+    corresponding to the ideal $(p, Y^2Z - X^3)$.
+    In particular, $V(\XX)$
+    $p$ is a uniformising parameter of $\OO_{\X, \eta}$, thus $v_Z(p) = 1$ and since $x\notin \m_\eta = (p)$, $v_Z(x)=0$.
+    Hence, on the function field $F_X = \QQ_p(x)[y]/(y^2 - x^3 - px)$, $v_Z$ is given by
+    \begin{align}
+        v_Z(f) = \min_{i,j}v_p(a_{i,j}) \quad \text{for } f = \sum_{i,j}a_{i,j}x^i y^j.
+    \end{align}
+    In particular $v_Z|_{\QQ_p(x)} = v_{\scriptscriptstyle G}$.
+\end{example}
+\end{comment}
+
+
+
+\section{Centres and extraction of valuations}\label{sec:centres-and-extraction}
 For the proof of Theorem~\ref{thm:bijectionModelsAndComponents}, it remains to show the surjectivity of the map (\eqref{eq:mapFromModelToValuation}),
 i.e., for a given finite, non-empty set of valuations
 $V \subset V_\textrm{II}(F_X)$, there is a model $\X$ of $X$ such that $V = V(\X)$.
@@ -9,7 +163,7 @@ We will prove this in two steps, which we state in the following proposition.
 \begin{proposition}[{{\cite[3.14, 3.16]{Rueth}}}, {{\cite[8.3.36]{Liu}}}] \label{prop:constructing_models}
     \begin{enumerate}[(i)]
         %\item[]
-        \item Given model $\X$ and a valuation $v \in V_\textrm{II}(F_X)$, there exists a modification
+        \item Given a model $\X$ and a valuation $v \in V_\textrm{II}(F_X)$, there exists a modification
         $\varphi \colon \X' \to \X$ such that $v \in V(\X')$. \label{prop:constructing_models_i}
         \item Given a model $\X$ and a nonempty subset $V \subset V(\X)$,
         there exists a modification $\varphi \colon \X \to \X'$ such that $V = V(\X')$. \label{prop:constructing_models_ii}
@@ -21,8 +175,6 @@ Starting with a model $\X$ of $X$, we can apply part (\ref{prop:constructing_mod
 to obtain a new model that induces all valuations in $V$, but possibly more.
 We then apply part (\ref{prop:constructing_models_ii}) to construct a model that induces exactly the valuations in $V$.
 
-
-\section{Proof of the First Part of Proposition~\ref{prop:constructing_models}}\label{sec:proof-of-the-first-part}
 
 We fix a model $\X$ of $X$ and a type II valuation $v \in V_\textrm{II}(F_X)$.
 
@@ -36,7 +188,7 @@ We fix a model $\X$ of $X$ and a type II valuation $v \in V_\textrm{II}(F_X)$.
         \end{tikzcd}
     \]
     Here, the left map is induced by the inclusion $\OO_v \hookrightarrow \Frac \OO_v = F_X$,
-    and the right map comes from the identification of $X$ with the special fibre $\X_s$.
+    and the right map comes from the identification of $X$ with the generic fibre $\X_g$.
     Specifically, it is the canonical map $\Spec F_X \cong \Spec \OO_{\X, \eta} \to \X$, where $\eta$ is the generic point of $X$.
 \end{definition}
 
@@ -65,9 +217,9 @@ We fix a model $\X$ of $X$ and a type II valuation $v \in V_\textrm{II}(F_X)$.
     Assume $v \in V(\X)$.
     Then $v$ is induced by a generic point $\xi \in \X_s$ on the special fibre.
     The canonical morphism $\Spec \OO_{\X, \xi} \to \X$ shows that $v$ has centre $\xi$,  which is indeed a point of codimension one.
-    Conversely, suppose $v \in V_\textrm{II}(F_X)$ has center $x \in \X$ of codimension one.
+    Conversely, suppose $v \in V_\textrm{II}(F_X)$ has centre $x \in \X$ of codimension one.
     The morphism $\Spec \OO_v \to \X$ uniquely factors through $\Spec \OO_v \to \Spec \OO_{\X, x}$, so $\OO_v$ dominates $\OO_{\X, x}$.
-    Since these are both valuation rings with common fraction field $K$, it follows that they are in fact equal.
+    Since these are both valuation rings with common fraction field $F_X$, it follows that they are in fact equal.
     Thus \(v \in V(\X)\).
 \end{proof}
 
@@ -76,7 +228,7 @@ We fix a model $\X$ of $X$ and a type II valuation $v \in V_\textrm{II}(F_X)$.
     Then:
     \begin{enumerate}[(a)]
     \item If $f \in \OO_{\X,x}$, then $v \in V(\X)$ \label{lem:condition_induced_i}
-    \item If the rational map $\X \dashrightarrow \PP^1(\OK )$ induced by $f$ is defined at the center $x$ of $v$,
+    \item If the rational map $\X \dashrightarrow \PP^1(\OK )$ induced by $f$ is defined at the centre $x$ of $v$,
     then $v \in V(\X)$. \label{lem:condition_induced_ii}
     \end{enumerate}
 \end{lemma}
@@ -86,7 +238,7 @@ We fix a model $\X$ of $X$ and a type II valuation $v \in V_\textrm{II}(F_X)$.
     \item By Lemma~\ref{lem:codim1}, it suffices to show that $x$ is a point of codimension one.
     Choose an open affine set $\Spec A = U \subset \X$ such that $x \in U$ and $f \in A$.
     Denote by $\p < A$ the prime ideal corresponding to $x$.
-    Since $v$ is non-trivial, the center $x$ is not the generic point of $\X$, and so the codimension is not zero.
+    Since $v$ is non-trivial, the centre $x$ is not the generic point of $\X$, and so the codimension is not zero.
     If the dimension of $A/\p$ is at least one, then the inequality
     \[
         \dim{}(A_\p) + \dim{}(A/\p) \leq \dim{}(A) = 2
@@ -156,12 +308,13 @@ We can now finish the proof of Proposition \ref{prop:constructing_models} (\ref{
     The first projection $\X \times_{\OK } \PP^1(\OK ) \to \X$ induces a birational morphism $\Gamma_f \to \X$.
     The second projection induces a morphism $\Gamma_f \to \PP^1(\OK )$ which extends $f \colon \Gamma_f \dashrightarrow \PP^1(\OK )$.
     Let $\X' \to \Gamma_f$ denote the normalization of $\Gamma_f$.
-    This gives a model of $\X'$ for which $f \colon \X' \to \PP^1(\OK )$ is a morphism.
+    This gives a model $\X'$ of $X$ for which $f \colon \X' \to \PP^1(\OK )$ is a morphism.
     By Lemma~\ref{lem:condition_induced}~(\ref{lem:condition_induced_ii}), this implies that $v \in V(\X')$.
 \end{proof}
 
+\section{Contraction of components}\label{sec:contraction-of-components}
+The extraction construction may introduce component valuations outside the prescribed set. We now prepare the converse operation, which contracts precisely the components corresponding to these unwanted valuations.
 
-\section{Proof of the Second Part of Proposition~\ref{prop:constructing_models}}\label{sec:proof-of-the-second-part}
 We fix a model $\X$ of $X$ and a nonempty subset $V \subset V(\X)$.
 Denote by $\EE$ the set of irreducible (integral) components of $\X_s$ that induce the valuations in $V(\X)\setminus V$.
 
@@ -195,14 +348,17 @@ Once this is done, the proof is complete, since for the contraction $\varphi \co
     For the other implication and details see~\cite[Proposition 8.3.30]{Liu}.
 
     As $\X_g$ is an integral projective curve over a field, $\LL|_{\X_g}$
-    is an ample divisor (\cite[Proposition 7.5.5]{Liu}). Replacing $D$ by a positive multiple (which
-    does not change the set $E$), we can suppose that $\LL|_{\X_g}$ is very ample.
+    is ample (\cite[Proposition 7.5.5]{Liu}). Replacing $D$ by a sufficiently large positive multiple (which
+    does not change the set $E$), we may choose finitely many global sections $s_0,\ldots,s_n\in\Gamma(\X,\LL)$ which generate $\LL$ on $\X$
+    and whose restrictions define a closed immersion of $\X_g$.
+    Indeed, start with global generators of $\LL$ and with sections of $\LL|_{\X_g}$ defining a closed immersion;
+    after multiplying the latter by a common power of a uniformiser, they extend across the special fibre, and the union of the two finite sets has both required properties.
 
-    Let $f \colon \X \to \PP^n(\OK )$ be a morphism associated to sections $s_0, \ldots, s_n \in \Gamma(\X, \LL)$ which generate $\LL$.
+    Let $f \colon \X \to \PP^n(\OK )$ be the morphism associated to these sections.
     Let $Z$ be the closed subset $f(\X) \subset \PP^n(\OK )$
     endowed with the reduced (hence integral) scheme structure.
     Then $f$ induces a dominant morphism $\X \to Z$ that we still denote by $f$.
-    This is an isomorphism on the generic fibre because $\LL|_{\X_g}$ is very ample.
+    This is an isomorphism onto its image on the generic fibre by the choice of the sections.
     In particular, $f \colon X \to Z$ is birational.
     Denote by $\pi \colon \X' \to Z$ the normalization morphism.
     As $\X$ is normal, $f$ factors uniquely into $\varphi \colon \X \to \X'$ followed by $\pi \colon \X' \to Z$.
@@ -248,7 +404,7 @@ To construct such a divisor, it is important that the ring $\OK $ is complete, w
 \end{definition}
 
 \begin{lemma}[{{\cite[8.3.35]{Liu}}}] \label{lem:exist_div}
-    Let $x \in \X_s$ be a closed point on the special fiber, then the following assertions hold.
+    Let $x \in \X_s$ be a closed point on the special fibre, then the following assertions hold.
     \begin{enumerate}[(a)]
         \item There exists an irreducible horizontal Weil divisor $\Delta$ containing $x$. \label{lem:exist_div_i}
         \item There exists an effective horizontal Cartier divisor $D$ such that $\X_s \cap \Supp{D} = \{x\}$. \label{lem:exist_div_ii}
@@ -301,6 +457,8 @@ To construct such a divisor, it is important that the ring $\OK $ is complete, w
     \end{enumerate}
 \end{proof}
 
+
+\section{Completion of the proof and consequences}\label{sec:completion-correspondence-proof}
 Now we can finally prove Proposition~\ref{prop:constructing_models}~(\ref{prop:constructing_models_ii}).
 
 \begin{proof}[Proof of Proposition \ref{prop:constructing_models}~(\ref{prop:constructing_models_ii})]
@@ -331,5 +489,3 @@ Now we can finally prove Proposition~\ref{prop:constructing_models}~(\ref{prop:c
     It follows from \cite[Corollary 5.3.24]{Liu} that $\OO_\X(D)$ is ample.
     So $\X \to \Spec \OO_K$ is projective (\cite[Proposition 5.3.6]{Liu}).
 \end{remark}
-
-

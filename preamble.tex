@@ -48,6 +48,15 @@
 % Graphics.
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{tcolorbox}
+
+% Visible notes for mathematical issues that require human resolution.
+\newtcolorbox{authorwarning}{
+    colback=red!5!white,
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title=Author input required
+}
 
 % References and hyperlinks.
 % Load hyperref near the end.
