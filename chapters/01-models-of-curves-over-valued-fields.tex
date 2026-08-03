@@ -4,7 +4,8 @@
 
 \chapter{Models of curves over valued fields}\label{ch:models-of-curves-over-valued-fields}
 
-This chapter introduces models of smooth projective curves over valued fields. After discussing normality and basic examples, we attach a geometric valuation and a multiplicity to every irreducible component of the special fibre; the resulting finite set of valuations is the starting point for the correspondence developed in Chapter~\ref{ch:correspondence-between-models-and-valuations}.
+This chapter introduces models of smooth projective curves over valued fields, together with their morphisms and the resulting partial order by domination.
+After discussing normality and basic examples, we attach a geometric valuation and a multiplicity to every irreducible component of the special fibre; the resulting finite set of valuations is the starting point for the correspondence developed in Chapter~\ref{ch:correspondence-between-models-and-valuations}.
 
 \section{Valued fields, curves, and models}\label{sec:valued-fields-curves-and-models}
 We begin by fixing the valued-field notation and standing hypotheses used throughout Part~\ref{part:models-and-valuations}, and then introduce the basic notion of a model of a curve.
@@ -15,25 +16,25 @@ maximal ideal $\mK$ and $k \coloneqq \OK /\mK$ its residue field.
 
 For most of the first chapter, we make the following additional assumptions:
 \begin{assumption} \label{ass:v_K}
-    \begin{enumerate}[(a)]
+    \begin{enumerate}[label=\textup{(\alph*)}]
         \item $v_K$ is discrete, i.e.\ $\Gamma_K$ is a discrete subgroup of $\RR$,
         \item $K$ is complete with respect to $v_K$,
         \item $k$ is perfect.
     \end{enumerate}
 \end{assumption}
 
-Throughout the whole monograph, $X$ will denote a \textit{nice} curve over $K$,
+Throughout the monograph, $X$ will denote a \textit{nice} curve over $K$,
 that is a smooth, projective and absolutely irreducible curve over $K$.
 
 \begin{definition} \label{def:model}
     A \textit{model} $\X$ of $X$ is a proper, flat and normal $\OK $-scheme
-    with an identification of its generic fibre $\X_g$ with $X$.
+    with an identification of its generic fibre $\X_\eta$ with $X$.
 \end{definition}
 
 \begin{example}
     Let $K = \QQ_p$, $\OK  = \ZZ_p$ and $X = \PP^1_K$.
     Then $\X = \PP^1_{\OK}$ is a model of $X$ with the evident identification
-    $\X_g = \X \times_{\OK} K \cong \PP^1_K$.
+    $\X_\eta = \X_K \cong \PP^1_K$.
     The special fibre $\X_s$ has one irreducible component which is isomorphic to $\PP^1_k$.
 \end{example}
 
@@ -45,18 +46,120 @@ that is a smooth, projective and absolutely irreducible curve over $K$.
 \end{remark}
 
 
+\section{The category of models and modifications}\label{sec:category-of-models-and-modifications}
+We now introduce the morphisms used to compare models of a fixed curve.
+They turn the collection of models into a partially ordered system in which any two models admit a common dominating model.
+
+\begin{definition}\label{def:modification-of-models}
+    Let $\X$ and $\X'$ be models of $X$.
+    A \textit{modification} $\varphi\colon\X'\to\X$ is a morphism of $\OK$-schemes whose restriction to the generic fibres is the identity on $X$ under the fixed identifications $\X'_\eta\cong X\cong\X_\eta$.
+    In this situation, we say that $\X'$ \textit{dominates} $\X$.
+\end{definition}
+
+\begin{lemma}\label{lem:uniqueness-of-modifications}
+    Between two fixed models of $X$, there is at most one modification.
+\end{lemma}
+
+\begin{proof}
+    Let $\varphi,\psi\colon\X'\to\X$ be modifications.
+    They agree on the generic fibre $\X'_\eta$, which is dense in the integral scheme $\X'$.
+    Since $\X$ is separated, the equalizer of $\varphi$ and $\psi$ is closed in $\X'$.
+    It contains the dense generic fibre and is therefore all of $\X'$, so $\varphi=\psi$.
+\end{proof}
+
+\begin{proposition}\label{prop:elementary-properties-of-modifications}
+    Let $\varphi\colon\X'\to\X$ be a modification of models.
+    Then $\varphi$ is proper, dominant, and surjective.
+    Moreover, there is a finite set $S\subset\X_s$ of closed points such that $\varphi$ is an isomorphism over $\X\setminus S$ and, for every $x\in S$, the fibre $\varphi^{-1}(x)$ is a connected projective curve over $\kappa(x)$.
+\end{proposition}
+
+\begin{proof}
+    Let $\varphi\colon\X'\to\X$ be a modification.
+    Since $\X$ is separated over $\Spec\OK$, the graph morphism
+    \[
+        \Gamma_\varphi\colon\X'\longrightarrow\X'\times_{\Spec\OK}\X
+    \]
+    is a closed immersion.
+    The projection $\X'\times_{\Spec\OK}\X\to\X$ is proper because it is the base change of the proper morphism $\X'\to\Spec\OK$.
+    Their composite is $\varphi$, so $\varphi$ is proper.
+    Its image contains the generic fibre $X$, which is dense in $\X$, and hence $\varphi$ is dominant.
+    Finally, a proper morphism has closed image, so the image of $\varphi$ is both dense and closed in $\X$ and must equal $\X$.
+
+    A proper birational morphism to a normal scheme is an isomorphism at every codimension-one point of the target; this follows by applying the valuative criterion of properness to the corresponding discrete valuation ring.
+    Hence the complement of the maximal open subset of $\X$ over which $\varphi$ is an isomorphism is a closed subset of codimension at least two.
+    Since $\X$ is a two-dimensional Noetherian scheme and $\varphi$ is already an isomorphism on the generic fibre, this complement is a finite set $S\subset\X_s$ of closed points.
+
+    By the connectedness form of Zariski's Main Theorem, the fibres of $\varphi$ are connected; see~\cite[\href{https://stacks.math.columbia.edu/tag/0AY8}{Lemma 0AY8}]{Stacks}.
+    If $x\in S$, the fibre over $x$ cannot be zero-dimensional: otherwise $\varphi$ would be finite in a neighbourhood of $x$, and a finite birational morphism to the normal scheme $\X$ would be an isomorphism there.
+    Thus $\varphi^{-1}(x)$ is a proper one-dimensional scheme over $\kappa(x)$, hence a projective curve.
+\end{proof}
+
+We write
+\[
+    \X\leq\X'
+\]
+if there is a modification $\X'\to\X$; thus the larger model is the one that dominates the smaller model.
+Here and below, models that are isomorphic as models of $X$ are identified when discussing this relation.
+
+\begin{proposition}\label{prop:partial-order-of-models}
+    The relation $\leq$ is a partial order on the set of isomorphism classes of models of $X$.
+    The category of models and modifications is equivalent to the partially ordered set regarded as a category.
+\end{proposition}
+
+\begin{proof}
+    The identity morphism gives reflexivity, and composition of modifications gives transitivity.
+    If $\X\leq\X'$ and $\X'\leq\X$, there are modifications $\varphi\colon\X'\to\X$ and $\psi\colon\X\to\X'$.
+    Both composites are modifications and hence, by Lemma~\ref{lem:uniqueness-of-modifications}, are the respective identity morphisms.
+    Thus $\varphi$ and $\psi$ are mutually inverse, which proves antisymmetry on isomorphism classes.
+    The same uniqueness lemma says that there is at most one morphism between any two models, so choosing one representative of each isomorphism class gives the asserted equivalence of categories.
+\end{proof}
+
+\begin{proposition}\label{prop:common-dominating-model}
+    Any two models $\X_1$ and $\X_2$ of $X$ admit a common dominating model $\X_3$.
+\end{proposition}
+
+\begin{proof}
+    Consider the diagonal morphism determined by the fixed identifications of the generic fibres,
+    \[
+        X\longrightarrow\X_1\times_{\Spec\OK}\X_2.
+    \]
+    Let $\mathcal Z$ be the schematic closure of its image.
+    The product $\X_1\times_{\Spec\OK}\X_2$ is proper over $\Spec\OK$, and hence so is its closed subscheme $\mathcal Z$.
+    Moreover, $\mathcal Z$ is integral and its generic fibre is the diagonal copy of $X$.
+    It is therefore flat over the discrete valuation ring $\OK$ by Remark~\ref{rem:flatIffIntegral}.
+
+    Let $\X_3$ be the normalization of $\mathcal Z$ in $F_X$.
+    The completeness assumption in Assumption~\ref{ass:v_K} enters here: it implies that $\OK$ is excellent, so the normalization is finite; see~\cite[Chapter 8, in particular Theorem 8.2.39 (d)]{Liu}.
+    Consequently, $\X_3$ is proper over $\Spec\OK$.
+    It is integral and hence flat over $\OK$, and it is normal by construction.
+    Since $X$ is normal, normalization does not change the generic fibre, so $(\X_3)_\eta=X$.
+    Thus $\X_3$ is a model of $X$.
+    Composing the normalization map with the two projections gives modifications $\X_3\to\X_i$ for $i=1,2$.
+\end{proof}
+
+\begin{remark}\label{rem:models-form-cofiltered-category}
+    Proposition~\ref{prop:common-dominating-model} says that the partially ordered set of models is directed upward.
+    Since modifications point from a dominating model to a dominated model, the category of models is correspondingly cofiltered and may be viewed as an inverse system.
+    Common dominating models may also be produced through suitable blowups followed by normalization.
+\end{remark}
+
+Chapter~\ref{ch:correspondence-between-models-and-valuations} will identify this order with inclusion between the corresponding finite sets of geometric valuations.
+
+
 \section{Normality and examples of models}\label{sec:normality-and-examples-of-models}
 To recognize when a proper flat scheme is a model, it remains to understand its normality. We first recall a criterion in terms of the special fibre and then apply it to several examples.
 
 \begin{definition}
-    A \textit{pre-model} of $X$ is a flat and proper $\OK$-scheme $\X$ with $\X \times_{\OK} K = X$.
-    That is, $\X$ satisfies all the conditions of a model except of being normal.
+    A \textit{pre-model} of $X$ is a flat and proper $\OK$-scheme $\X$ with $\X_\eta = X$.
+    That is, $\X$ satisfies all the conditions of a model except that it need not be normal.
 \end{definition}
 
-\begin{lemma}[{\cite[Lemma 1.3]{ArzdorfWewers}}]\label{lem:conditions-for-normality}
+The following normality criterion is a reformulation of~\cite[Lemma 2.1]{ArzdorfWewers} in the present notation.
+
+\begin{lemma}\label{lem:conditions-for-normality}
     Let $\X$ be a pre-model of $X$.
     Then $\X$ is normal (i.e.\ a model) if and only if the following two conditions hold.
-    \begin{enumerate}[(i)]
+    \begin{enumerate}[label=\textup{(\alph*)}]
         \item The special fibre $\X_s$ has no embedded points, i.e.\ no point $x\in \X_s$ \label{lem:conditions-for-normality-i}
             satisfying $\m_x = \Ann{R}{r}$ for some $r\in R \coloneqq \OO_{\X_s,x}$ (see~\cite[Definition 7.1.6]{Liu}).
         \item The local ring $\OO_{\X,\xi}$ is a discrete valuation ring for every generic point $\xi \in \X_s$. \label{lem:conditions-for-normality-ii}
@@ -64,7 +167,7 @@ To recognize when a proper flat scheme is a model, it remains to understand its 
 \end{lemma}
 
 \begin{proof}
-    According to Serre's criterion for normality~\cite[Theorem 8.2.23]{Liu},
+    By Serre's criterion for normality~\cite[Theorem 8.2.23]{Liu},
     we need to check the following properties:
     \begin{itemize}
         \item[$(\mathrm{R}_1)$] $\X$ is regular at $x$ when $\codim{x} \leq 1$, and
@@ -75,43 +178,43 @@ To recognize when a proper flat scheme is a model, it remains to understand its 
     and the generic point on the special fibre.
     The codimension-one local rings under consideration are one-dimensional Noetherian local domains.
     Such a ring is regular if and only if it is a discrete valuation ring, so $(\mathrm{R}_1)$ is equivalent to
-    (\ref{lem:conditions-for-normality-ii}).
-    By~\cite[Proposition 8.2.11]{Liu}, condition $(\mathrm{S}_2)$ is equivalent to say
+    \ref{lem:conditions-for-normality-ii}.
+    By~\cite[Proposition 8.2.11]{Liu}, condition $(\mathrm{S}_2)$ is equivalent to the condition
     that $\depth{\OO_{\X_s, x}} \geq 1$ for all $x \in \X_s$.
-    But this is always true for the generic point, and if $x$ is a different point it is equivalent to say that $x$ is not an embedded point.
+    This condition always holds at a generic point, and at any other point $x$ it is equivalent to the condition that $x$ is not an embedded point.
 \end{proof}
 
 \begin{example}
-    \begin{enumerate}
+    \begin{enumerate}[label=\textup{(\alph*)}]
         \item Consider a pre-model with special fibre
             \begin{align}
                 \X_s \coloneqq \Spec{k[x,y]/(x^2,xy)},
             \end{align}
-            which is topologically equivalent to $\AA^1(k)$.
+            which is topologically equivalent to $\AA^1_k$.
             The point corresponding to the maximal ideal $(x,y)$ is an embedded point.
-        \item We consider Example \textrm{III}.9.8.4 from \cite{Hartshorne} of a pre-model of a smooth curve with embedded point on the special fibre.
-            Let $C$ be the curve in $\PP^3(\QQ_p) = \Proj{\QQ_p[X,Y,Z,W]}$, which is given by the ideal
+        \item We consider the pre-model of a smooth curve with an embedded point on the special fibre described in \cite[Example \textrm{III}.9.8.4]{Hartshorne}.
+            Let $C$ be the curve in $\PP^3_{\QQ_p} = \Proj{\QQ_p[X,Y,Z,W]}$, which is given by the ideal
             \begin{align}
                 I = \left(p^2(x+1) - z^2, px(x+1) - yz, xz - py, y^2 - x^2(x+1) \right)
             \end{align}
             on the affine chart $W \neq 0$.
-            $p$ is no zero divisor in $\ZZ_p[x,y,z]/I$, thus the projective scheme $\mathcal{C}/\ZZ_p$ defined by $I$
-            is flat and hence a pre-model of $C$.
+            $p$ is not a zero divisor in $\ZZ_p[x,y,z]/I$.
+            Thus, the projective $\ZZ_p$-scheme $\mathcal{C}$ defined by $I$ is flat and hence a pre-model of $C$.
             On the affine chart $W \neq 0$, the special fibre $\mathcal{C}_s$ is given by the ideal
             \begin{align}
                 I_p = (z^2, yz, xz, y^2 - x^2(x+1))
             \end{align}
             and has support equal to the nodal cubic curve $y^2 = x^2(x+1)$.
             At any point where $x \neq 0$, $\mathcal{C}_s$ is reduced.
-            But in the stalk at the point $(0,0,0)$, we have the element $z$ with $z^2=0$, a non-zero nilpotent element.
-            Thus, $(0,0,0)$ is an embedded point and $\mathcal{C}$ no model of $C$ by Lemma \ref{lem:conditions-for-normality}.
+            However, in the stalk at $(0,0,0)$, the element $z$ is a nonzero nilpotent because $z^2=0$.
+            Thus, $(0,0,0)$ is an embedded point, and $\mathcal{C}$ is not a model of $C$ by Lemma \ref{lem:conditions-for-normality}.
     \end{enumerate}
 \end{example}
 
 
 \begin{comment}
     \begin{example}
-    In this example, we consider models of curves in the plane $\PP^2(K)$.
+    In this example, we consider models of curves in the plane $\PP^2_K$.
     Such a (smooth, projective and irreducible) curve $X$ is defined by a homogeneous irreducible polynomial $F(X,Y,Z) \in K[X,Y,Z]$.
     We show that if $F(X,Y,Z)$ is integral (that is all coefficients of $F$ are in $\OK$) and primitive, a model of $X$ is given by
     \begin{align}
@@ -139,41 +242,41 @@ To recognize when a proper flat scheme is a model, it remains to understand its 
 
 \begin{example}\label{ex:model-of-plane-curve}
     We discuss the important example of plane curves.
-    A smooth and absolutely irreducible curve in $\PP^2(K)$ is defined by a homogeneous irreducible polynomial $F \in K [X,Y,Z]$.
+    A smooth and absolutely irreducible curve in $\PP^2_K$ is defined by a homogeneous irreducible polynomial $F \in K [X,Y,Z]$.
     After multiplying $F$ by a suitable element of $K^\times$, we may assume that $F$ is integral (i.e., all coefficients are in $\OK$) and primitive.
     Then the $\OK$-scheme
     \begin{align}
         \X = \Proj{\OK[X,Y,Z]/(F)}
     \end{align}
     is an obvious candidate for a model of $X$.
-    $\X$ is proper as a closed subscheme of $\PP^2(K)$ and flat by Remark \ref{rem:flatIffIntegral} since
+    $\X$ is proper as a closed subscheme of $\PP^2_K$ and flat by Remark \ref{rem:flatIffIntegral} since
     $\OK[X,Y,Z]/(F)$ is torsion-free by irreducibility and primitivity of $F$.
     Hence, $\X$ is a model if and only if it is normal.
-    The discussion of normality in this case is given in Example 8.2.26 of \cite{Liu} which we rephrase for our example:
+    We rephrase the discussion of normality in \cite[Example 8.2.26]{Liu} for the present setting.
     Since $\X$ is Cohen--Macaulay, normality of $\X$ is equivalent to normality at the points of codimension $1$,
     which in turn is equivalent to regularity at these points.
     The points of codimension $1$ are the closed points of the (smooth) generic fibre $\X_\eta = X$,
     and the generic points of the special fibre $\X_s$.
-    Now let $\xi \in \X_s$ be a generic point, then on the affine cover $Z \neq 0$
-    with $x = X/Z$ and $y = Y/Z$, $\xi$ corresponds to the ideal $\m$ which is generated by a uniformising parameter $\pi \in \OK$
-    and a polynomial $G \in K[x,y]$, whose reduction $\bar{G} \in k[x,y]$ is irreducible.
+    Now let $\xi \in \X_s$ be a generic point.
+    On the affine chart $Z \neq 0$, with $x = X/Z$ and $y = Y/Z$, the point $\xi$ corresponds to the ideal $\m$ generated by a uniformising parameter $\pi \in \OK$
+    and a polynomial $G \in K[x,y]$ whose reduction $\bar{G} \in k[x,y]$ is irreducible.
     We can write
     \begin{align}
         F(x,y) = G(x,y)^r H_1(x,y) + \pi^e H_2(x,y),
     \end{align}
     where $\bar{H}_1(x,y) \notin \bar{G}(x,y)k[x,y]$ and $\bar{H}_2(x,y)\neq 0$.
     By \cite[Corollary 4.2.12]{Liu}, $\X$ is regular at $\xi$ if and only if $F \notin \m^2$,
-    which in turn is the case if and only if either $r=1$; or $e=1$ and $\bar{H}_2 \notin \bar{G}(x,y)k[x,y]$.
+    which in turn is the case if and only if either $r=1$, or $e=1$ and $\bar{H}_2 \notin \bar{G}(x,y)k[x,y]$.
 
 \end{example}
 
 \begin{example}\label{ex:particular-model-of-plane-curve}
-    \begin{enumerate}
+    \begin{enumerate}[label=\textup{(\alph*)}]
         \item Consider the curve $X$ defined by $y^2 = x^3 + px$ over $\QQ_p$ with $p \neq 2$.
             We have seen that $\X = \Proj{\OK[X,Y,Z]/(X^3 + pXZ^2 - Y^2Z)}$ is a proper and flat $\OK$-scheme with $\X_\eta = X$.
             The special fibre is given by $\X_s = \Proj{k[X,Y,Z]/(X^3 - Y^2Z)}$.
             On the affine cover $Z\neq 0$, its generic point $\xi$ corresponds to the ideal $\m = (p, x^3-y^2)$.
-            Thus, in the language of Example \ref{ex:model-of-plane-curve} it holds $r=e=1$, i.e. $\X$ is normal and therefore a model of $X$.
+            Thus, in the notation of Example \ref{ex:model-of-plane-curve}, $r=e=1$; that is, $\X$ is normal and therefore a model of $X$.
         \item Let $X: y^3 = 1 + x^3 + 3x$ be a curve over $\QQ_3$.
             The scheme
             \begin{align}
@@ -200,19 +303,19 @@ In this section, we assume the valuation $v_K$ to be \textit{normalized}, i.e. $
 \begin{definition}
     Let $F_X$ be the function field of $X$ over $K$.
     A valuation $v: F_X \to \hat{\RR}$ is said to be \textit{of type \textrm{II}}, if
-    \begin{enumerate}
+    \begin{enumerate}[label=\textup{(\alph*)}]
         \item $v|_K = v_K$,
         \item $v$ is discrete, and
         \item the extension of residue fields $k(v)|k$ has transcendence degree $1$.
     \end{enumerate}
-    A valuation of this type is also known as \textit{geometric valuation}.
+    A valuation of this type is also known as a \textit{geometric valuation}.
     We write $V_\textrm{II}(F_X)$ for the set of all valuations of type \textrm{II} of $F_X$.
     The number
     \begin{align}
         m(v) \coloneqq [\Gamma_v : \Gamma_K]
     \end{align}
     is called the \textit{multiplicity of $v$}, where $\Gamma_v \coloneqq v(F_X^*)$ is the value group.
-    We say that $v$ is \textit{weakly unramified}, if $m(v) = 1$.
+    We say that $v$ is \textit{weakly unramified} if $m(v) = 1$.
 \end{definition}
 
 \begin{example}
@@ -221,7 +324,7 @@ In this section, we assume the valuation $v_K$ to be \textit{normalized}, i.e. $
         v_{\scriptscriptstyle G}: K[x] &\to \hat{\QQ}, \; v_{\scriptscriptstyle G}\left( \sum_i a_i x^{i} \right) = \min_i(v_K(a_i)).
     \end{align}
     Since $k(v_{\scriptscriptstyle G}) = k(\bar{x})$ (where $\bar{x}$ is the image of $x$ in $k(v_{\scriptscriptstyle G})$), the Gauß valuation
-    extends naturally and uniquely to $K(x)$, meaning that we have $v_{\scriptscriptstyle G} \in V_\textrm{II}(K(x))$.
+    extends naturally and uniquely to $K(x)$, so $v_{\scriptscriptstyle G} \in V_\textrm{II}(K(x))$.
 \end{example}
 
 Let $\X$ be a model of $X$.
@@ -232,7 +335,7 @@ Thus, we can define a valuation on $F_X$,
 \begin{align} \label{eq:ValuationOfComponent}
     v_Z: \mathrm{Frac}(\OO_{\X, \xi}) = F_X \to \hat{\QQ}.
 \end{align}
-Since $\X$ is a flat $\OK $-scheme $\OO_{\X, \xi}$ dominates $\OK$, and we may scale $v_Z$ such that the restriction of $v_Z$ to $K$ is $v_K$.
+Since $\X$ is a flat $\OK $-scheme, $\OO_{\X, \xi}$ dominates $\OK$, and we may normalize $v_Z$ so that its restriction to $K$ is $v_K$.
 We set
 \begin{align}
     V(\X) \coloneqq \lbrace v_Z: \; Z \subset \X_s \text{ is an irreducible component}\rbrace.
@@ -263,12 +366,13 @@ We set
 \end{definition}
 
 \begin{proposition}\label{prop:multiplicities-coincide}
-    It holds $m(v_Z) = m(Z)$.
+    We have $m(v_Z) = m(Z)$.
 \end{proposition}
 
 \begin{proof}
     Since the model $\X$ is normal, the stalk $\OO_{\X,\xi}$ is a discrete valuation ring.
-    Let $\pi_\xi$ be a uniformising parameter of this ring. There is a unit
+    Let $\pi_\xi$ be a uniformising parameter of this ring.
+    There is a unit
     $u\in\OO_{\X,\xi}^{\times}$ such that
     \begin{align}
         \pi=u\pi_\xi^{m(Z)}.
@@ -276,7 +380,8 @@ We set
     Indeed, the exponent on the right is the length of
     $\OO_{\X,\xi}/\pi\OO_{\X,\xi}=\OO_{\X_s,\xi}$.
     Since $v_Z(\pi)=v_K(\pi)=1$, the displayed relation gives
-    $v_Z(\pi_\xi)=1/m(Z)$. Hence
+    $v_Z(\pi_\xi)=1/m(Z)$.
+    Hence
     \begin{align}
         m(Z)=[\Gamma_{v_Z}:\Gamma_K]=m(v_Z).
     \end{align}

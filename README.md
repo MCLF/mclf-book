@@ -19,9 +19,17 @@ At the moment the repository only contains the initial LaTeX structure. Chapters
 * `macros.tex`: notation and mathematical macros.
 * `references.bib`: bibliography database.
 * `chapters/`: chapter files.
+* `frontmatter/`: unnumbered front-matter sections.
 * `figures/`: figures and figure sources.
 * `notes/`: background material, seminar programs, and other source documents.
+* `NOTATION.md`: authoritative mathematical notation and terminology.
+* `CONTRIBUTING.md`: contribution and compilation guidelines.
 * `AGENTS.md`: repository-wide instructions for AI agents.
+
+## Contributor guidance
+
+Before contributing, consult `BOOK_PLAN.md` for the intended structure, `NOTATION.md` for mathematical conventions, and `CONTRIBUTING.md` for editing and compilation guidelines.
+Automated agents must also follow `AGENTS.md`.
 
 ## Compiling
 

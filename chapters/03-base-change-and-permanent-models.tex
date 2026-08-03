@@ -8,71 +8,76 @@ Throughout this chapter, $X$ is a smooth, projective and absolutely irreducible 
 \section{Normalized base change}\label{sec:normalized-base-change}
 We want to understand the behaviour of models under base change with respect to an extension of the base field.
 Usually, $L|K$ will denote a finite field extension.
-Since $v_K$ is Henselian, it has a unique extension to $v_L$ to $L$, and then $(L,v_L)$ also satisfies Assumption \ref{ass:v_K}.
-Given a model $\X$ of $X$, we ask ourselves whether the base change $\X\times_{\OO_K}\OO_L$ is again a model of $X_L \coloneqq X\times_K L$.
-Well, almost: All properties required of a model from Definition \ref{def:model} hold except possibly normality.
-We obtain a model of $X_L$, called the {\em normalized base change} of $\X$ relative to $L|K$, by normalizing $\X\times_{\OO_K}\OO_L$.\footnote{
+Since $v_K$ is Henselian, it has a unique extension $v_L$ to $L$, and $(L,v_L)$ also satisfies Assumption \ref{ass:v_K}.
+Given a model $\X$ of $X$, we ask whether the base change $\X_{\OL}$ is again a model of $X_L$.
+The base change satisfies all the conditions in Definition \ref{def:model} except possibly normality.
+We obtain a model of $X_L$, called the {\em normalized base change} of $\X$ relative to $L|K$, by normalizing $\X_{\OL}$.\footnote{
     Here we use the fact that Assumption \ref{ass:v_K} implies that $\OO_K$ is an \emph{excellent} ring.
-    It follows that $\X\times_{\OO_K}\OO_L$ is an excellent scheme, and therefore its normalization is a finite morphism.
+    It follows that $\X_{\OL}$ is an excellent scheme, and therefore its normalization is a finite morphism.
     See \cite[Chapter 8, in particular Theorem 8.2.39 (d)]{Liu}.
 }
 
 \section{Reduced special fibres and permanence}\label{sec:reduced-special-fibres-and-permanence}
 We introduce permanent models and examine their relation to reduced special fibres and weakly unramified component valuations.
 
-We say that a model $\X$ is \textit{permanent} if $\X \times_{\OK}\OL$ is itself a model of $X$:
+We say that a model $\X$ is \textit{permanent} if $\X_{\OL}$ is itself a model of $X_L$:
 
 \begin{definition} \label{def:permanent-model}
-    A model $\X$ of $X$ is called \textit{permanent}, if $\X \times_{\OK} \OL$ is normal for all finite field extensions $L|K$.
+    A model $\X$ of $X$ is called \textit{permanent} if $\X_{\OL}$ is normal for all finite field extensions $L|K$.
 \end{definition}
 
-We have the following theorem about permanence:
+The main permanence statement is as follows.
 
 \begin{theorem} \label{thm:permanence}
-    \begin{enumerate}[(i)]
-        \item For a model $\X$ of $X$,  the following three statements are equivalent:
-            \begin{enumerate}[(a)]
-                \item $\X$ is permanent,
-                \item the special fibre $\X_s$ of $\X$ is reduced,
-                \item all $v\in V(\X)$ are \emph{weakly unramified} over $v_K$, i.e.\ $v$ and $v_K$ have the same value group.
+    \begin{enumerate}[label=\textup{(\roman*)}]
+        \item\label{thm:permanence-i} For a model $\X$ of $X$,  the following three statements are equivalent:
+            \begin{enumerate}[label=\textup{(\alph*)}]
+                \item\label{thm:permanence-i-a} $\X$ is permanent,
+                \item\label{thm:permanence-i-b} the special fibre $\X_s$ of $\X$ is reduced,
+                \item\label{thm:permanence-i-c} all $v\in V(\X)$ are \emph{weakly unramified} over $v_K$, i.e.\ $v$ and $v_K$ have the same value group.
             \end{enumerate}
-        \item Given a model $\X$, there exists a finite extension $L|K$ such that the normalized base change of $\X$ relative to $L|K$ is permanent.
+        \item\label{thm:permanence-ii} Given a model $\X$, there exists a finite extension $L|K$ such that the normalized base change of $\X$ relative to $L|K$ is permanent.
     \end{enumerate}
 \end{theorem}
 
-We will prove part (i) below; see Corollary \ref{cor:permanence-part-i}.
-In Section \ref{sec:epp-and-abhyanka}, we will prove part (ii) in the special case where all multiplicities of $\X_s$
+We will prove part~\ref{thm:permanence-i} below; see Corollary \ref{cor:permanence-part-i}.
+In Section \ref{sec:epp-and-abhyanka}, we will prove part~\ref{thm:permanence-ii} in the special case where all multiplicities of $\X_s$
 are prime to the characteristic of the residue field $k$ (Lemma \ref{lem:abhyanka}).
-In later chapters, we see proofs of part (ii) in other important special cases.
+Later chapters give proofs of part~\ref{thm:permanence-ii} in other important special cases.
 
 \begin{remark}
     Since flatness and properness are preserved under base change, a model $\X$ of $X$ is permanent if and only if
-    $\X \times_{\OK} \OL$ is a model of $X_L = X \times_K L$.
+    $\X_{\OL}$ is a model of $X_L$.
 \end{remark}
 
-\begin{proposition}[{\cite[Proposition 2.3]{ArzdorfWewers}}] \label{prop:reducedness-implies-permanence}
+The following permanence criterion applies~\cite[Corollary 2.2(i)]{ArzdorfWewers} after finite base change; we recall the argument in the present notation.
+
+\begin{proposition} \label{prop:reducedness-implies-permanence}
     If $\X_s$ is reduced, then $\X$ is permanent.
 \end{proposition}
 
 \begin{proof}
     Let $L|K$ be a finite extension and $l|k$ the extension of the corresponding residue fields.
-    The special fibre of $\X' \coloneqq \X_{\OL} = \X \times_{\OK} \OL$ is $\X'_s := \X_s \times_k l$,
+    The special fibre of $\X' \coloneqq \X_{\OL}$ is $\X'_s \coloneqq (\X_s)_l$,
     which is reduced since $k$ is perfect by assumption.
-    This means $\X'_s$ satisfies condition (i) from Lemma~\ref{lem:conditions-for-normality}. \\
-    For condition (ii) let $\xi \in \X'_s$ be any generic point.
-    The stalk $\OO_{\X', \xi}$ then is a Noetherian local domain of dimension $1$ and it holds
+    Thus, $\X'_s$ satisfies condition~\ref{lem:conditions-for-normality-i} from Lemma~\ref{lem:conditions-for-normality}. \\
+    For condition~\ref{lem:conditions-for-normality-ii}, let $\xi \in \X'_s$ be any generic point.
+    The stalk $\OO_{\X', \xi}$ is then a Noetherian local domain of dimension $1$ and satisfies
     \begin{align}
         \OO_{\X'_s, \xi} = \OO_{\X', \xi}/\pi_L\OO_{\X', \xi},
     \end{align}
     where $\pi_L \in \OL$ is a uniformising parameter.
-    Since $\X'_s$ is reduced, $\pi_L\OO_{\X',\xi}$ is a maximal ideal, which means that
-    condition (ii) from Lemma~\ref{lem:conditions-for-normality} is satisfied as well.
+    Since $\X'_s$ is reduced, $\pi_L\OO_{\X',\xi}$ is a maximal ideal, so
+    condition~\ref{lem:conditions-for-normality-ii} from Lemma~\ref{lem:conditions-for-normality} is also satisfied.
     Thus $\X'$ is normal and hence $\X$ is permanent.
 \end{proof}
 
-\begin{proposition}[{\cite[Corollary 2.2 (ii)]{ArzdorfWewers}}]\label{prop:criterion-reducedness}
-    Let $\X$ be a model of $X$, then the following statements are equivalent.
-    \begin{enumerate}[(i)]
+The scheme-theoretic equivalence used in the following criterion is~\cite[Corollary 2.2(ii)]{ArzdorfWewers}; its formulation in terms of component valuations uses Proposition~\ref{prop:multiplicities-coincide}.
+
+\begin{proposition}\label{prop:criterion-reducedness}
+    Let $\X$ be a model of $X$.
+    Then the following statements are equivalent.
+    \begin{enumerate}[label=\textup{(\alph*)}]
         \item $\X_s$ is reduced.
         \item $\OO_{\X_s, \xi}$ is a field for every generic point $\xi \in \X_s$.
         \item Every $v_Z \in V(\X)$ is weakly unramified.
@@ -83,8 +88,7 @@ In later chapters, we see proofs of part (ii) in other important special cases.
     Since $\X$ is normal, there are no embedded points in $\X_s$ by Lemma~\ref{lem:conditions-for-normality}.
     Since $\X_s$ has dimension one, it is reduced if and only if $\X_s$ is reduced in codimension zero
     which in turn is the case if $\OO_{\X_s, \xi}$ is a field for every generic point $\xi \in \X_s$. \\
-    For the second equivalence recall that according to Proposition~\ref{prop:multiplicities-coincide},
-    for any generic point $\xi\in \X_s$ and $Z = \overline{\lbrace\xi\rbrace}$ it holds
+    For the second equivalence, Proposition~\ref{prop:multiplicities-coincide} gives, for every generic point $\xi\in \X_s$ and $Z = \overline{\lbrace\xi\rbrace}$,
     \begin{align}
         [\Gamma_{v_Z}: \Gamma_K] = \length \OO_{\X_s, \xi}.
     \end{align}
@@ -92,8 +96,8 @@ In later chapters, we see proofs of part (ii) in other important special cases.
 \end{proof}
 
 \begin{corollary}[Partial result] \label{cor:permanence-part-i}
-    In the notation of Theorem~\ref{thm:permanence}(i), conditions (b) and (c) are equivalent, and each implies condition (a).
-    The implication (a) $\Rightarrow$ (b) remains unresolved in the present text.
+    In the notation of Theorem~\ref{thm:permanence}\ref{thm:permanence-i}, conditions~\ref{thm:permanence-i-b} and~\ref{thm:permanence-i-c} are equivalent, and each implies condition~\ref{thm:permanence-i-a}.
+    The implication \ref{thm:permanence-i-a} $\Rightarrow$ \ref{thm:permanence-i-b} remains unresolved in the present text.
 \end{corollary}
 
 % AUTHOR WARNING:
@@ -102,9 +106,9 @@ The implication ``permanent $\Rightarrow$ reduced special fibre'' is not proved 
 \end{authorwarning}
 
 \begin{proof}
-    The equivalence (b) $\iff$ (c) follows from Proposition \ref{prop:criterion-reducedness}.
-    The implication (b) $\Rightarrow$ (a) is Proposition \ref{prop:reducedness-implies-permanence}.
-    The remaining implication (a) $\Rightarrow$ (b) is the unresolved point recorded above.
+    The equivalence \ref{thm:permanence-i-b} $\iff$ \ref{thm:permanence-i-c} follows from Proposition \ref{prop:criterion-reducedness}.
+    The implication \ref{thm:permanence-i-b} $\Rightarrow$ \ref{thm:permanence-i-a} is Proposition \ref{prop:reducedness-implies-permanence}.
+    The remaining implication \ref{thm:permanence-i-a} $\Rightarrow$ \ref{thm:permanence-i-b} is the unresolved point recorded above.
 \end{proof}
 
 
@@ -113,16 +117,16 @@ The implication ``permanent $\Rightarrow$ reduced special fibre'' is not proved 
 To compare the special fibres before and after normalized base change, we describe how their component valuations are related by extension of valued function fields.
 
 Let $L|K$ be a finite field extension and let $\X$ be a model of $X$.
-Denote by $\X' \coloneqq (\X\times_{\OK} \OL)^\sim$ the normalized base change of $\X$ to $\OL$.
+Denote by $\X' \coloneqq (\X_{\OL})^\sim$ the normalized base change of $\X$ to $\OL$.
 Let $\xi \in \X_s$ be a generic point and let $\xi' \in \X_s'$ be a generic point lying over $\xi$.
-Since $\X$ (resp. $\X'$) is normal we have that $R \coloneqq \OO_{\X, \xi}$ (resp. $S \coloneqq \OO_{\X', \xi'}$)
-is a discrete valuation ring dominating $\OK$ (resp. $\OL$) by
-Lemma~\ref{lem:conditions-for-normality} (\ref{lem:conditions-for-normality-ii}), that is
-\begin{itemize}
-    \item $R \supset \OO_K$ (resp. $S \supset \OL$), and
+Since $\X$ and $\X'$ are normal, Lemma~\ref{lem:conditions-for-normality}\ref{lem:conditions-for-normality-ii} shows that
+$R \coloneqq \OO_{\X, \xi}$ and $S \coloneqq \OO_{\X', \xi'}$ are discrete valuation rings dominating $\OK$ and $\OL$, respectively.
+Thus,
+\begin{enumerate}[label=\textup{(\alph*)}]
+    \item $R \supset \OO_K$ (resp. $S \supset \OL$); and
     \item $\m_R \cap \OK = \pi_K\OK$ (resp. $\m_S \cap \OL = \pi_L\OL$).
-\end{itemize}
-We arrive at the following diagram of fields.
+\end{enumerate}
+The intended field extensions are shown in the diagram below.
 
 The function field after base change is the compositum
 \begin{align}
@@ -155,16 +159,18 @@ The text assumes that a single rational subfield $K(x)\subset F_X$ can be chosen
 \end{figure}
 
 Here the $v_i$ are the valuations on $F_X$ corresponding to the generic points of the components of $\X_s$.
-$w_{i, j}$ represent the valuations corresponding to the irreducible component of $\X_s'$ whose generic point lies over
-the generic point of $Z_i \subset \X_s$ which corresponds to $v_i$.
+The valuations $w_{i,j}$ correspond to the irreducible components of $\X_s'$ whose generic points lie over the generic point of $Z_i \subset \X_s$, the component associated with $v_i$.
 
 
 \section{Eliminating ramification}\label{sec:eliminating-ramification}
 We now turn to the existence of a finite base extension after which normalized base change has reduced special fibre. The required extension is obtained by eliminating ramification in the component valuations.
 
-\begin{theorem}[{\cite[Proposition 2.3]{ArzdorfWewers}}]
+For a related normalized-base-change statement under the hypotheses imposed there, see~\cite[Proposition 2.3]{ArzdorfWewers}.
+The precise form of Epp's theorem needed in the present setting is discussed in the warning below.
+
+\begin{theorem}
     Let $\X$ be a model of $X$.
-    Then there is a finite extension $L|K$ such that $\X' = (\X \times_{\OK}\OL)^\sim$ has a reduced special fibre.
+    Then there is a finite extension $L|K$ such that $\X' = (\X_{\OL})^\sim$ has a reduced special fibre.
 \end{theorem}
 
 % AUTHOR WARNING:
@@ -174,7 +180,7 @@ A precise version of Epp's theorem appropriate to the finitely many component va
 
 \begin{proof}
     By~\cite[Theorem 1.0]{Epp} there exists a field extension $L|K$ such that $w_{i,j}$ is weakly unramified over $v_L$.
-    According to Proposition~\ref{prop:criterion-reducedness}, the special fibre of $\X'$ is reduced.
+    By Proposition~\ref{prop:criterion-reducedness}, the special fibre of $\X'$ is reduced.
 \end{proof}
 
 
@@ -205,13 +211,13 @@ A correct proof must be supplied; see the warning above.
     We will use the equivalence of Proposition~\ref{prop:criterion-reducedness} without further mention,
     that is the equivalence of the special fibre being reduced and the valuations being weakly unramified.
     Without loss of generality we may assume the following assertions:
-    \begin{itemize}
+    \begin{enumerate}[label=\textup{(\alph*)}]
         \item $n = 1$ and $j_1 = 1$ since the argument can be constructed inductively,
         \item $e \coloneqq e_1 = e(v_1|v_{{\scriptscriptstyle G},K}) = e(v_{{\scriptscriptstyle G},L}|v_{{\scriptscriptstyle G},K})$
             since we assume the residue field to be perfect, and
         \item $K$ contains the $e$-th roots of unity, i.e. $\pi_K = \pi_L^e$, since we can always replace $K$ by a suitable
             Kummer extension without violating the other assumptions and obtain a compatible diagram regarding the valuations.
-    \end{itemize}
+    \end{enumerate}
     Since $F_{X_L}=F_X\mathbin{\cdot}L$ we have that $[\Gamma_{w_1}: \Gamma_{v_1}] = 1$.
     By multiplicativity of the ramification indices we conclude $[\Gamma_{w_1}: \Gamma_{v_L}] = 1$.
 \end{proof}
@@ -228,7 +234,7 @@ The following examples illustrate how a suitable finite extension and a change o
     \end{align}
     over $K$.
     The equation defines a model $\X$ over $\OK=\ZZ_3$ (cf. Example \ref{ex:model-of-plane-curve}).
-    The reduction $\X_s/\FF_3$ is given by $0 = y^3 - 1 = (y - 1)^3$ which means $\X_s$ is not reduced. \\
+    The reduction $\X_s/\FF_3$ is given by $0 = y^3 - 1 = (y - 1)^3$, so $\X_s$ is not reduced.
     The irreducible component is given by $Z: \, y-1$; denote the corresponding valuation by $v$.
     For $z \coloneqq y - 1$ we have
     \begin{align*}
@@ -258,14 +264,14 @@ The following examples illustrate how a suitable finite extension and a change o
         X: \, y^2 = 8x^3 - 2
     \end{align}
     defined over the field $K \coloneqq \QQ_2$.
-    This example illustrates that the right choice of the field extension is crucial for having a reduced special fibre,
-    since a wild ramified field extension is not unique.
-    \begin{enumerate}[(i)]
+    This example illustrates that the choice of field extension is crucial to obtaining a reduced special fibre,
+    since a wildly ramified field extension is not unique.
+    \begin{enumerate}[label=\textup{(\alph*)}]
         \item First let us consider the extension $L_1 = K(\theta_1)$ where $\theta_1^2 - 2 = 0$ and the coordinate transformation
             $(x,y) \mapsto (x_1, 2y_1 - \theta_1 - 2)$.
             We obtain a birational curve
             \begin{align}
-                X_1: \, y_1^2 - (\theta_1 + 2)y_1 = 2x_1^3 - (2 + \theta_1)
+                X_1: \, y_1^2 - (\theta_1 + 2)y_1 = 2x_1^3 - (2 + \theta_1).
             \end{align}
             The Newton polygon of the resulting quadratic in $y_1$ gives $v(y_1)=\frac14$ for an extension $v$ of
             $v_{{\scriptscriptstyle G},L_1}$ to $F_{X_1}$.
@@ -274,9 +280,9 @@ The following examples illustrate how a suitable finite extension and a change o
             and the coordinate transformation $(x,y) \mapsto (x_2, 2\theta_2 y_2 + \theta_2)$.
             We obtain a birational curve
             \begin{align}
-                X_2: \, y_2^2 + y_2 = -x_2^3
+                X_2: \, y_2^2 + y_2 = -x_2^3.
             \end{align}
-            which is given by an equation of AS-form, i.e.\ its special fibre is a reduced curve.
+            This equation is in AS form, so its special fibre is reduced.
             Thus $[\Gamma_{F_{X_2}}: \Gamma_{L_2}] = 1$.
     \end{enumerate}
 \end{example}

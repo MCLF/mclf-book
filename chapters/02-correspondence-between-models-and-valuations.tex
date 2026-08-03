@@ -10,51 +10,52 @@ The central result of this chapter says that the assignment $\X\mapsto V(\X)$ cl
 \begin{theorem}\label{thm:bijectionModelsAndComponents}
     The map
     \begin{align} \label{eq:mapFromModelToValuation}
-        \X \mapsto V(\X).
+        \X \longmapsto V(\X)
     \end{align}
-    defines a monotone\footnote{cf. Lemma \ref{lemma:induced-order-on-valuations}} bijection between
+    defines an isomorphism of partially ordered sets between
     \begin{itemize}
-        \item the set of isomorphism classes of models of $X$, and
-        \item the set of finite, nonempty subsets of $V_\textrm{II}(F_X)$.
+        \item the set of isomorphism classes of models of $X$, ordered by domination, where $\X\leq\X'$ if there is a modification $\X'\to\X$, and
+        \item the set of finite, nonempty subsets of $V_\textrm{II}(F_X)$, ordered by inclusion.
     \end{itemize}
+    More precisely, for any two models $\X$ and $\X'$ of $X$, one has
+    \[
+        \X\leq\X'
+        \quad\Longleftrightarrow\quad
+        V(\X)\subseteq V(\X').
+    \]
 \end{theorem}
 
+\medskip\noindent
+The proof of this theorem will occupy the rest of this chapter.
+
 \section{Modifications and injectivity}\label{sec:modifications-and-injectivity}
-We first prove the injective part of the correspondence theorem. The relevant comparison maps between models are modifications, which induce inclusions between their sets of component valuations.
-
-\begin{definition}
-    A \textit{modification} of a model of $X$ is a morphism $\X' \to \X$ of $\OK $-schemes which induces the
-    identity on the generic fibre.
-\end{definition}
-
-\begin{remark}\label{rem:modifications-are-surjective-and-partial-order-of-models}
-    \begin{enumerate}[(i)]
-        \item Since a model is proper over $\OK $, a modification is a proper morphism.
-            Thus since it is dominant, it is also surjective.
-        \item We have a partial order of models of $X$ given by $\X \leq \X'$ if there exists a modification $\X' \to \X$.
-    \end{enumerate}
-\end{remark}
-
-In the remainder of this section, we prove injectivity of this map.
+We first prove the injective part of the correspondence theorem.
+Recall from Section~\ref{sec:category-of-models-and-modifications} that models are ordered by $\X\leq\X'$ when there is a modification $\X'\to\X$, and that every modification is proper, dominant, and surjective by Proposition~\ref{prop:elementary-properties-of-modifications}.
+We will show that these comparison maps induce inclusions between the corresponding sets of component valuations.
 
 \begin{lemma}\label{lem:preimageOfGenericPoint}
     Let $\X$ be a model of $X$ and let $\X'$ be a model of another irreducible smooth projective curve $X'$.
     Let $\varphi: \X' \to \X$ be a morphism of $\OK $-schemes which induces a cover $X' \to X$ on the generic fibre.
-    Let $\eta$ be a generic point of $\X_s$, then the preimage of $\eta$ under $\varphi$ is non-empty and consists of generic points of $\X_s'$.
+    Let $\xi$ be a generic point of $\X_s$.
+    Then the preimage of $\xi$ under $\varphi$ is nonempty and consists of generic points of $\X_s'$.
     If $\varphi$ is birational, then the preimage consists of precisely one generic point.
 \end{lemma}
 
-\begin{proof}{\cite[Lemma 3.6]{Rueth}}
-    Let $Z \subset \X_s$ be the irreducible component that contains $\eta$.
-    Since $\varphi$ is surjective (cf.\ Remark~\ref{rem:modifications-are-surjective-and-partial-order-of-models}),
-    there is a point $\eta'$ on an irreducible component $Z' \subset \X_s'$ which is mapped to $\eta$.
-    Since $\varphi$ is dominant, the induced ring homomorphism $\OO_{\X,\eta} \to \OO_{\X',\eta'}$ is injective.
-    This is an extension of discrete valuation rings and thus $\eta' \in Z'$ must be generic.
-    In particular, if $\varphi$ is birational, then both rings are integrally closed in the same field of fractions which makes them equal.
-    Therefore, $\eta'$ must be unique since $\X'$ is separated.
+\begin{proof}
+    We follow the argument of~\cite[Lemma 3.6]{Rueth}.
+    Let $Z \subset \X_s$ be the irreducible component that contains $\xi$.
+    The graph argument in the proof of Proposition~\ref{prop:elementary-properties-of-modifications} shows that $\varphi$ is proper.
+    Since its generic-fibre map is dominant, $\varphi$ is dominant and therefore surjective.
+    Hence there is a point $\xi'$ on an irreducible component $Z' \subset \X_s'$ that maps to $\xi$.
+    Since $\varphi$ is dominant, the induced ring homomorphism $\OO_{\X,\xi} \to \OO_{\X',\xi'}$ is injective.
+    This is an extension of discrete valuation rings and thus $\xi' \in Z'$ must be generic.
+    In particular, if $\varphi$ is birational, then both rings are integrally closed in the same field of fractions and hence are equal.
+    Therefore, $\xi'$ must be unique since $\X'$ is separated.
 \end{proof}
 
-\begin{lemma}[{\cite[Lemma 3.7]{Rueth}}]\label{lemma:induced-order-on-valuations}
+Rüth records the following consequence of the comparison of components and their valuations as~\cite[Lemma 3.7]{Rueth}.
+
+\begin{lemma}\label{lemma:induced-order-on-valuations}
     Let $\varphi: \X' \to \X$ be a modification of models of $X$.
     Then $V(\X) \subset V(\X')$.
     In particular, the partial order $\X \leq \X'$ of models on $X$ induces a partial order on the corresponding finite
@@ -65,7 +66,9 @@ In the remainder of this section, we prove injectivity of this map.
     This is a consequence of Proposition~\ref{prop:WellDefOfInducedValuation} and Lemma~\ref{lem:preimageOfGenericPoint}.
 \end{proof}
 
-\begin{proposition}[{\cite[Lemma 3.8]{Rueth}}]
+The converse comparison is stated in~\cite[Lemma 3.8]{Rueth}.
+
+\begin{proposition}
     Let $\X$ and $\X'$ be models of $X$ with $V(\X) \subset V(\X')$.
     Then there is a modification $\X' \to \X$.
 \end{proposition}
@@ -73,8 +76,8 @@ In the remainder of this section, we prove injectivity of this map.
 \begin{proof}
     If $V(\X) \subset V(\X')$, then for every valuation $v_Z \in V(\X)$ corresponding to an irreducible component $Z\subset \X_s$ with generic point $\xi$,
     there is an irreducible component $Z' \subset \X'_s$ with generic point $\xi'$, such that $\OO_{\X,\xi} = \OO_{\X',\xi'} \subset F_X$.
-    Together with the identification $\X_g = X = \X'_g$, this induces a birational map $\X' \dashrightarrow \X$ (cf. for example \cite[Lemma 29.50.2.]{Stacks}).
-    By \cite[Theorem 8.3.20]{Liu}, this map is a morphism. Since it identifies $\X_g$ and $\X'_g$, it is a modification.
+    Together with the identification $\X_\eta = X = \X'_\eta$, this induces a birational map $\X' \dashrightarrow \X$ (cf. for example \cite[Lemma 29.50.2.]{Stacks}).
+    By \cite[Theorem 8.3.20]{Liu}, this map is a morphism. Since it identifies $\X_\eta$ and $\X'_\eta$, it is a modification.
 \end{proof}
 
 
@@ -82,22 +85,24 @@ In the remainder of this section, we prove injectivity of this map.
     \begin{proof}[Sketch of the proof]
     Let
     \begin{align*}
-        U= \lbrace Z_\eta \subset \X_s: v_{Z_\eta} \in V(\X)\rbrace
+        U= \lbrace Z_\xi \subset \X_s: v_{Z_\xi} \in V(\X)\rbrace
     \end{align*}
     and
     \begin{align*}
-        U'= \lbrace Z_{\eta'} \subset \X_s: v_{Z_{\eta'}} \in V(\X')\rbrace
+        U'= \lbrace Z_{\xi'} \subset \X_s: v_{Z_{\xi'}} \in V(\X')\rbrace
     \end{align*}
     be covers of $\X_s$ (resp. $\X_s'$) of irreducible components, where the irreducible component
-    $Z_\eta$ has generic point $\eta$.
+    $Z_\xi$ has generic point $\xi$.
     The inclusion $V(\X) \subset V(\X')$ induces an injective map $\iota$ from the generic points of the irreducible components of $\X_s$ to those of $\X'_s$, which induces
-    ring homomorphisms $\OO_{\X_s', \iota(\eta)} \to \OO_{\X_s, \eta}$.
+    ring homomorphisms $\OO_{\X_s', \iota(\xi)} \to \OO_{\X_s, \xi}$.
     Thus, we get a birational map $\X' \dbkarow \X$ which is a morphism by~\cite[Theorem 8.3.20]{Liu}.
 \end{proof}
 \end{comment}
 
 
-\begin{corollary}[{\cite[Proposition 3.9]{Rueth},\cite[Corollary 8.3.23]{Liu}}]
+Rüth states the resulting injectivity assertion as~\cite[Proposition 3.9]{Rueth} and cites~\cite[Corollary 8.3.23]{Liu} as its underlying source.
+
+\begin{corollary}
     Two models $\X$ and $\X'$ of $X$ are isomorphic as models of $X$ if and only if $V(\X) = V(\X')$.
     In particular, the map defined in~\eqref{eq:mapFromModelToValuation} is injective.
 \end{corollary}
@@ -117,9 +122,10 @@ In the remainder of this section, we prove injectivity of this map.
         \X = \Proj{\ZZ_p[X,Y,Z]/(F)}
     \end{align}
     is a model of the projective curve $X: 0=F(X,Y,Z)$ over $\QQ_p$.
-    Suppose that $\bar{F} \in \FF_p[X,Y,Z]$ is irreducible, then $\X_s$ has precisely one irreducible component $Z$
+    Suppose that $\bar{F} \in \FF_p[X,Y,Z]$ is irreducible.
+    Then $\X_s$ has precisely one irreducible component $Z$
     with generic point $\xi$ corresponding to the ideal $(p, \bar{F})$.
-    In particular, it holds $V(\X) = \lbrace v_Z\rbrace$.
+    In particular, $V(\X) = \lbrace v_Z\rbrace$.
     The element $p$ is a uniformising parameter of $\OO_{\X, \xi}$, and the component valuation therefore has the intrinsic description
     \begin{align}
         v_Z(f)=\max\bigl\{n\in\ZZ : f\in p^n\OO_{\X,\xi}\bigr\},
@@ -143,7 +149,7 @@ In the remainder of this section, we prove injectivity of this map.
     Since $\bar{F} \in \FF_p[X,Y,Z]$ is irreducible, $\X_s$ consists of one irreducible component $Z$ with generic point $\xi$
     corresponding to the ideal $(p, Y^2Z - X^3)$.
     In particular, $V(\XX)$
-    $p$ is a uniformising parameter of $\OO_{\X, \eta}$, thus $v_Z(p) = 1$ and since $x\notin \m_\eta = (p)$, $v_Z(x)=0$.
+    $p$ is a uniformising parameter of $\OO_{\X, \xi}$, thus $v_Z(p) = 1$ and since $x\notin \m_\xi = (p)$, $v_Z(x)=0$.
     Hence, on the function field $F_X = \QQ_p(x)[y]/(y^2 - x^3 - px)$, $v_Z$ is given by
     \begin{align}
         v_Z(f) = \min_{i,j}v_p(a_{i,j}) \quad \text{for } f = \sum_{i,j}a_{i,j}x^i y^j.
@@ -159,9 +165,10 @@ For the proof of Theorem~\ref{thm:bijectionModelsAndComponents}, it remains to s
 i.e., for a given finite, non-empty set of valuations
 $V \subset V_\textrm{II}(F_X)$, there is a model $\X$ of $X$ such that $V = V(\X)$.
 We will prove this in two steps, which we state in the following proposition.
+The extraction statement is based on~\cite[Proposition 3.14]{Rueth}, while the contraction statement is~\cite[Proposition 3.16]{Rueth}, whose proof invokes~\cite[Theorem 8.3.36]{Liu}.
 
-\begin{proposition}[{{\cite[3.14, 3.16]{Rueth}}}, {{\cite[8.3.36]{Liu}}}] \label{prop:constructing_models}
-    \begin{enumerate}[(i)]
+\begin{proposition} \label{prop:constructing_models}
+    \begin{enumerate}[label=\textup{(\roman*)}]
         %\item[]
         \item Given a model $\X$ and a valuation $v \in V_\textrm{II}(F_X)$, there exists a modification
         $\varphi \colon \X' \to \X$ such that $v \in V(\X')$. \label{prop:constructing_models_i}
@@ -171,9 +178,9 @@ We will prove this in two steps, which we state in the following proposition.
 \end{proposition}
 
 After proving Proposition~\ref{prop:constructing_models}, the proof is complete:
-Starting with a model $\X$ of $X$, we can apply part (\ref{prop:constructing_models_i}) for every $v \in V \subset V_\textrm{II}(F_X)$
+Starting with a model $\X$ of $X$, we can apply part~\ref{prop:constructing_models_i} for every $v \in V \subset V_\textrm{II}(F_X)$
 to obtain a new model that induces all valuations in $V$, but possibly more.
-We then apply part (\ref{prop:constructing_models_ii}) to construct a model that induces exactly the valuations in $V$.
+We then apply part~\ref{prop:constructing_models_ii} to construct a model that induces exactly the valuations in $V$.
 
 
 We fix a model $\X$ of $X$ and a type II valuation $v \in V_\textrm{II}(F_X)$.
@@ -188,8 +195,8 @@ We fix a model $\X$ of $X$ and a type II valuation $v \in V_\textrm{II}(F_X)$.
         \end{tikzcd}
     \]
     Here, the left map is induced by the inclusion $\OO_v \hookrightarrow \Frac \OO_v = F_X$,
-    and the right map comes from the identification of $X$ with the generic fibre $\X_g$.
-    Specifically, it is the canonical map $\Spec F_X \cong \Spec \OO_{\X, \eta} \to \X$, where $\eta$ is the generic point of $X$.
+    and the right map comes from the identification of $X$ with the generic fibre $\X_\eta$.
+    Specifically, it is the canonical map $\Spec F_X \cong \Spec \OO_{\X, \zeta} \to \X$, where $\zeta$ is the generic point of $X$.
 \end{definition}
 
 \begin{lemma}
@@ -208,7 +215,9 @@ We fix a model $\X$ of $X$ and a type II valuation $v \in V_\textrm{II}(F_X)$.
     \]
 \end{proof}
 
-\begin{lemma}[{{\cite[3.11]{Rueth}}}]\label{lem:codim1}
+The following criterion is the observation made in~\cite[Example 3.11]{Rueth}.
+
+\begin{lemma}\label{lem:codim1}
     We have $v \in V(\X)$ if and only if the centre $x$ of $v$ is of codimension one.
     In that case $x$ is the generic point on the special fibre which induces $v$.
 \end{lemma}
@@ -223,18 +232,20 @@ We fix a model $\X$ of $X$ and a type II valuation $v \in V_\textrm{II}(F_X)$.
     Thus \(v \in V(\X)\).
 \end{proof}
 
-\begin{lemma}[{{\cite[3.12, 3.13]{Rueth}}}] \label{lem:condition_induced}
+The next lemma combines~\cite[Lemmas 3.12 and 3.13]{Rueth} in a form convenient for the extraction argument.
+
+\begin{lemma} \label{lem:condition_induced}
     Let $x \in \X$ be the centre of $v$, and let $f \in \OO_v^* \subset F_X$ be such that the reduction $\bar{f} \in k(v)$ is transcendental over $k$.
     Then:
-    \begin{enumerate}[(a)]
-    \item If $f \in \OO_{\X,x}$, then $v \in V(\X)$ \label{lem:condition_induced_i}
-    \item If the rational map $\X \dashrightarrow \PP^1(\OK )$ induced by $f$ is defined at the centre $x$ of $v$,
+    \begin{enumerate}[label=\textup{(\roman*)}]
+    \item If $f \in \OO_{\X,x}$, then $v \in V(\X)$. \label{lem:condition_induced_i}
+    \item If the rational map $\X \dashrightarrow \PP^1_{\OK}$ induced by $f$ is defined at the centre $x$ of $v$,
     then $v \in V(\X)$. \label{lem:condition_induced_ii}
     \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-    \begin{enumerate}[(a)]
+    \begin{enumerate}[label=\textup{(\roman*)}]
     \item By Lemma~\ref{lem:codim1}, it suffices to show that $x$ is a point of codimension one.
     Choose an open affine set $\Spec A = U \subset \X$ such that $x \in U$ and $f \in A$.
     Denote by $\p < A$ the prime ideal corresponding to $x$.
@@ -251,12 +262,12 @@ We fix a model $\X$ of $X$ and a type II valuation $v \in V_\textrm{II}(F_X)$.
     Thus, it suffices to show that $A/\p$ is not a field.
     If $A/\p$ were a field, it would be a finite extension
     of $k$, but this is impossible since $\bar{f} \in A/\p \subset k(v)$ is transcendental over $k$.
-    \item It suffices to show, using (\ref{lem:condition_induced_i}), that $f \in \OO_{\X, x}$.
+    \item It suffices to show, using part~\ref{lem:condition_induced_i}, that $f \in \OO_{\X, x}$.
     Let $P = V(f^{-1})$ and $Z = V(f)$ be the sets of poles and zeros of $f$, respectively.
-    Then the rational map $\X \dashrightarrow \PP^1(\OK )$ is obtained by gluing the morphisms
+    Then the rational map $\X \dashrightarrow \PP^1_{\OK}$ is obtained by gluing the morphisms
     \[
-        \X \setminus P  \to \Spec \OK [t] \subset \PP^1(\OK ), \quad \textrm{and} \quad
-        \X \setminus Z \to \Spec \OK [t^{-1}] \subset \PP^1(\OK ),
+        \X \setminus P  \to \Spec \OK [t] \subset \PP^1_{\OK}, \quad \textrm{and} \quad
+        \X \setminus Z \to \Spec \OK [t^{-1}] \subset \PP^1_{\OK},
     \]
     which are induced by
     \begin{center}
@@ -289,27 +300,27 @@ We fix a model $\X$ of $X$ and a type II valuation $v \in V_\textrm{II}(F_X)$.
     \end{enumerate}
 \end{proof}
 
-We can now finish the proof of Proposition \ref{prop:constructing_models} (\ref{prop:constructing_models_i}).
+We can now finish the proof of Proposition \ref{prop:constructing_models}\ref{prop:constructing_models_i}.
 
-\begin{proof}[Proof of Proposition \ref{prop:constructing_models} (\ref{prop:constructing_models_i})]
+\begin{proof}[Proof of Proposition \ref{prop:constructing_models}\ref{prop:constructing_models_i}]
     Let $f \in \OO_v^\times \subset F_X$ be such that the reduction $\bar{f} \in k(v)$ is transcendental over $k$.
-    We also write $f \colon \X \dashrightarrow \PP^1(\OK )$ for the rational map induced by $f$, and let $U$ be its domain of definition.
-    Define $\Gamma_f \subset \X \times_{\OK } \PP^1(\OK )$ to be the graph of $f$.
-    Recall that it is defined to be the closure of the graph $f|_U$ in $\X \times_{\OK } \PP^1(\OK ) \supset U \times_{\OK } \PP^1(\OK )$.
+    We also write $f \colon \X \dashrightarrow \PP^1_{\OK}$ for the rational map induced by $f$, and let $U$ be its domain of definition.
+    Define $\Gamma_f \subset \X \times_{\Spec\OK } \PP^1_{\OK}$ to be the graph of $f$.
+    Recall that it is defined to be the closure of the graph $f|_U$ in $\X \times_{\Spec\OK } \PP^1_{\OK} \supset U \times_{\Spec\OK } \PP^1_{\OK}$.
     This is almost a model of $X$, as it satisfies all the properties of a model except that it might not be normal.
     \begin{center}
         % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAB12BxOgW17oB9AGYgAvqXSZc+QigAM5KrUYs2nABoACTnl7xBwTgHljggNJid7AAo2AesUMmzl8ZJAZseAkQBMStT0zKyIHLYOTkbsphZi7lLeskRkfsrBamGaCZ7SPnIkpPLpqqHhGgDk4sowUADm8ESgwgBOELxIiiA4EEhk3XRYDGwAFhAQANY5re2d1D1IfhLNbR2IXQuIAMzLIDNrW-O9iAEgDFhgZVAQODi1IEGlbKLUDHQARjAMNnnJYS1YOojHDTVZIAAsR06YgoYiAA
         \begin{tikzcd}
             & \X' \arrow[d]                                &               \\
-            \X \times_{\OK } \PP^1(\OK ) \arrow[r,symbol=\supseteq] & \Gamma_f \arrow[r] \arrow[d] & \PP^1(\OK ) \\
+            \X \times_{\Spec\OK } \PP^1_{\OK} \arrow[r,symbol=\supseteq] & \Gamma_f \arrow[r] \arrow[d] & \PP^1_{\OK} \\
             & \X \arrow[ru, "f"', dotted]                  &
         \end{tikzcd}
     \end{center}
-    The first projection $\X \times_{\OK } \PP^1(\OK ) \to \X$ induces a birational morphism $\Gamma_f \to \X$.
-    The second projection induces a morphism $\Gamma_f \to \PP^1(\OK )$ which extends $f \colon \Gamma_f \dashrightarrow \PP^1(\OK )$.
+    The first projection $\X \times_{\Spec\OK } \PP^1_{\OK} \to \X$ induces a birational morphism $\Gamma_f \to \X$.
+    The second projection induces a morphism $\Gamma_f \to \PP^1_{\OK}$ which extends $f \colon \Gamma_f \dashrightarrow \PP^1_{\OK}$.
     Let $\X' \to \Gamma_f$ denote the normalization of $\Gamma_f$.
-    This gives a model $\X'$ of $X$ for which $f \colon \X' \to \PP^1(\OK )$ is a morphism.
-    By Lemma~\ref{lem:condition_induced}~(\ref{lem:condition_induced_ii}), this implies that $v \in V(\X')$.
+    This gives a model $\X'$ of $X$ for which $f \colon \X' \to \PP^1_{\OK}$ is a morphism.
+    By Lemma~\ref{lem:condition_induced}\ref{lem:condition_induced_ii}, this implies that $v \in V(\X')$.
 \end{proof}
 
 \section{Contraction of components}\label{sec:contraction-of-components}
@@ -319,43 +330,47 @@ We fix a model $\X$ of $X$ and a nonempty subset $V \subset V(\X)$.
 Denote by $\EE$ the set of irreducible (integral) components of $\X_s$ that induce the valuations in $V(\X)\setminus V$.
 
 \begin{definition}
-    A model $\X'$ together with a modification $\varphi \colon \X \to \X'$ such that for every integral vertical curve $E$ on $\X_s$,
-    the set $\varphi(E)$ is a point if and only if $E \in \EE$ is called a \textit{contraction} of the $E \in \EE$.
+    A \textit{contraction} of $\EE$ is a model $\X'$ together with a modification $\varphi \colon \X \to \X'$ such that, for every integral vertical curve $E$ on $\X_s$,
+    the set $\varphi(E)$ is a point if and only if $E \in \EE$.
 \end{definition}
 
 It can be shown that if a contraction exists, it is unique up to unique isomorphism.
 Our goal now is to show that a contraction of $\EE$ exists.
 Once this is done, the proof is complete, since for the contraction $\varphi \colon \X \to \X'$, we have by construction $V(\X') = V$.
 
-\begin{lemma}[{{\cite[Lemma 8.3.29, Lemma 8.3.3]{Liu}}}] \label{lem:criterion_point}
+For the two ingredients of the following criterion, see~\cite[Lemmas 8.3.29 and 8.3.3]{Liu}.
+
+\begin{lemma} \label{lem:criterion_point}
     Let $\LL$ be an invertible sheaf on $\X$ generated by global sections $s_0, \dots, s_n$.
-    Consider the morphism $f \colon \X \to \PP^n(\OK )$ associated to these sections.
+    Consider the morphism $f \colon \X \to \PP^n_{\OK}$ associated to these sections.
     Let $E$ be a vertical curve of $\X_s$ with the reduced induced closed subscheme structure.
-    Then $f(E)$ is reduced to a point if and only if $\LL|_E \cong \OO_E$.
+    Then $f(E)$ is a single point if and only if $\LL|_E \cong \OO_E$.
 \end{lemma}
 
-\begin{proposition}[{{\cite[Proposition 8.3.30]{Liu}}}] \label{prop:exist_contr}
+For the contraction criterion in the form used here, see~\cite[Proposition 8.3.30]{Liu}.
+
+\begin{proposition} \label{prop:exist_contr}
     The following are equivalent.
-    \begin{enumerate}[(a)]
+    \begin{enumerate}[label=\textup{(\alph*)}]
     \item The contraction $\varphi \colon \X \to \X'$ of $\EE$ exists. \label{prop:exist_contr_i}
-    \item There exists a Cartier divisor $D$ on $\X$ such that $\deg(D|_{\X_g}) > 0$, that $\LL \cong \OO_\X(D)$ is generated
+    \item There exists a Cartier divisor $D$ on $\X$ such that $\deg(D|_{\X_\eta}) > 0$, that $\LL \cong \OO_\X(D)$ is generated
     by its global sections, and that for any integral vertical curve $E$, we have $\LL|_E \simeq \OO_E$ if and only if $E \in \EE$. \label{prop:exist_contr_ii}
     \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-    We only sketch (\ref{prop:exist_contr_ii}) $\implies$ (\ref{prop:exist_contr_i}).
-    For the other implication and details see~\cite[Proposition 8.3.30]{Liu}.
+    We only sketch \ref{prop:exist_contr_ii} $\implies$ \ref{prop:exist_contr_i}.
+    The converse and the full proof are given in the cited proposition.
 
-    As $\X_g$ is an integral projective curve over a field, $\LL|_{\X_g}$
+    As $\X_\eta$ is an integral projective curve over a field, $\LL|_{\X_\eta}$
     is ample (\cite[Proposition 7.5.5]{Liu}). Replacing $D$ by a sufficiently large positive multiple (which
     does not change the set $E$), we may choose finitely many global sections $s_0,\ldots,s_n\in\Gamma(\X,\LL)$ which generate $\LL$ on $\X$
-    and whose restrictions define a closed immersion of $\X_g$.
-    Indeed, start with global generators of $\LL$ and with sections of $\LL|_{\X_g}$ defining a closed immersion;
+    and whose restrictions define a closed immersion of $\X_\eta$.
+    Indeed, start with global generators of $\LL$ and with sections of $\LL|_{\X_\eta}$ defining a closed immersion;
     after multiplying the latter by a common power of a uniformiser, they extend across the special fibre, and the union of the two finite sets has both required properties.
 
-    Let $f \colon \X \to \PP^n(\OK )$ be the morphism associated to these sections.
-    Let $Z$ be the closed subset $f(\X) \subset \PP^n(\OK )$
+    Let $f \colon \X \to \PP^n_{\OK}$ be the morphism associated to these sections.
+    Let $Z$ be the closed subset $f(\X) \subset \PP^n_{\OK}$
     endowed with the reduced (hence integral) scheme structure.
     Then $f$ induces a dominant morphism $\X \to Z$ that we still denote by $f$.
     This is an isomorphism onto its image on the generic fibre by the choice of the sections.
@@ -369,65 +384,70 @@ Once this is done, the proof is complete, since for the contraction $\varphi \co
             \X \arrow[r, "f"'] \arrow[ru, "\varphi"] & Z
         \end{tikzcd}
     \end{center}
-    Let $E$ be an integral vertical curve on $\X$. Then we have
+    Let $E$ be an integral vertical curve on $\X$.
+    Then
     \[
-        f(E) \textrm{ is a point} \iff \LL|_E \simeq \mathcal{O}_E \iff E \in \EE
+        f(E) \textrm{ is a point} \iff \LL|_E \simeq \mathcal{O}_E \iff E \in \EE,
     \]
-    where the first equivalence is a consequence of Lemma~\ref{lem:criterion_point} and the second one is true by assumption.
+    where the first equivalence follows from Lemma~\ref{lem:criterion_point} and the second holds by assumption.
     We claim that $\pi \colon \X' \to Z$ is a finite morphism.
-    This then completes the proof because $f(E)$ is reduced to a point if and only if $\varphi(E)$ is a point.
+    This completes the proof because $f(E)$ is a single point if and only if $\varphi(E)$ is a point.
     The morphism $f$ is projective (\cite[Corollary 3.3.32(e)]{Liu}), so $\AA \cong f_*\OO_\X$ is a coherent
     sheaf on $Z$ (\cite[Corollary 5.3.5]{Liu}). Furthermore, $\AA$ is a sheaf of integrally closed algebras because $\X$ is normal.
     As a result, the normalization morphism $\pi \colon \X' \to Z$
     coincides with the canonical morphism $\SpecRel \AA \to Z$ and is a finite morphism (\cite[Exercise 5.1.17]{Liu}).
 \end{proof}
 
-For the construction of a suitable Cartier divisor, we furthermore need the following technical lemma.
+For the construction of a suitable Cartier divisor, we use the global-generation statement~\cite[Lemma 8.3.32]{Liu}.
 
-\begin{lemma}[{{\cite[Lemma 8.3.32]{Liu}}}] \label{lem:global_sec}
+\begin{lemma} \label{lem:global_sec}
     Let $D$ be an effective horizontal Cartier divisor on $\X$, and $\LL = \OO_\X(D)$.
-    Then there exists a $m_0 \geq 1$ such that $\LL^{\otimes m}$ is generated by its global sections for every $m \geq m_0$.
+    Then there exists $m_0 \geq 1$ such that $\LL^{\otimes m}$ is generated by its global sections for every $m \geq m_0$.
 \end{lemma}
 
 Proposition~\ref{prop:exist_contr} and Lemma~\ref{lem:global_sec} show that for a contraction morphism to exist,
-it suffices that there exists an effective Cartier divisor that meets the closed fibres in a suitable way.
+it suffices to find an effective Cartier divisor that meets the closed fibres in a suitable way.
 To construct such a divisor, it is important that the ring $\OK $ is complete, which implies it is Henselian.
+For the equivalent formulations used below, see~\cite[8.3.33]{Liu} and~\cite[\href{https://stacks.math.columbia.edu/tag/04GG}{Lemma 04GG}]{Stacks}.
 
-\begin{definition} %[{{\cite[8.3.33]{Liu}}}, {{\cite[\href{https://stacks.math.columbia.edu/tag/04GG}{Lemma 04GG}]{Stacks}}}]
+\begin{definition}
     Let $A$ be a Noetherian local ring with maximal ideal $\m$ and residue field $k \coloneqq A/\m$.
-    We say that $A$ is Henselian if one of the following equivalent conditions is fulfilled:
-    \begin{itemize}
+    We say that $A$ is Henselian if one of the following equivalent conditions holds:
+    \begin{enumerate}[label=\textup{(\alph*)}]
         \item Hensel's Lemma holds: For every monic $f \in A[T]$, and every simple root $a_0 \in k$ of $\bar{f} \in k[T]$,
             there exists a lift $a \in A$ (so $\overline{a} = a_0$) such that $f(a) = 0$.
         \item Every finite $A$-algebra is a direct sum of local $A$-algebras.
-    \end{itemize}
+    \end{enumerate}
 \end{definition}
 
-\begin{lemma}[{{\cite[8.3.35]{Liu}}}] \label{lem:exist_div}
-    Let $x \in \X_s$ be a closed point on the special fibre, then the following assertions hold.
-    \begin{enumerate}[(a)]
+For the following existence statement, see~\cite[Lemma 8.3.35]{Liu}.
+
+\begin{lemma} \label{lem:exist_div}
+    Let $x \in \X_s$ be a closed point on the special fibre.
+    Then the following assertions hold.
+    \begin{enumerate}[label=\textup{(\roman*)}]
         \item There exists an irreducible horizontal Weil divisor $\Delta$ containing $x$. \label{lem:exist_div_i}
         \item There exists an effective horizontal Cartier divisor $D$ such that $\X_s \cap \Supp{D} = \{x\}$. \label{lem:exist_div_ii}
     \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-    \begin{enumerate}[(a)]
+    \begin{enumerate}[label=\textup{(\roman*)}]
         \item Let $\m_x$ be the maximal ideal of $\OO_{\X,x}$ and denote by $\pi$ a uniformising parameter of $\OO_K$.
             Let $ \p_1, \dots, \p_n $ be the prime ideals of $\OO_{\X,x}$ that are minimal among those containing $\pi \OO_{\X,x}$.
             As $\dim{}\OO_{\X,x} = 2$ (\cite[Proposition 8.3.4]{Liu}), Krull's principal ideal theorem implies that $\m_x \not= \p_i$.
-            There therefore exists an
+            Hence there exists
             \[
                 f \in \m_x \setminus (\cup_i \p_i).
             \]
             Thus $f$ is a regular element and $V(f)$ does not contain any irreducible component of $\Spec \OO_{\X_s, x}$.
 
-            There exists an affine open subset $W \ni x$ and a regular element $g \in \OO_\X(W)$ such that $g_x = f$,
-            and that $V(g) \cap W_s = \{x\}$.
+            There exists an affine open subset $W \ni x$ and a regular element $g \in \OO_\X(W)$ such that $g_x = f$
+            and $V(g) \cap W_s = \{x\}$.
             Let $\Delta$ be the closure in $\X$ of an irreducible component of $V(g)$ passing through $x$.
             Then $\Delta$ is an irreducible horizontal divisor passing through $x$. \label{lem:proof:exist_div_i}
         \item Let $E \coloneqq V(g)$ and let $W$ be as in~\ref{lem:proof:exist_div_i}.
-            Then $E$ can be seen as an effective Cartier divisor on $W$.
+            Then $E$ is an effective Cartier divisor on $W$.
             Moreover, $E \to \Spec \OO_K$ is quasi-projective and quasi-finite because $\dim{}E_s < \dim{}\X_s = 1$.
             By a corollary of Zariski's Main Theorem (\cite[Corollary 4.4.8]{Liu}), there exists an affine open neighborhood
             $U$ of $x$ such that $E \cap U$ is an open subscheme of a scheme $Z$ that is finite over $\Spec \OO_K$.
@@ -459,17 +479,17 @@ To construct such a divisor, it is important that the ring $\OK $ is complete, w
 
 
 \section{Completion of the proof and consequences}\label{sec:completion-correspondence-proof}
-Now we can finally prove Proposition~\ref{prop:constructing_models}~(\ref{prop:constructing_models_ii}).
+Now we can finally prove Proposition~\ref{prop:constructing_models}\ref{prop:constructing_models_ii}.
 
-\begin{proof}[Proof of Proposition \ref{prop:constructing_models}~(\ref{prop:constructing_models_ii})]
+\begin{proof}[Proof of Proposition \ref{prop:constructing_models}\ref{prop:constructing_models_ii}]
     Let $Z_1, \dots, Z_n$ be the irreducible components of $\X_s$ that induce the valuations in $V \subset V(\X)$.
-    By Lemma~\ref{lem:exist_div}~(\ref{lem:exist_div_ii}), there exists an effective horizontal Cartier divisor $D_i$
+    By Lemma~\ref{lem:exist_div}\ref{lem:exist_div_ii}, there exists an effective horizontal Cartier divisor $D_i$
     such that $\X_s \cap \Supp D_i$ is a point of $Z_i$ that belongs to none of the components of $\EE$.
     Let $D = \sum_{i=1}^n D_i$.
-    By virtue of Lemma~\ref{lem:global_sec}, if necessary replacing $D$ by a multiple, we can even suppose that
+    By Lemma~\ref{lem:global_sec}, after replacing $D$ by a multiple if necessary, we may assume that
     $\LL \coloneqq \OO_\X(D)$ is generated by its global sections.
 
-    The theorem then results from Proposition~\ref{prop:exist_contr}.
+    The theorem now follows from Proposition~\ref{prop:exist_contr}.
     Indeed, \(\LL|_E \simeq \OO_E\) if $E \in \EE$ since $E \cap \Supp D = \varnothing$;
     if $E \notin \EE$, then $E$ is some $Z_i$ and $\deg \LL|_E \geq \deg \OO_\X(D_i)|_{Z_i} > 0$, and hence \(\LL|_E \not\simeq \OO_E\).
 \end{proof}
@@ -477,15 +497,15 @@ Now we can finally prove Proposition~\ref{prop:constructing_models}~(\ref{prop:c
 \begin{figure}[h!] \label{fig:illustration-of-proof-of-prop-constructing-models}
     \centering
     \tikzfig{figures/fig1}
-    \caption{Illustration of the proof of Proposition \ref{prop:constructing_models}~(\ref{prop:constructing_models_ii})}
+    \caption{Illustration of the proof of Proposition \ref{prop:constructing_models}\ref{prop:constructing_models_ii}}
 \end{figure}
 
 \begin{remark}
-    The proof of Proposition~\ref{prop:constructing_models}~(\ref{prop:constructing_models_ii}) shows that actually all models
-    $\X$ of $X$ are projective.
-    Indeed one just has to choose $V = V(\X)$ in the proof to obtain an effective Cartier divisor $D$ which meets
+    The proof of Proposition~\ref{prop:constructing_models}\ref{prop:constructing_models_ii} shows that all models
+    $\X$ of $X$ are in fact projective.
+    Indeed, it suffices to choose $V = V(\X)$ in the proof to obtain an effective Cartier divisor $D$ that meets
     all the irreducible components of the fibre $\X_s$.
     Since $\X_s$ is a projective curve (\cite[Exercise 7.5.4]{Liu}), $\OO_\X(D)|_{\X_s}$ is ample (\cite[Proposition 7.5.5]{Liu}).
     It follows from \cite[Corollary 5.3.24]{Liu} that $\OO_\X(D)$ is ample.
-    So $\X \to \Spec \OO_K$ is projective (\cite[Proposition 5.3.6]{Liu}).
+    Thus, $\X \to \Spec \OO_K$ is projective (\cite[Proposition 5.3.6]{Liu}).
 \end{remark}

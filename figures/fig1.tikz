@@ -30,7 +30,7 @@
 		\node [style=none] (37) at (-6.25, -3) {};
 		\node [style=none] (38) at (-0.5, -3) {};
 		\node [style=none] (40) at (-0.5, -5) {};
-		\node [style=none] (44) at (-6.25, 5.5) {$\X_g$};
+		\node [style=none] (44) at (-6.25, 5.5) {$\X_\eta$};
 		\node [style=none] (45) at (0.5, 5.5) {$\X_s$};
 		\node [style=none] (46) at (-8.75, 3.25) {$D_1$};
 		\node [style=none] (47) at (-8.75, 1) {$D_2$};

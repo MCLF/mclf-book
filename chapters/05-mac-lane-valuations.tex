@@ -3,9 +3,10 @@
 In his seminal work \cite{MacLane}, S.~Mac Lane considered and essentially solved the following problem.
 Let $v_K$ be a nontrivial discrete valuation on a field $K$.
 What are the extensions of $v_K$ to an (arbitrary) pseudovaluation $v$ on the polynomial ring $K[x]$?
-How can we describe such pseudovaluation explicitly?
-These results have been applied to the problem of constructing models of curves in J.~Rüth's thesis, \cite{Rueth}.
-This chapter gives a brief overview of pseudovaluations and key polynomials, augmentations and inductive valuations, minimal augmentation chains, and their relation with discs and discoids. These constructions provide an explicit counterpart to the geometric valuations used in Part~\ref{part:models-and-valuations}.
+How can we describe such a pseudovaluation explicitly?
+These results have been applied to the problem of constructing models of curves in J.~Rüth's thesis~\cite{Rueth}.
+This chapter gives a brief overview of pseudovaluations and key polynomials, augmentations and inductive valuations, minimal augmentation chains, and their relation to discs and discoids.
+These constructions provide an explicit counterpart to the geometric valuations used in Part~\ref{part:models-and-valuations}.
 
 Fix an algebraic closure $\overline K$ of $K$ and an extension of $v_K$ to $\overline K$, which we again denote by $v_K$.
 
@@ -15,7 +16,7 @@ We first recall pseudovaluations on $K[x]$ and then single out the Mac Lane pseu
 
 \begin{definition} \label{def:pseudo-valuation}
     We call $v: K[x] \to \hat{\RR}$ a pseudovaluation if $v(1) = 0$ and
-    \begin{enumerate}[(a)]
+    \begin{enumerate}[label=\textup{(\alph*)}]
         \item $v(fg) = v(f) + v(g)$,
         \item $v(f + g) \geq \min\lbrace v(f), v(g) \rbrace$ for all $f,g\in K[x]$.
     \end{enumerate}
@@ -23,8 +24,8 @@ We first recall pseudovaluations on $K[x]$ and then single out the Mac Lane pseu
 
 \begin{remark}
     Let $v$ be a pseudovaluation on $K[x]$.
-    \begin{enumerate} [(i)]
-        \item As a consequence of the definition we get that $\p_v \coloneqq v^{-1}(\infty) < K[x]$ is a prime ideal
+    \begin{enumerate}[label=\textup{(\alph*)}]
+        \item The definition implies that $\p_v \coloneqq v^{-1}(\infty) < K[x]$ is a prime ideal
             and that $v$ induces a valuation
             \begin{align}
                 \bar{v}: K[x]/\p_v \to \hat{\RR}.
@@ -47,7 +48,7 @@ We first recall pseudovaluations on $K[x]$ and then single out the Mac Lane pseu
 
 \begin{definition}
     A pseudovaluation $v: K[x] \to \widehat{\QQ}$ is called a \textit{Mac Lane pseudovaluation} if the following conditions hold.
-    \begin{enumerate}[(a)]
+    \begin{enumerate}[label=\textup{(\alph*)}]
         \setcounter{enumi}{2}
         \item $v|_K = v_K$,
         \item $v(x) \geq 0$,
@@ -64,14 +65,14 @@ We first recall pseudovaluations on $K[x]$ and then single out the Mac Lane pseu
 For the valuations in $V(K[x])$, there is a partial order: we say that $v \leq v'$ if and only if $v(f) \leq v'(f)$ for all $f\in K[x]$.
 
 \begin{example}
-    The Gauß valuation $v_{\scriptscriptstyle G} \in V(K[x])^*$ is minimal with respect to that partial order.
+    The Gauß valuation $v_{\scriptscriptstyle G} \in V(K[x])^*$ is minimal with respect to this partial order.
 \end{example}
 
 \begin{definition}
     Let $v\in V(K[x])$ be a Mac Lane valuation and let $f,g,h \in K[x]$.
-    \begin{enumerate}[(i)]
-        \item We say that $f$ and $g$ are \textit{$v$-equivalent} (written as $f \sim_v g$) if $v(f-g) > v(f) = v(g)$.
-        \item The polynomial $f$ is said to \textit{$v$-divide} $g$ (written as $f\, |_v\, g$) if $g \sim_v fh$ for some $h \in K[x]$.
+    \begin{enumerate}[label=\textup{(\alph*)}]
+        \item We say that $f$ and $g$ are \textit{$v$-equivalent} (written $f \sim_v g$) if $v(f-g) > v(f) = v(g)$.
+        \item The polynomial $f$ is said to \textit{$v$-divide} $g$ (written $f\, |_v\, g$) if $g \sim_v fh$ for some $h \in K[x]$.
             It is called \textit{$v$-irreducible} if $f\, |_v\, gh$ implies $f\, |_v\, g$ or $f\, |_v\, h$,
             and \textit{$v$-minimal} if $f\, |_v\, g$ implies $\deg f \leq \deg g$.
         \item A polynomial $\phi \in K[x]$ is called a \textit{key polynomial} for $v$ if $\phi$ is monic, integral, $v$-irreducible and $v$-minimal.
@@ -100,7 +101,7 @@ with $\deg f_i < \deg \phi$. Then let
     v'(f) \coloneqq \min_i(v(f_i) + i\cdot \lambda).
 \end{align}
 
-It holds that $v\leq v'$ and $v < v'$ if and only if $v(\phi) < \lambda$.
+By construction, $v\leq v'$, and $v < v'$ if and only if $v(\phi) < \lambda$.
 
 \begin{definition}
     The Mac Lane pseudovaluation $v'$ defined in~\eqref{eq:def-augmentation} is called the \textit{augmentation} of $v$ with respect to $(\phi,\lambda)$.
@@ -116,8 +117,8 @@ It holds that $v\leq v'$ and $v < v'$ if and only if $v(\phi) < \lambda$.
     We call $v_0,\dots,v_n$ the \textit{augmentation chain} representing $v$ and write \begin{align}
         v = [v_0,v_1(\phi_1) = \lambda_1,\dots, v_n(\phi_n) = \lambda_n].
     \end{align}
-    Here it is understood $v_0 = v_{\scriptscriptstyle G}$, $v_n = v$, that $\phi_i$ is a key polynomial for $v_{i-1}$, $\lambda_i > v_{i-1}(\phi_i)$
-    and that $v_i = [v_{i-1}, v_i(\phi_i) = \lambda_i]$.
+    Here $v_0 = v_{\scriptscriptstyle G}$, $v_n = v$, the polynomial $\phi_i$ is a key polynomial for $v_{i-1}$, $\lambda_i > v_{i-1}(\phi_i)$,
+    and $v_i = [v_{i-1}, v_i(\phi_i) = \lambda_i]$.
     Also, $\lambda_i \neq \infty$ for $i < n$.
     We say that the augmentation chain $v_0,\dots,v_n$ is \textit{minimal} if
     \begin{align}
@@ -129,7 +130,10 @@ It holds that $v\leq v'$ and $v < v'$ if and only if $v(\phi) < \lambda$.
 \section{Minimal augmentation chains}\label{sec:minimal-augmentation-chains}
 The central structure result for these constructions describes Mac Lane pseudovaluations by minimal augmentation chains.
 
-\begin{theorem}[{\cite[Theorem 8.1 and Theorem 15.3]{MacLane}}]
+The existence assertion below draws on~\cite[Theorem 8.1]{MacLane}, while~\cite[Theorem 15.3]{MacLane} gives the relevant criterion for comparing minimal chains.
+The precise uniqueness formulation requires revision, as recorded below.
+
+\begin{theorem}
     Let $v \in V(K[x])^*$.
     Then there exists a unique minimal augmentation chain representing $v$.
     In particular, $v$ is inductive.
@@ -144,7 +148,7 @@ The cited uniqueness theorem does not give literal uniqueness of all key polynom
 We conclude by introducing discs and discoids in $\overline K$, which give a geometric description of subsets defined by valuation conditions on polynomials.
 
 \begin{definition}
-    \begin{enumerate}[(i)]
+    \begin{enumerate}[label=\textup{(\alph*)}]
         \item Let $\alpha \in \overline K$ and let $\lambda \in \hat{\QQ}$.
             Then
                 \begin{align}
@@ -168,7 +172,7 @@ We conclude by introducing discs and discoids in $\overline K$, which give a geo
     Let $\alpha_1,\dots,\alpha_n\in\overline K$ be the roots of $\phi \in K[x]$, listed with multiplicity, so that $n=\deg\phi$,
     and let $\mu_1,\dots,\mu_n \in \hat{\QQ}$ be minimal\footnote{
         Our definition of discs implies that discs with large radius are smaller than those with small radius.
-        For instance, the disc with centre $0\in K$ and radius $0$ is rather big, as it consists of all integral elements.
+        For instance, the disc with centre $0\in K$ and radius $0$ is relatively large, as it consists of all integral elements.
     } such that $D(\alpha_i,\mu_i) \subset D(\phi,\lambda)$.
     Then
     \begin{align}
