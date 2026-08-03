@@ -16,16 +16,9 @@
 \input{preamble}
 \input{macros}
 
-\title{Models of Curves and Valuations}
-\author{
-Miriam Ní Chobhtaigh \and
-Max Schwegele \and
-Xiaodong Zhang \and
-Kletus Stern \and
-Robert Nowak \and
-Stefan Wewers \and
-Maximilian Fülle
-}
+\title{MCLF - the book\\[0.5em]
+\large Models of curves over local fields}
+\author{Edited by Stefan Wewers}
 \date{\today}
 
 \begin{document}
@@ -38,17 +31,58 @@ Maximilian Fülle
 
 \chapter*{Preface}
 \addcontentsline{toc}{chapter}{Preface}
+\markboth{Preface}{Preface}
 
-This is a preliminary version of an open book developed as part of the MCLF project.
+The MCLF project (\emph{Models of Curves over Local Fields}) develops a SageMath toolbox for computations with models of curves over local fields, with particular emphasis on semistable reduction.
+The project is hosted at \url{https://github.com/MCLF/mclf}.
 
-The text is work in progress.
-Individual versions should be cited by referring to a specific Git commit or release.
+\medskip
+
+This book grew out of an Oberseminar held during the winter semester 2024/25 at the Institute of Algebra and Number Theory at Ulm University.
+The seminar was organized as a short series of talks under the title \emph{Models of curves}.
+Its original aim was to develop, from both a theoretical and a computational perspective, some of the basic ideas underlying the MCLF project.
+
+\medskip\noindent
+The seminar consisted of five talks:
+
+\begin{enumerate}
+    \item Miriam Ní Chobhtaigh: \emph{Models of curves and valuations};
+    \item Max Schwegele: \emph{Proof of Theorem 1};
+    \item Xiaodong Zhang: \emph{Models with reduced special fiber};
+    \item Robert Nowak: \emph{The Epp problem for \(p\)-cyclic covers of curves};
+    \item Kletus Stern: \emph{Mac Lane valuations}.
+\end{enumerate}
+
+
+The initial plan was simply to revise and combine the notes prepared for these talks into a larger set of seminar notes.
+As work on the project progressed, however, it became clear that the material would benefit from a broader and more systematic treatment.
+In particular, the relation between algebraic models, valuations, Berkovich geometry, Mac Lane theory, and explicit computations suggested a structure extending well beyond the original five talks.
+
+The present book is the result of this development. The original seminar notes were compiled, edited and extended by Maximilian Fülle. The content of the first four talks are the germ of Part I, \emph{Models and valuations}. The notes for the fifth talk will be incorporated into Part II, \emph{Analytic and computation tools}.
+
+The book is a collaborative and evolving project.
+Individual chapters identify their authors, while the volume as a whole is edited by Stefan Wewers.
+The chapter attributions refer to the finished chapters, not merely to the speakers in the original seminar: in some cases the seminar notes have been substantially revised, reorganized, or supplemented by additional authors.
+
+We thank all participants in the Oberseminar for their talks, notes, questions, and discussions.
+Without the seminar and the work invested in its preparation, this book would not have been started.
 
 \mainmatter
 
+\part[Models and valuations]{Models and valuations\\[1.5em]
+\large\normalfont
+Miriam Ní Chobhtaigh, Max Schwegele,\\
+Xiaodong Zhang, Kletus Stern, Robert Nowak,\\
+Stefan Wewers, and Maximilian Fülle}
+\label{part:models-and-valuations}
 
-\input{chapters/01-valued-fields-and-models}
-\input{chapters/02-analytic-and-computational-tools}
+\input{chapters/01-curves-over-valued-fields-and-their-models}
+\input{chapters/02-correspondence-between-models-and-valuations}
+\input{chapters/03-base-change-reduced-fibers-and-permanence}
+
+\part{Analytic and computational tools}
+
+\input{chapters/04-analytic-and-computational-tools}
 
 \backmatter
 
