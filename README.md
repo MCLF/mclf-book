@@ -21,6 +21,7 @@ At the moment the repository only contains the initial LaTeX structure. Chapters
 * `chapters/`: chapter files.
 * `figures/`: figures and figure sources.
 * `notes/`: background material, seminar programs, and other source documents.
+* `AGENTS.md`: repository-wide instructions for AI agents.
 
 ## Compiling
 
@@ -31,6 +32,12 @@ latexmk -pdf main.tex
 ```
 
 Generated LaTeX auxiliary files and compiled PDFs should normally not be committed to the repository.
+
+## Use of AI tools
+
+AI tools may be used in the preparation of this book for editorial and technical assistance, including language editing, LaTeX work, consistency checks, and the expository expansion of mathematical arguments explicitly supplied by the authors.
+
+All mathematical content, arguments, and substantive intellectual contributions are provided and approved by the human authors. AI tools are not used as independent mathematical authors.
 
 ## Contributing
 
