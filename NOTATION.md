@@ -74,6 +74,14 @@ Write a function-field compositum as `F_X\mathbin{\cdot}L`, not as the ambiguous
 - A closed disc is `D(\alpha,\lambda)`, and a discoid is `D(\phi,\lambda)`.
 - `\overline K` denotes the fixed algebraic closure of `K`, equipped with the fixed extension of `v_K` specified in Chapter 5.
 
+## Numbering of statements and equations
+
+The theorem-like environments `definition`, `theorem`, `proposition`, `lemma`, `corollary`, `example`, `construction`, `assumption`, `remark`, and `remarks` share one counter within each chapter.
+Their numbering is consecutive in the order in which they appear.
+
+Displayed equations use a separate chapterwise counter.
+An equation must never advance the counter for a theorem-like environment, and a theorem-like environment must never advance the equation counter.
+
 ## Enumerated lists
 
 Choose list labels according to the semantic role of the items, not merely according to the surrounding environment.

@@ -6,6 +6,7 @@ Before editing, consult `BOOK_PLAN.md` for the intended structure and `NOTATION.
 Prefer semantic macros already defined in `macros.tex`, and update `NOTATION.md` only when an editor has explicitly approved a changed global convention.
 Enumerated lists follow the semantic conventions in `NOTATION.md`: use Roman numerals for principal parts of results, lowercase letters for definitions and conditions, Arabic numerals for ordered procedures, and bullets for unordered exposition.
 Use the standard `enumerate` and `itemize` environments.
+Number all theorem-like environments consecutively within each chapter using a counter independent of the chapterwise equation counter.
 Bibliographic citations should not normally appear in the headings of definitions or theorem-like environments.
 Explain the relationship to the source in the prose before the statement, or cite the source at the beginning of the proof when only the proof is adapted.
 Preserve clear attribution, but do not present revised results as verbatim restatements.

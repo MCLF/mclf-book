@@ -119,6 +119,14 @@ Do not make the prose artificially terse or remove helpful explanations.
 - Do not change mathematical grouping merely to regularize typography.
 - Report genuinely ambiguous list classifications instead of guessing.
 
+## Numbering of statements and equations
+
+- All theorem-like environments share one chapterwise counter and are numbered consecutively in order of appearance.
+- This includes the `definition`, `theorem`, `proposition`, `lemma`, `corollary`, `example`, `construction`, `assumption`, `remark`, and `remarks` environments.
+- Displayed equations have a separate chapterwise counter.
+- Never couple a theorem-like environment to the equation counter or allow equations to create gaps in statement numbering.
+- Preserve labels and use cross-references rather than hard-coded internal numbers.
+
 ## Citations for formal mathematical statements
 
 Do not normally place bibliographic citations in the optional heading of a theorem, proposition, lemma, corollary, definition, assumption, remark, or other formal mathematical environment.

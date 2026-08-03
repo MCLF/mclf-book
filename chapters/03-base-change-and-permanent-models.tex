@@ -20,7 +20,6 @@ We obtain a model of $X_L$, called the {\em normalized base change} of $\X$ rela
 \section{Reduced special fibres and permanence}\label{sec:reduced-special-fibres-and-permanence}
 We introduce permanent models and examine their relation to reduced special fibres and weakly unramified component valuations.
 
-We say that a model $\X$ is \textit{permanent} if $\X_{\OL}$ is itself a model of $X_L$:
 
 \begin{definition} \label{def:permanent-model}
     A model $\X$ of $X$ is called \textit{permanent} if $\X_{\OL}$ is normal for all finite field extensions $L|K$.
@@ -40,17 +39,29 @@ The main permanence statement is as follows.
     \end{enumerate}
 \end{theorem}
 
-We will prove part~\ref{thm:permanence-i} below; see Corollary \ref{cor:permanence-part-i}.
-In Section \ref{sec:epp-and-abhyanka}, we will prove part~\ref{thm:permanence-ii} in the special case where all multiplicities of $\X_s$
-are prime to the characteristic of the residue field $k$ (Lemma \ref{lem:abhyanka}).
-Later chapters give proofs of part~\ref{thm:permanence-ii} in other important special cases.
+The proof below is modelled on~\cite[Section 2.2]{ArzdorfWewers}, adapted to the present definition of a permanent model.
+Its logic is as follows.
+First, a reduced special fibre remains reduced after every finite extension of the base field, and the normality criterion then shows that the corresponding base changes are normal; thus the model is permanent.
+Second, reducedness of the special fibre can be checked at its generic points and is equivalent to all component valuations being weakly unramified.
+Third, Epp's theorem eliminates the ramification at these finitely many generic points, so after a suitable finite extension the normalized base change has reduced special fibre and is therefore permanent.
+Finally, if the original model is permanent, this normalization is already the ordinary base change; its reduced special fibre then descends to a reduced special fibre of the original model.
 
-\begin{remark}
-    Since flatness and properness are preserved under base change, a model $\X$ of $X$ is permanent if and only if
-    $\X_{\OL}$ is a model of $X_L$.
-\end{remark}
+The proof uses Epp's theorem in the following finite-family form.
+For a single discrete valuation ring, this follows from~\cite[\href{https://stacks.math.columbia.edu/tag/09II}{Proposition 09II}]{Stacks}; the original source is~\cite{Epp}. The passage to finitely many rings uses the stability of solutions under further finite extensions,
+see~\cite[\href{https://stacks.math.columbia.edu/tag/0GLR}{Lemma 0GLR}]{Stacks}.
+We discuss the theorem further in Section~\ref{sec:epp-and-abhyanka}.
 
-The following permanence criterion applies~\cite[Corollary 2.2(i)]{ArzdorfWewers} after finite base change; we recall the argument in the present notation.
+\begin{theorem}[Epp: elimination of ramification]\label{thm:epp}
+    Let $\OK\to B_i$, $i=1,\ldots,r$, be extensions of discrete valuation rings such that each $B_i$ is essentially of finite type over $\OK$, and set $F_i\coloneqq\Frac{B_i}$.
+    There exists a finite extension $L|K$ with the following property.
+    For every $i$ and every maximal ideal $\mathfrak n$ of the integral closure $B_{i,L}$ of $B_i$ in $(F_i\otimes_K L)_{\mathrm{red}}$, the extension of discrete valuation rings
+    \[
+        \OL\longrightarrow (B_{i,L})_{\mathfrak n}
+    \]
+    is weakly unramified, meaning that its ramification index is one, or equivalently that every uniformising parameter $\pi_L$ of $\OL$ is also a uniformising parameter of $(B_{i,L})_{\mathfrak n}$.
+\end{theorem}
+
+The following proposition proves the implication (b)$\Rightarrow$(a).
 
 \begin{proposition} \label{prop:reducedness-implies-permanence}
     If $\X_s$ is reduced, then $\X$ is permanent.
@@ -58,21 +69,31 @@ The following permanence criterion applies~\cite[Corollary 2.2(i)]{ArzdorfWewers
 
 \begin{proof}
     Let $L|K$ be a finite extension and $l|k$ the extension of the corresponding residue fields.
-    The special fibre of $\X' \coloneqq \X_{\OL}$ is $\X'_s \coloneqq (\X_s)_l$,
-    which is reduced since $k$ is perfect by assumption.
+    The special fibre of $\X' \coloneqq \X_{\OL}$ is $\X'_s \coloneqq (\X_s)_l$.
+    Since $k$ is perfect and $\X_s$ is reduced, $\X_s$ is geometrically reduced over $k$;
+    see~\cite[\href{https://stacks.math.columbia.edu/tag/020I}{Lemma 020I}]{Stacks}.
+    Hence $(\X_s)_l$ is reduced.
     Thus, $\X'_s$ satisfies condition~\ref{lem:conditions-for-normality-i} from Lemma~\ref{lem:conditions-for-normality}. \\
-    For condition~\ref{lem:conditions-for-normality-ii}, let $\xi \in \X'_s$ be any generic point.
-    The stalk $\OO_{\X', \xi}$ is then a Noetherian local domain of dimension $1$ and satisfies
+    For condition~\ref{lem:conditions-for-normality-ii}, let $\xi' \in \X'_s$ be a generic point and let $\xi\in\X_s$ be its image.
+    The ring
+    \[
+        A'\coloneqq\OO_{\X',\xi'}
+    \]
+    is a localization of $\OO_{\X,\xi}\otimes_{\OK}\OL$ at the point $\xi'$.
+    It is a Noetherian local domain of dimension one, and
     \begin{align}
-        \OO_{\X'_s, \xi} = \OO_{\X', \xi}/\pi_L\OO_{\X', \xi},
+        A'/\pi_LA'=\OO_{\X'_s,\xi'},
     \end{align}
     where $\pi_L \in \OL$ is a uniformising parameter.
-    Since $\X'_s$ is reduced, $\pi_L\OO_{\X',\xi}$ is a maximal ideal, so
-    condition~\ref{lem:conditions-for-normality-ii} from Lemma~\ref{lem:conditions-for-normality} is also satisfied.
+    Since $\X'_s$ is reduced and $\xi'$ is a generic point, the ring on the right is a field.
+    Thus, $\pi_LA'$ is the maximal ideal of $A'$.
+    Moreover, $\pi_L$ is nonzero in $A'$ because $\X'$ is flat over $\OL$.
+    The DVR criterion~\cite[\href{https://stacks.math.columbia.edu/tag/00PD}{Lemma 00PD}]{Stacks} now shows that $A'$ is a discrete valuation ring.
+    Hence condition~\ref{lem:conditions-for-normality-ii} from Lemma~\ref{lem:conditions-for-normality} is also satisfied.
     Thus $\X'$ is normal and hence $\X$ is permanent.
 \end{proof}
 
-The scheme-theoretic equivalence used in the following criterion is~\cite[Corollary 2.2(ii)]{ArzdorfWewers}; its formulation in terms of component valuations uses Proposition~\ref{prop:multiplicities-coincide}.
+The following criterion relates reducedness to the component valuations; its formulation uses Proposition~\ref{prop:multiplicities-coincide}.
 
 \begin{proposition}\label{prop:criterion-reducedness}
     Let $\X$ be a model of $X$.
@@ -80,7 +101,7 @@ The scheme-theoretic equivalence used in the following criterion is~\cite[Coroll
     \begin{enumerate}[label=\textup{(\alph*)}]
         \item $\X_s$ is reduced.
         \item $\OO_{\X_s, \xi}$ is a field for every generic point $\xi \in \X_s$.
-        \item Every $v_Z \in V(\X)$ is weakly unramified.
+        \item Every $v_Z \in V(\X)$ is weakly unramified over $v_K$.
     \end{enumerate}
 \end{proposition}
 
@@ -92,23 +113,51 @@ The scheme-theoretic equivalence used in the following criterion is~\cite[Coroll
     \begin{align}
         [\Gamma_{v_Z}: \Gamma_K] = \length \OO_{\X_s, \xi}.
     \end{align}
-    This implies that $\OO_{\X_s, \xi}$ is a field if and only if $v_Z$ is weakly unramified for all $v_Z \in V(\X)$.
+    This implies that $\OO_{\X_s, \xi}$ is a field if and only if $v_Z$ is weakly unramified over $v_K$ for all $v_Z \in V(\X)$.
 \end{proof}
 
-\begin{corollary}[Partial result] \label{cor:permanence-part-i}
-    In the notation of Theorem~\ref{thm:permanence}\ref{thm:permanence-i}, conditions~\ref{thm:permanence-i-b} and~\ref{thm:permanence-i-c} are equivalent, and each implies condition~\ref{thm:permanence-i-a}.
-    The implication \ref{thm:permanence-i-a} $\Rightarrow$ \ref{thm:permanence-i-b} remains unresolved in the present text.
-\end{corollary}
+\begin{proof}[Proof of Theorem~\ref{thm:permanence}]
+    Proposition~\ref{prop:criterion-reducedness} proves the equivalence
+    \ref{thm:permanence-i-b}$\Leftrightarrow$\ref{thm:permanence-i-c},
+    and Proposition~\ref{prop:reducedness-implies-permanence} proves
+    \ref{thm:permanence-i-b}$\Rightarrow$\ref{thm:permanence-i-a}.
 
-% AUTHOR WARNING:
-\begin{authorwarning}
-The implication ``permanent $\Rightarrow$ reduced special fibre'' is not proved by the preceding results and does not follow formally from the definition. A correct proof or a precise reference must be supplied.
-\end{authorwarning}
+    We next prove part~\ref{thm:permanence-ii}.
+    Let $\xi_1,\ldots,\xi_r$ be the generic points of $\X_s$ and set
+    \[
+        B_i\coloneqq\OO_{\X,\xi_i}.
+    \]
+    These are discrete valuation rings essentially of finite type over $\OK$.
+    Choose a finite extension $L|K$ as in Theorem~\ref{thm:epp}, and let
+    \[
+        \mathcal Y\coloneqq(\X_{\OL})^\sim
+    \]
+    be the normalized base change.
+    The morphism $\mathcal Y\to\X$ is finite.
+    Hence, if $\xi'$ is a generic point of $\mathcal Y_s$, then its image in $\X_s$ is one of the points $\xi_i$, and $\OO_{\mathcal Y,\xi'}$ is one of the localizations $(B_{i,L})_{\mathfrak n}$ occurring in Theorem~\ref{thm:epp}.
+    Consequently, $\pi_L$ is a uniformising parameter of $\OO_{\mathcal Y,\xi'}$, and
+    \[
+        \OO_{\mathcal Y_s,\xi'}
+        =\OO_{\mathcal Y,\xi'}/\pi_L\OO_{\mathcal Y,\xi'}
+    \]
+    is a field.
+    Proposition~\ref{prop:criterion-reducedness}, applied over $L$, therefore shows that $\mathcal Y_s$ is reduced.
+    The residue field of $L$ is perfect because it is a finite extension of the perfect field $k$.
+    Proposition~\ref{prop:reducedness-implies-permanence}, again applied over $L$, now shows that $\mathcal Y$ is permanent.
+    This proves part~\ref{thm:permanence-ii}.
 
-\begin{proof}
-    The equivalence \ref{thm:permanence-i-b} $\iff$ \ref{thm:permanence-i-c} follows from Proposition \ref{prop:criterion-reducedness}.
-    The implication \ref{thm:permanence-i-b} $\Rightarrow$ \ref{thm:permanence-i-a} is Proposition \ref{prop:reducedness-implies-permanence}.
-    The remaining implication \ref{thm:permanence-i-a} $\Rightarrow$ \ref{thm:permanence-i-b} is the unresolved point recorded above.
+    It remains to prove
+    \ref{thm:permanence-i-a}$\Rightarrow$\ref{thm:permanence-i-b}.
+    Suppose that $\X$ is permanent, and choose $L|K$ as in the preceding paragraph.
+    Then $\X_{\OL}$ is normal, so the normalization morphism
+    \[
+        \mathcal Y=(\X_{\OL})^\sim\longrightarrow\X_{\OL}
+    \]
+    is an isomorphism.
+    Hence $(\X_s)_l=\mathcal Y_s$ is reduced, where $l$ is the residue field of $L$.
+    Since $l|k$ is faithfully flat, reducedness descends from $(\X_s)_l$ to $\X_s$.
+    Indeed, on an affine open this follows from the injectivity of $A\to A\otimes_k l$: a nilpotent element of $A$ maps to zero because $A\otimes_k l$ is reduced, and hence was already zero in $A$.
+    Thus $\X_s$ is reduced, completing the proof.
 \end{proof}
 
 
@@ -163,29 +212,15 @@ The valuations $w_{i,j}$ correspond to the irreducible components of $\X_s'$ who
 
 
 \section{Eliminating ramification}\label{sec:eliminating-ramification}
-We now turn to the existence of a finite base extension after which normalized base change has reduced special fibre. The required extension is obtained by eliminating ramification in the component valuations.
-
-For a related normalized-base-change statement under the hypotheses imposed there, see~\cite[Proposition 2.3]{ArzdorfWewers}.
-The precise form of Epp's theorem needed in the present setting is discussed in the warning below.
-
-\begin{theorem}
-    Let $\X$ be a model of $X$.
-    Then there is a finite extension $L|K$ such that $\X' = (\X_{\OL})^\sim$ has a reduced special fibre.
-\end{theorem}
-
-% AUTHOR WARNING:
-\begin{authorwarning}
-A precise version of Epp's theorem appropriate to the finitely many component valuations must be stated here. In particular, the proof must specify the valued fields to which Epp is applied and the required hypotheses on their ranks and residue fields. It must also justify the passage from one component valuation to finitely many of them, explain why a single finite extension $L/K$ works simultaneously, and show that every extension $w_{i,j}$ becomes weakly unramified over $v_L$.
-\end{authorwarning}
-
-\begin{proof}
-    By~\cite[Theorem 1.0]{Epp} there exists a field extension $L|K$ such that $w_{i,j}$ is weakly unramified over $v_L$.
-    By Proposition~\ref{prop:criterion-reducedness}, the special fibre of $\X'$ is reduced.
-\end{proof}
+The proof of Theorem~\ref{thm:permanence}\ref{thm:permanence-ii} applies Epp's theorem simultaneously to the discrete valuation rings at the generic points of $\X_s$.
+After the resulting finite extension of $K$, the corresponding local rings on the normalized base change are weakly unramified over the new base ring.
+Equivalently, the normalized base change has reduced special fibre.
+This is the geometric form of elimination of ramification used above.
 
 
 \section{Epp's theorem and Abhyanka's lemma}\label{sec:epp-and-abhyanka}
-The preceding existence result invokes Epp's theorem. In the tamely ramified case, the corresponding effect of a base extension on ramification indices is expressed by Abhyanka's lemma.
+Theorem~\ref{thm:epp} states Epp's theorem in the form used above.
+In the tamely ramified case, the corresponding effect of a base extension on ramification indices is expressed more explicitly by Abhyanka's lemma.
 
 \begin{lemma}[Abhyanka]\label{lem:abhyanka}
     Let $L|K$ be a finite extension.

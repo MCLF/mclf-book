@@ -117,25 +117,15 @@ Rüth states the resulting injectivity assertion as~\cite[Proposition 3.9]{Rueth
 
 \begin{example}
     We continue with Example~\ref{ex:model-of-plane-curve}.
-    Let $F\in \QQ_p[X,Y,Z]$ be irreducible, integral and primitive and such that
+    Let $F\in \ZZ_p[X,Y,Z]$ be homogenous, irreducible and primitive. Then
     \begin{align}
         \X = \Proj{\ZZ_p[X,Y,Z]/(F)}
     \end{align}
-    is a model of the projective curve $X: 0=F(X,Y,Z)$ over $\QQ_p$.
+    is a model of the plane projective curve $X$ over $\QQ_p$ given by $F$.
     Suppose that $\bar{F} \in \FF_p[X,Y,Z]$ is irreducible.
     Then $\X_s$ has precisely one irreducible component $Z$
     with generic point $\xi$ corresponding to the ideal $(p, \bar{F})$.
     In particular, $V(\X) = \lbrace v_Z\rbrace$.
-    The element $p$ is a uniformising parameter of $\OO_{\X, \xi}$, and the component valuation therefore has the intrinsic description
-    \begin{align}
-        v_Z(f)=\max\bigl\{n\in\ZZ : f\in p^n\OO_{\X,\xi}\bigr\},
-        \qquad f\in F_X^\times.
-    \end{align}
-
-    % AUTHOR WARNING:
-    \begin{authorwarning}
-    The coefficientwise formula for $v_Z$ is not well-defined without a specified normal form. The intended description of this valuation and its restriction to $\QQ_p(x)$ must be checked.
-    \end{authorwarning}
 \end{example}
 
 \begin{comment}

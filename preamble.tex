@@ -69,22 +69,22 @@
 
 % Theorem environments.
 \theoremstyle{plain}
-\newtheorem{theorem}[equation]{Theorem}
-\newtheorem{proposition}[equation]{Proposition}
-\newtheorem{lemma}[equation]{Lemma}
-\newtheorem{corollary}[equation]{Corollary}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{definition}
-\newtheorem{definition}[equation]{Definition}
-\newtheorem{example}[equation]{Example}
-\newtheorem{construction}[equation]{Construction}
-\newtheorem{assumption}[equation]{Assumption}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{assumption}[theorem]{Assumption}
 
 \theoremstyle{remark}
-\newtheorem{remark}[equation]{Remark}
-\newtheorem{remarks}[equation]{Remarks}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{remarks}[theorem]{Remarks}
 
-% Number equations by chapter.
+% Number equations independently by chapter.
 \numberwithin{equation}{chapter}
 
 % Slightly more flexible spacing in tables.
