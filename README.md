@@ -10,7 +10,10 @@ Although the text is not intended to be in final form for some time, individual 
 
 Preliminary and under active development.
 
-At the moment the repository only contains the initial LaTeX structure. Chapters will be added gradually.
+Part I, consisting of Chapters 1--3, is present in a developed form.
+Part II currently contains a draft of Chapter 5 on Mac Lane valuations; Chapter 4 and the later planned chapters are not yet included.
+
+See [`BOOK_PLAN.md`](BOOK_PLAN.md) for a description of the current contents and the longer-term plan.
 
 ## Repository structure
 
