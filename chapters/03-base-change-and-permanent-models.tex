@@ -3,6 +3,7 @@
 
 This chapter studies models under finite extensions of the base field.
 The correspondence of Chapter~\ref{ch:correspondence-between-models-and-valuations} turns normalized base change into the extension of finitely many type-II valuations.
+For Galois extensions, the normalized base change carries a natural semilinear action and the original model is recovered as its quotient, while unramified base change is already normal and finite étale.
 Reducedness, permanence, and elimination of ramification can then be expressed in terms of their multiplicities.
 
 Throughout this chapter, $X$ is a smooth, projective and absolutely irreducible curve over the complete discretely valued field $K$ satisfying Assumption~\ref{ass:v_K}.
@@ -17,6 +18,13 @@ Since $X$ is absolutely irreducible, $X_L$ is integral and
 \]
 is a field.
 After choosing embeddings into a common overfield, this field may equivalently be viewed as the compositum $F_X\mathbin{\cdot}L$.
+
+\begin{remark}\label{rem:nice-curve-after-base-change}
+    Smoothness, projectivity, and absolute irreducibility are preserved under extension of the ground field, so $X_L$ is a nice curve over $L$.
+    When regarded as a $K$-scheme, however, $X_L$ need not be absolutely irreducible over $K$.
+    Thus the discussion below is the relative analogue of Proposition~\ref{prop:normalization-extension-valuations} rather than a literal special case of it.
+\end{remark}
+
 The valuation $v_K$ has a unique extension $v_L$ to $L$ because $K$ is complete, and we always scale it so that
 \[
     v_L|_K=v_K.
@@ -86,6 +94,105 @@ The following is the relative version of Proposition~\ref{prop:normalization-ext
 \end{proof}
 
 Computing normalized base change therefore amounts to understanding the extensions of each component valuation $v\in V(\X)$ to $F_{X_L}$.
+
+Suppose now that $L/K$ is finite Galois, with group $G=\operatorname{Gal}(L/K)$.
+Since $X$ is geometrically integral, $F_X$ and $L$ are linearly disjoint over $K$.
+Consequently, $F_{X_L}=F_X\otimes_K L$ is a Galois extension of $F_X$ with group $G$, acting by % notation-check: allow -- this is a tensor product of fields, not a scheme base change
+\[
+    g(f\otimes\lambda)=f\otimes g(\lambda).
+\]
+
+\begin{corollary}[Galois action on normalized base change]\label{cor:galois-action-normalized-base-change}
+    Suppose that $L/K$ is finite Galois with group $G$.
+    Then:
+    \begin{enumerate}[label=\textup{(\roman*)}]
+        \item The group $G$ acts naturally on $\X_L$ by $\OK$-automorphisms, and this action is semilinear over $\OL$.
+        Thus, for every $g\in G$, the diagram
+        \[
+            \begin{tikzcd}
+                \X_L \arrow[r, "g"] \arrow[d] & \X_L \arrow[d] \\
+                \Spec\OL \arrow[r, "g"] & \Spec\OL
+            \end{tikzcd}
+        \]
+        commutes.
+        \item The finite morphism $\X_L\to\X$ is $G$-invariant.
+        \item The quotient scheme exists, and the canonical morphism induces an isomorphism
+        \[
+            \X_L/G\cong\X.
+        \]
+        \item For every $v\in V(\X)$, the group $G$ acts transitively on $\operatorname{Ext}_L(v)$.
+        Equivalently, it acts transitively on the irreducible components of $(\X_L)_s$ lying above any fixed irreducible component of $\X_s$.
+    \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+    The action already exists on the ordinary base change $\X_{\OL}$: on an affine chart it is induced by
+    \[
+        g(a\otimes\lambda)=a\otimes g(\lambda).
+    \]
+    It preserves the integral closure of the coordinate ring in $F_{X_L}$ and therefore extends to the normalization $\X_L$.
+    The displayed formula also shows that the action is linear over $\OK$, semilinear over $\OL$, and leaves the morphism to $\X$ invariant.
+
+    The affine invariant-ring argument in Proposition~\ref{prop:galois-covers-quotients} applies without requiring $X_L$ to be a nice curve over $K$.
+    Indeed, if $U=\Spec A\subseteq\X$ and $B$ is the integral closure of $A$ in $F_{X_L}$, then
+    \[
+        B^G=A
+    \]
+    because $F_{X_L}^G=F_X$ and $A$ is normal.
+    These affine quotients glue and give $\X_L/G\cong\X$.
+
+    By Proposition~\ref{prop:valuations-normalized-base-change}, the set $\operatorname{Ext}_L(v)$ corresponds to the generic points of $(\X_L)_s$ above the generic point associated with $v$.
+    Equivalently, it corresponds to the maximal ideals in the integral closure of $\OO_v$ in $F_{X_L}$.
+    The transitivity assertion is therefore~\cite[\href{https://stacks.math.columbia.edu/tag/09EA}{Lemma 15.114.1}]{Stacks}.
+\end{proof}
+
+As in Remark~\ref{rem:galois-quotient-descent}, the quotient is an assertion about the total schemes and does not, without further hypotheses, identify $\X_s$ with $(\X_L)_s/G$.
+
+\begin{proposition}[Unramified base change]\label{prop:unramified-base-change}
+    Let $L/K$ be a finite unramified extension.
+    Then the ordinary base change $\X_{\OL}$ is normal, and hence
+    \[
+        \X_L=\X_{\OL}.
+    \]
+    Moreover, the canonical morphism
+    \[
+        \X_L\longrightarrow\X
+    \]
+    is finite étale.
+\end{proposition}
+
+\begin{proof}
+    Since $L/K$ is a finite unramified extension of complete discretely valued fields, $\OL$ is finite over $\OK$ and $\OK\to\OL$ is unramified; see~\cite[\href{https://stacks.math.columbia.edu/tag/0EXQ}{Remark 15.113.6 and Definition 15.113.7}]{Stacks} and~\cite[\href{https://stacks.math.columbia.edu/tag/024L}{Lemma 41.3.3}]{Stacks}.
+    It is flat because $\OL$ is torsion-free over the discrete valuation ring $\OK$, and is therefore finite étale.
+    Hence $\X_{\OL}\to\X$ is finite étale by base change.
+    Since $\X$ is normal, $\X_{\OL}$ is normal by~\cite[\href{https://stacks.math.columbia.edu/tag/025P}{Proposition 41.19.7}]{Stacks}.
+    Thus ordinary base change already equals its normalization.
+\end{proof}
+
+\begin{remark}\label{rem:consequences-unramified-base-change}
+    Finite unramified base change preserves and reflects regularity:
+    \[
+        \X\text{ is regular}
+        \quad\Longleftrightarrow\quad
+        \X_L\text{ is regular}.
+    \]
+    Indeed, $\X_L\to\X$ is faithfully flat and finite étale, and regularity is preserved and reflected by étale local homomorphisms; see~\cite[\href{https://stacks.math.columbia.edu/tag/025N}{Proposition 41.19.4}]{Stacks}.
+    More generally, properties of locally Noetherian schemes that are local for the étale topology may be checked after finite unramified base change.
+
+    If $l/k$ is the residue-field extension, then
+    \[
+        (\X_L)_s=\X_s\times_{\Spec k}\Spec l.
+    \]
+    Irreducible components may split after extending the residue field, but their multiplicities are unchanged.
+    More precisely, for $v\in V(\X)$ and $w\in\operatorname{Ext}_L(v)$, the induced extension $\OO_v\subseteq\OO_w$ is étale and hence has ramification index $e(w/v)=1$.
+    Since also $e(L/K)=1$, the multiplicity formulas from Chapter~\ref{ch:models-of-curves-over-valued-fields} give
+    \[
+        m_L(w)=m_K(w)=e(w/v)m_K(v)=m_K(v).
+    \]
+\end{remark}
+
+Thus unramified extensions do not create a normalization problem and do not alter component multiplicities.
+The phenomenon studied below is therefore entirely associated with ramified extensions of the constant field.
 
 \begin{definition}\label{def:eliminates-ramification}
     Let $v\in V_\mathrm{II}(F_X/K)$.

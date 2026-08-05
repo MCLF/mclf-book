@@ -5,6 +5,7 @@ Building on the valuations associated with components in Chapter~\ref{ch:models-
 By a cover of nice curves we mean a finite dominant morphism.
 The proof is based on Chapter~3 of Julian Rüth's thesis~\cite{Rueth}.
 The final section applies the correspondence to normalization in a finite cover, a viewpoint emphasized in Rüth's Proposition~5.2.
+For a Galois cover, the normalization carries the natural Galois action and the original model is recovered as its quotient.
 
 \section{Statement and interpretation of the correspondence theorem}\label{sec:statement-correspondence-theorem}
 
@@ -577,14 +578,68 @@ It is Proposition~5.2 of Rüth's thesis~\cite{Rueth}, stated in the notation of 
     For a separable extension this is~\cite[\href{https://stacks.math.columbia.edu/tag/0EXQ}{Remark 15.113.6}]{Stacks}; the general case follows by passing through the maximal separable subextension and using~\cite[\href{https://stacks.math.columbia.edu/tag/0H37}{Lemma 15.123.3}]{Stacks} for the remaining purely inseparable extension, as in the proof of Proposition~\ref{prop:finite-extension-valued-fields}.
 \end{proof}
 
+\begin{definition}\label{def:galois-cover}
+    A cover $\varphi\colon Y\to X$ of nice curves is \textit{Galois with group $G$} if the induced extension $F_Y/F_X$ is Galois and
+    \[
+        G=\operatorname{Gal}(F_Y/F_X).
+    \]
+    The action of $G$ on $F_Y$ corresponds to an action on $Y$ over $X$.
+\end{definition}
+
+\begin{proposition}[Galois covers and quotients]\label{prop:galois-covers-quotients}
+    Let $\varphi\colon Y\to X$ be a Galois cover of nice curves over $K$, with group $G$.
+    Let $\X$ be a model of $X$, and let $\Y$ be the normalization of $\X$ in $F_Y$.
+    Then:
+    \begin{enumerate}[label=\textup{(\roman*)}]
+        \item The action of $G$ on $Y$, equivalently on $F_Y$, extends uniquely to an action of $G$ on $\Y$ by $\OK$-automorphisms.
+        \item The finite morphism $\Y\to\X$ is $G$-invariant.
+        \item The quotient scheme exists, and the canonical morphism induces an isomorphism
+        \[
+            \Y/G\cong\X.
+        \]
+        \item For every $v\in V(\X)$, the group $G$ acts transitively on
+        \[
+            \operatorname{Ext}_{F_Y/F_X}(v).
+        \]
+        Equivalently, it acts transitively on the irreducible components of $\Y_s$ lying above any fixed irreducible component of $\X_s$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    Let $U=\Spec A\subseteq\X$ be affine.
+    Its inverse image in $\Y$ is affine, say $\Spec B$, where $B$ is the integral closure of $A$ in $F_Y$.
+    Every $g\in G$ preserves $B$, because $g$ fixes $A\subseteq F_X$ and therefore takes elements integral over $A$ to elements integral over $A$.
+    These actions agree on overlaps and extend the action on the generic fibre.
+    They consequently define an action on $\Y$, and the extension is unique because the generic fibre is dense.
+    The morphism $\Y\to\X$ is $G$-invariant because $G$ fixes $A$ on every such affine open.
+
+    We have $A\subseteq B^G$.
+    Conversely, if $b\in B^G$, then
+    \[
+        b\in F_Y^G=F_X=\operatorname{Frac}(A).
+    \]
+    The element $b$ is integral over the normal domain $A$, so $b\in A$.
+    Thus $B^G=A$.
+    The affine quotients $\Spec B^G$ glue, and the resulting identifications with the affine opens $U$ identify $\Y/G$ with $\X$.
+
+    Finally, the elements of $\operatorname{Ext}_{F_Y/F_X}(v)$ correspond to the maximal ideals of the integral closure of the discrete valuation ring $\OO_v$ in $F_Y$.
+    The Galois group acts transitively on these maximal ideals by~\cite[\href{https://stacks.math.columbia.edu/tag/09EA}{Lemma 15.114.1}]{Stacks}, proving part~(iv).
+\end{proof}
+
+\begin{remark}\label{rem:galois-quotient-descent}
+    The isomorphism $\X\cong\Y/G$ is a basic instance of descent for models: the model downstairs is recovered from the normalized model upstairs together with its Galois action.
+    This does not assert that arbitrary $G$-equivariant models upstairs descend to models over $\OK$.
+    Moreover, the quotient statement concerns the total schemes; without additional hypotheses, one should not identify $\X_s$ with $\Y_s/G$, because formation of invariants need not commute with reduction in wild characteristic.
+\end{remark}
+
 \begin{example}[Realization as a cover of the projective line]\label{ex:normalization-cover-projective-line}
     Let $Y$ be a nice curve over $K$.
     Since $F_Y/K$ is a separably generated function field of transcendence degree one, it contains a separating transcendence element $x$ such that $F_Y/K(x)$ is finite and separable.
     The element $x$ defines a finite separable morphism
     \[
-        Y\longrightarrow\PP^1_K.
+        Y\longrightarrow X:=\PP^1_K.
     \]
-    Hence every model $\X$ of $\PP^1_K$ gives a model $\Y$ of $Y$ by normalization, and
+    Hence every model $\X$ of $X=\PP^1_K$ gives a model $\Y$ of $Y$ by normalization, and
     \[
         V(\Y)
         =
