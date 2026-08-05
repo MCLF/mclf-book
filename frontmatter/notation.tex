@@ -1,0 +1,41 @@
+\chapter*{Notation and conventions}
+\addcontentsline{toc}{chapter}{Notation and conventions}
+\markboth{Notation and conventions}{Notation and conventions}
+
+\paragraph*{Valued fields.}
+We write $(K,v_K)$ for a valued field, with valuations written additively, and use
+\[
+    \OK, \qquad \mK, \qquad k=\OK/\mK, \qquad
+    \Gamma_K=v_K(K^\times)
+\]
+for its valuation ring, maximal ideal, residue field, and value group.
+When a discrete valuation is normalized, our convention is $v_K(K^\times)=\ZZ$.
+Completeness, discreteness, and assumptions on the residue field are stated where they are needed and are not imposed globally unless explicitly indicated.
+
+\paragraph*{Curves and function fields.}
+The letter $X$ usually denotes a smooth, projective, absolutely irreducible curve over $K$, called a \emph{nice curve} in Chapter~\ref{ch:models-of-curves-over-valued-fields}.
+Its function field is denoted by $F_X=K(X)$.
+An unqualified cover of curves is a finite dominant morphism; when separability matters, we write \emph{finite separable cover}.
+
+\paragraph*{Models and fibres.}
+A model of $X$ over $\OK$ is generally denoted by $\X$.
+If $\eta$ and $s$ are respectively the generic and closed points of $\Spec\OK$, then
+\[
+    \X_\eta \quad\text{and}\quad \X_s
+\]
+denote the generic and special fibres.
+Thus the book uses the French-style notation $\X_\eta$, not $\X_g$, for the generic fibre. % notation-check: allow documented deprecated form
+For an irreducible component $Z$ of a special fibre, its generic point is denoted by $\xi_Z$, or simply $\xi$ when no confusion can arise; the associated geometric valuation is $v_Z$, and the finite set of component valuations is $V(\X)$.
+
+\paragraph*{Base change.}
+For a scheme $Y$ over a ring $R$ and a ring homomorphism $R\to S$, we write
+\[
+    Y_S \coloneqq Y\times_{\Spec R}\Spec S.
+\]
+After this definition, we use the subscript notation $Y_S$; in particular, base changes of $X$ and $\X$ are denoted by $X_L$ and $\X_{\OL}$.
+For rings, modules, algebras, and sheaves, base change is denoted by $\otimes_R$.
+When $L/K$ is finite, ordinary base change is denoted by $\X_{\OL}$ and its normalization in $F_{X_L}$ by
+\[
+    \X_L.
+\]
+Function-field composita are written $F_X\mathbin{\cdot}L$.

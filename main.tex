@@ -16,7 +16,8 @@
 \input{preamble}
 \input{macros}
 
-\title{Models of Curves and Valuations}
+\title{MCLF - the book\\[0.5em]
+\large Models of curves over local fields}
 \author{Edited by Stefan Wewers}
 \date{\today}
 
@@ -30,16 +31,82 @@
 
 \chapter*{Preface}
 \addcontentsline{toc}{chapter}{Preface}
+\markboth{Preface}{Preface}
 
-This is a preliminary version of an open book developed as part of the MCLF project.
+The MCLF project (\emph{Models of Curves over Local Fields}) develops a SageMath toolbox for computations with models of curves over local fields, with particular emphasis on semistable reduction.
+The project is hosted at \url{https://github.com/MCLF/mclf}.
 
-The text is work in progress.
-Individual versions should be cited by referring to a specific Git commit or release.
+\medskip
+
+This book grew out of an Oberseminar held during the winter semester 2024/25 at the Institute of Algebra and Number Theory at Ulm University.
+The seminar was organized as a short series of talks under the title \emph{Models of curves}.
+Its original aim was to develop, from both a theoretical and a computational perspective, some of the basic ideas underlying the MCLF project.
+
+\medskip\noindent
+The seminar consisted of five talks:
+
+\begin{itemize}
+    \item Miriam Ní Chobhtaigh: \emph{Models of curves and valuations};
+    \item Max Schwegele: \emph{Proof of Theorem 1};
+    \item Xiaodong Zhang: \emph{Models with reduced special fiber}; % notation-check: allow quoted title
+    \item Robert Nowak: \emph{The Epp problem for \(p\)-cyclic covers of curves};
+    \item Kletus Stern: \emph{Mac Lane valuations}.
+\end{itemize}
+
+
+The initial plan was simply to revise and combine the notes prepared for these talks into a larger set of seminar notes.
+As work on the project progressed, however, it became clear that the material would benefit from a broader and more systematic treatment.
+In particular, the relation between algebraic models, valuations, Berkovich geometry, Mac Lane theory, and explicit computations suggested a structure extending well beyond the original five talks.
+
+The present book is the result of this development. The original seminar notes were compiled, edited and extended by Maximilian Fülle. The content of the first four talks is the germ of Part I, \emph{Models and valuations}. The notes for the fifth talk form the starting point of Part II, \emph{Analytic and computational tools}.
+
+Julian Rüth's thesis, \emph{Models of curves and valuations}~\cite{Rueth}, has been an important foundation for both the MCLF project and this book.
+It brings together the description of normal models by valuations, Mac Lane theory, and computational methods in a form that has strongly influenced the organization and mathematical approach of the project.
+We gratefully acknowledge the importance of this work.
+
+The book is a collaborative and evolving project.
+Individual chapters identify their authors, while the volume as a whole is edited by Stefan Wewers.
+The chapter attributions refer to the finished chapters, not merely to the speakers in the original seminar: in some cases the seminar notes have been substantially revised, reorganized, or supplemented by additional authors.
+
+We thank all participants in the Oberseminar for their talks, notes, questions, and discussions.
+Without the seminar and the work invested in its preparation, this book would not have been started.
+
+\medskip\noindent
+The preparation of this book has been assisted by generative-AI tools and AI agents.
+They have been used mainly for editorial and technical tasks, including revising and reorganizing prose, adapting material from existing notes and sources, checking consistency, editing \LaTeX, and maintaining the repository.
+In some cases, they have also helped to expand routine steps in arguments whose mathematical content and strategy had already been supplied by the authors.
+All mathematical claims, proofs, examples, computations, and references remain the responsibility of the human authors and editors, who have reviewed and approved the text.
+AI systems are not regarded as authors or as independent mathematical contributors.
+
+% \input{frontmatter/notation}
 
 \mainmatter
 
-% Chapters will be added here later, for example:
-% \input{chapters/01-valued-fields-and-models}
+\part[Models and valuations]{Models and valuations\\[1.5em]
+\large\normalfont
+Miriam Ní Chobhtaigh, Max Schwegele,\\
+Xiaodong Zhang, Kletus Stern, Robert Nowak,\\
+Stefan Wewers, and Maximilian Fülle\\[2em]
+\begin{minipage}{0.78\textwidth}
+\normalfont\normalsize\raggedright
+This part develops the algebraic foundations and valuation theory used throughout the book. It introduces models of curves, attaches geometric valuations to components of their special fibres, establishes the correspondence between models and finite sets of these valuations, and studies their behaviour under finite extensions of the base field.
+\end{minipage}}
+\label{part:models-and-valuations}
+
+\input{chapters/01-models-of-curves-over-valued-fields}
+\input{chapters/02-correspondence-between-models-and-valuations}
+\input{chapters/03-base-change-and-permanent-models}
+
+\part[Analytic and computational tools]{Analytic and computational tools\\[1.5em]
+\large\normalfont
+Stefan Wewers, Kletus Stern, and Maximilian Fülle\\[2em]
+\begin{minipage}{0.78\textwidth}
+\normalfont\normalsize\raggedright
+This part develops analytic and computational tools for describing and working with valuations arising from models. The material currently included, Chapter~\ref{ch:mac-lane-valuations}, is essentially the content of the last talk of the miniseminar from which this book originated. It begins the development with Mac Lane valuations, which provide explicit descriptions in terms of polynomials, augmentations, discs, and discoids. The remainder of Part~II will be added later.
+\end{minipage}}
+
+\setcounter{chapter}{4}
+\input{chapters/05-mac-lane-valuations}
 
 \backmatter
 

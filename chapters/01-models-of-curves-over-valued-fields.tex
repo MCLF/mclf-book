@@ -1,0 +1,596 @@
+%! Author = Maximilian Fülle
+%! Date = 29.05.2026
+
+
+\chapter{Models of curves over valued fields}\label{ch:models-of-curves-over-valued-fields}
+
+This chapter introduces models of smooth projective curves over valued fields, together with their morphisms and the resulting partial order by domination.
+After discussing normality and basic examples, we attach a geometric valuation and a multiplicity to every irreducible component of the special fibre; the resulting finite set of valuations is the starting point for the correspondence developed in Chapter~\ref{ch:correspondence-between-models-and-valuations}.
+
+\section{Valued fields, curves, and models}\label{sec:valued-fields-curves-and-models}
+We begin by fixing the valued-field notation and standing hypotheses used throughout Part~\ref{part:models-and-valuations}, and then introduce the basic notion of a model of a curve.
+
+Let $K$ be a field endowed with an additive valuation of rank $1$, $v_K: K \to \hat{\RR} \coloneqq \RR\cup \lbrace\infty\rbrace$.
+Let $\Gamma_K \coloneqq v_K(K^*) \subset \RR$ be the value group of $v_K$, $\OK \subset K$ its valuation ring with
+maximal ideal $\mK$ and $k \coloneqq \OK /\mK$ its residue field.
+
+Unless explicitly stated otherwise, the following assumption remains in force throughout Part~\ref{part:models-and-valuations}.
+We indicate where the individual hypotheses are used.
+\begin{assumption} \label{ass:v_K}
+    \begin{enumerate}[label=\textup{(\alph*)}]
+        \item $v_K$ is discrete, i.e.\ $\Gamma_K$ is a discrete subgroup of $\RR$,
+        \item $K$ is complete with respect to $v_K$,
+        \item $k$ is perfect.
+    \end{enumerate}
+\end{assumption}
+
+Throughout the monograph, $X$ will denote a \textit{nice} curve over $K$,
+that is a smooth, projective and absolutely irreducible curve over $K$.
+
+\begin{definition} \label{def:model}
+    A \textit{model} $\X$ of $X$ is a proper, flat and normal $\OK $-scheme
+    with an identification of its generic fibre $\X_\eta$ with $X$.
+\end{definition}
+
+
+\begin{example}
+    Let $K = \QQ_p$, $\OK  = \ZZ_p$ and $X = \PP^1_K$.
+    Then $\X = \PP^1_{\OK}$ is a model of $X$ with the evident identification
+    $\X_\eta = \X_K \cong \PP^1_K$.
+    The special fibre $\X_s$ has one irreducible component which is isomorphic to $\PP^1_k$.
+\end{example}
+
+\begin{remark} \label{rem:flatIffIntegral}
+    The condition of a model being flat is equivalent to it being integral:
+    if $\X$ is integral and its structural map is compatible with the given generic fibre, then every local ring $\OO_{\X,x}$ is a domain containing $\OK$.
+    Thus $\OO_{\X,x}$ is a torsion-free module over the discrete valuation ring $\OK$, hence flat by~\cite[Corollary 1.2.14]{Liu}.
+    Conversely, the integrality of a model $\X$ of $X$ follows from its flatness and the integrality of $X$ by~\cite[Proposition 4.3.8]{Liu}.
+\end{remark}
+
+\begin{proposition}\label{prop:existence-of-models}
+    Every nice curve $X/K$ admits a model.
+\end{proposition}
+
+\begin{proof}
+    Choose a closed immersion $X\hookrightarrow\PP^n_K$, and let $\X_0$ be the schematic closure of $X$ in $\PP^n_{\OK}$.
+    Then $\X_0$ is proper and integral over $\OK$, and hence flat by Remark~\ref{rem:flatIffIntegral}.
+    Normalize $\X_0$ in $F_X$.
+    The completeness hypothesis in Assumption~\ref{ass:v_K} implies that the discrete valuation ring $\OK$ is excellent, so this normalization is finite by~\cite[Theorem 8.2.39(d)]{Liu}.
+    It is therefore proper over $\OK$; it is normal and integral by construction, hence flat, and its generic fibre is $X$ because $X$ is normal.
+    Thus the normalization is a model of $X$.
+\end{proof}
+
+
+\section{The category of models and modifications}\label{sec:category-of-models-and-modifications}
+We now introduce the morphisms used to compare models of a fixed curve.
+They turn the collection of models into a partially ordered system in which any two models admit a common dominating model.
+
+\begin{definition}\label{def:modification-of-models}
+    Let $\X$ and $\X'$ be models of $X$.
+    A \textit{modification} $\varphi\colon\X'\to\X$ is a morphism of $\OK$-schemes whose restriction to the generic fibres is the identity on $X$ under the fixed identifications $\X'_\eta\cong X\cong\X_\eta$.
+    In this situation, we say that $\X'$ \textit{dominates} $\X$.
+\end{definition}
+
+\begin{lemma}\label{lem:uniqueness-of-modifications}
+    Between two fixed models of $X$, there is at most one modification.
+\end{lemma}
+
+\begin{proof}
+    Let $\varphi,\psi\colon\X'\to\X$ be modifications.
+    They agree on the generic fibre $\X'_\eta$, which is dense in the integral scheme $\X'$.
+    Since $\X$ is separated, the equalizer of $\varphi$ and $\psi$ is closed in $\X'$.
+    It contains the dense generic fibre and is therefore all of $\X'$, so $\varphi=\psi$.
+\end{proof}
+
+\begin{proposition}\label{prop:elementary-properties-of-modifications}
+    Let $\varphi\colon\X'\to\X$ be a modification of models.
+    Then $\varphi$ is proper, dominant, and surjective.
+    Moreover, there is a finite set $S\subset\X_s$ of closed points such that $\varphi$ is an isomorphism over $\X\setminus S$ and, for every $x\in S$, the fibre $\varphi^{-1}(x)$ is a connected projective curve over $\kappa(x)$.
+\end{proposition}
+
+\begin{proof}
+    Let $\varphi\colon\X'\to\X$ be a modification.
+    Since $\X$ is separated over $\Spec\OK$, the graph morphism
+    \[
+        \Gamma_\varphi\colon\X'\longrightarrow\X'\times_{\Spec\OK}\X
+    \]
+    is a closed immersion.
+    The projection $\X'\times_{\Spec\OK}\X\to\X$ is proper because it is the base change of the proper morphism $\X'\to\Spec\OK$.
+    Their composite is $\varphi$, so $\varphi$ is proper.
+    Its image contains the generic fibre $X$, which is dense in $\X$, and hence $\varphi$ is dominant.
+    Finally, a proper morphism has closed image, so the image of $\varphi$ is both dense and closed in $\X$ and must equal $\X$.
+
+    A proper birational morphism to a normal scheme is an isomorphism at every codimension-one point of the target; this follows by applying the valuative criterion of properness to the corresponding discrete valuation ring.
+    Hence the complement of the maximal open subset of $\X$ over which $\varphi$ is an isomorphism is a closed subset of codimension at least two.
+    Since $\X$ is a two-dimensional Noetherian scheme and $\varphi$ is already an isomorphism on the generic fibre, this complement is a finite set $S\subset\X_s$ of closed points.
+
+    By the connectedness form of Zariski's Main Theorem, the fibres of $\varphi$ are connected; see~\cite[\href{https://stacks.math.columbia.edu/tag/0AY8}{Lemma 0AY8}]{Stacks}.
+    If $x\in S$, the fibre over $x$ cannot be zero-dimensional: otherwise $\varphi$ would be finite in a neighbourhood of $x$, and a finite birational morphism to the normal scheme $\X$ would be an isomorphism there.
+    Thus $\varphi^{-1}(x)$ is a proper one-dimensional scheme over $\kappa(x)$, hence a projective curve.
+\end{proof}
+
+We write
+\[
+    \X\leq\X'
+\]
+if there is a modification $\X'\to\X$; thus the larger model is the one that dominates the smaller model.
+Here and below, models that are isomorphic as models of $X$ are identified when discussing this relation.
+
+\begin{proposition}\label{prop:partial-order-of-models}
+    The relation $\leq$ is a partial order on the set of isomorphism classes of models of $X$.
+    The category of models and modifications is equivalent to the partially ordered set regarded as a category.
+\end{proposition}
+
+\begin{proof}
+    The identity morphism gives reflexivity, and composition of modifications gives transitivity.
+    If $\X\leq\X'$ and $\X'\leq\X$, there are modifications $\varphi\colon\X'\to\X$ and $\psi\colon\X\to\X'$.
+    Both composites are modifications and hence, by Lemma~\ref{lem:uniqueness-of-modifications}, are the respective identity morphisms.
+    Thus $\varphi$ and $\psi$ are mutually inverse, which proves antisymmetry on isomorphism classes.
+    The same uniqueness lemma says that there is at most one morphism between any two models, so choosing one representative of each isomorphism class gives the asserted equivalence of categories.
+\end{proof}
+
+\begin{proposition}\label{prop:common-dominating-model}
+    Any two models $\X_1$ and $\X_2$ of $X$ admit a common dominating model $\X_3$.
+\end{proposition}
+
+\begin{proof}
+    Consider the diagonal morphism determined by the fixed identifications of the generic fibres,
+    \[
+        X\longrightarrow\X_1\times_{\Spec\OK}\X_2.
+    \]
+    Let $\mathcal Z$ be the schematic closure of its image.
+    The product $\X_1\times_{\Spec\OK}\X_2$ is proper over $\Spec\OK$, and hence so is its closed subscheme $\mathcal Z$.
+    Moreover, $\mathcal Z$ is integral and its generic fibre is the diagonal copy of $X$.
+    It is therefore flat over the discrete valuation ring $\OK$ by Remark~\ref{rem:flatIffIntegral}.
+
+    Let $\X_3$ be the normalization of $\mathcal Z$ in $F_X$.
+    The completeness assumption in Assumption~\ref{ass:v_K} enters here: it implies that $\OK$ is excellent, so the normalization is finite; see~\cite[Chapter 8, in particular Theorem 8.2.39 (d)]{Liu}.
+    Consequently, $\X_3$ is proper over $\Spec\OK$.
+    It is integral and hence flat over $\OK$, and it is normal by construction.
+    Since $X$ is normal, normalization does not change the generic fibre, so $(\X_3)_\eta=X$.
+    Thus $\X_3$ is a model of $X$.
+    Composing the normalization map with the two projections gives modifications $\X_3\to\X_i$ for $i=1,2$.
+\end{proof}
+
+\begin{remark}\label{rem:models-form-cofiltered-category}
+    Proposition~\ref{prop:common-dominating-model} says that the partially ordered set of models is directed upward.
+    Since modifications point from a dominating model to a dominated model, the category of models is correspondingly cofiltered and may be viewed as an inverse system.
+    Common dominating models may also be produced through suitable blowups followed by normalization.
+\end{remark}
+
+Chapter~\ref{ch:correspondence-between-models-and-valuations} will identify this order with inclusion between the corresponding finite sets of geometric valuations.
+
+\section{Local properties of models}\label{sec:local-properties-of-models}
+
+We briefly recall some local properties of two-dimensional schemes that will be
+used throughout the book.
+Our purpose is only to fix terminology and record the standard implications needed
+below.
+For further details, we refer to \cite[\S 4.2, \S 6.3, \S 6.4, \S 8.2.2, and
+\S 8.3.1]{Liu}.
+
+For the following discussion, it is sometimes useful to drop the normality assumption of Definition \ref{def:model}.
+
+\begin{definition}\label{def:pre-model}
+    A \textit{pre-model} of $X$ is a flat and proper $\OK$-scheme $\X$ with $\X_\eta = X$.
+    That is, $\X$ satisfies all the conditions of a model except that it need not be normal.
+\end{definition}
+
+Under Assumption~\ref{ass:v_K}, the valuation ring $\OK$ is an excellent discrete
+valuation ring.
+Every pre-model of $X$ is therefore a Noetherian excellent scheme of pure
+dimension~$2$.
+Its local rings at closed points of the special fibre have dimension~$2$, while
+the local rings at the generic points of irreducible components of the special
+fibre have dimension~$1$.
+See \cite[\S 8.2.3 and \S 8.3.1]{Liu}.
+
+Let $A$ be a Noetherian local ring with maximal ideal $\m$ and residue
+field $\kappa$.
+The ring $A$ is called regular if
+\[
+    \dim{} A
+    =
+    \dim{\kappa} \m/\m^2.
+\]
+Equivalently, the maximal ideal of $A$ can be generated by $\dim{} A$ elements.
+A scheme is regular at a point if its local ring at that point is regular.
+We refer to \cite[\S 4.2]{Liu} for the basic properties of regular local rings
+and regular schemes.
+
+The ring $A$ is called Cohen--Macaulay if
+\[
+    \depth{A}=\dim{} A.
+\]
+A Noetherian scheme is Cohen--Macaulay if all its local rings are
+Cohen--Macaulay.
+The definition and the main properties of Cohen--Macaulay rings are recalled in
+\cite[\S 8.2.2]{Liu}.
+
+A Noetherian local ring $A$ is called a \textit{complete intersection} if
+its completion can be written as the quotient of a regular local ring by an
+ideal generated by a regular sequence.
+A locally Noetherian scheme is called \textit{locally a complete intersection} (\emph{l.c.i.})
+if all its local rings are complete intersections.
+This is a local property and does not assert that the scheme is a complete
+intersection in a single ambient scheme.
+The same terminology is often used for morphisms in the literature; we will
+not need that relative notion here.
+In particular, an effective Cartier divisor in a regular scheme is locally a
+complete intersection.
+See \cite[\S 6.3]{Liu}.
+
+The Gorenstein property is a stronger duality property of Cohen--Macaulay local
+rings.
+We will not need its full definition at this point; see
+\cite[\S 6.4]{Liu} for the relevant duality theory.
+For Noetherian local rings, we shall use the standard implications
+\[
+\text{regular}
+\Longrightarrow
+\text{l.c.i.}
+\Longrightarrow
+\text{Gorenstein}
+\Longrightarrow
+\text{Cohen--Macaulay}.
+\]
+None of the converse implications holds in general.
+
+Serre's criterion says that a Noetherian ring is normal if and only if it satisfies
+the conditions $(\mathrm{R}_1)$ and $(\mathrm{S}_2)$; see
+\cite[Theorem 8.2.23]{Liu}.
+A Cohen--Macaulay ring satisfies $(\mathrm{S}_2)$.
+Consequently, an integral Cohen--Macaulay scheme is normal if and only if it is
+regular in codimension~$1$.
+
+In particular, every model of $X$ is Cohen--Macaulay.
+Indeed, a model is normal and has dimension~$2$, so Serre's condition $(\mathrm{S}_2)$ is
+equivalent to the Cohen--Macaulay condition for its local rings.
+The same conclusion need not hold for an arbitrary pre-model.
+
+\begin{proposition}\label{prop:nonregular-locus-of-model}
+    Let $\X$ be a model of $X$.
+    Then the nonregular locus of $\X$ is a finite set of closed points contained
+    in the special fibre $\X_s$.
+\end{proposition}
+
+\begin{proof}
+    This is a standard consequence of normality and excellence.
+    Normality implies that $\X$ is regular in codimension~$1$, while excellence
+    implies that its regular locus is open.
+    Thus the nonregular locus is a closed subset of codimension at least~$2$ in the
+    two-dimensional Noetherian scheme $\X$.
+    See \cite[\S 8.2.3 and \S 8.3.1]{Liu}.
+\end{proof}
+
+\begin{remark}
+    Regularity of the total space $\X$ should not be confused with regularity,
+    smoothness, or reducedness of its special fibre.
+    A regular model may have a singular special fibre, and its special fibre need not
+    be reduced.
+    Conversely, a model with reduced special fibre need not be regular.
+    These distinctions will be important in the study of permanent and semistable
+    models.
+\end{remark}
+
+\section{Normality and examples of models}\label{sec:normality-and-examples-of-models}
+To recognize when a proper flat scheme is a model, it remains to understand its normality. We first recall a criterion in terms of the special fibre and then apply it to several examples.
+
+
+\begin{lemma}\label{lem:conditions-for-normality}
+    Let $\X$ be a pre-model of $X$.
+    Then $\X$ is normal (i.e.\ a model) if and only if the following two conditions hold.
+    \begin{enumerate}[label=\textup{(\alph*)}]
+        \item The special fibre $\X_s$ has no embedded associated points; equivalently, there is no non-generic point $x\in \X_s$ \label{lem:conditions-for-normality-i}
+            satisfying $\m_x = \Ann{R}{r}$ for some $r\in R \coloneqq \OO_{\X_s,x}$ (see~\cite[Definition 7.1.6]{Liu}).
+        \item The local ring $\OO_{\X,\xi}$ is a discrete valuation ring for every generic point $\xi \in \X_s$. \label{lem:conditions-for-normality-ii}
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    (cf.\ \cite[Lemma 2.1]{ArzdorfWewers}) By Serre's criterion for normality~\cite[Theorem 8.2.23]{Liu},
+    we need to check the following properties:
+    \begin{itemize}
+        \item[$(\mathrm{R}_1)$] $\X$ is regular at $x$ when $\codim{x} \leq 1$, and
+        \item[$(\mathrm{S}_2)$] $\depth{\OO_{\X,x}} \geq \min\{2,\dim{}\OO_{\X,x}\}$
+    \end{itemize}
+    for all $x\in \X$. \\
+    The points on $\X$ with codimension $1$ are precisely the closed points of the generic fibre, which is regular by assumption,
+    and the generic points of the irreducible components of the special fibre.
+    The codimension-one local rings under consideration are one-dimensional Noetherian local domains.
+    Such a ring is regular if and only if it is a discrete valuation ring, so $(\mathrm{R}_1)$ is equivalent to
+    \ref{lem:conditions-for-normality-ii}.
+    Condition $(\mathrm{S}_2)$ holds automatically at points of the generic fibre and at the generic points of $\X_s$.
+    At every non-generic point $x\in\X_s$, it is equivalent to $\depth{\OO_{\X_s,x}}\geq1$ by~\cite[Proposition 8.2.11]{Liu}, which in turn is equivalent to $x$ not being an embedded associated point.
+\end{proof}
+
+
+We discuss the important example of \emph{plane models}. Let $X\subset\PP^2_K$ be a smooth projective plane curve. Let $\X$ be the Zariski closure of $X$ inside $\PP^2_{\OK}$. This is a proper and integral $\OK$-scheme with generic fibre $X$. By Remark \ref{rem:flatIffIntegral} it is therefore a pre-model of $X$.
+
+In concrete terms, $X$ is defined by a homogeneous irreducible polynomial $F \in K[X,Y,Z]$. After multiplying $F$ by a suitable element of $K^\times$, we may assume that $F$ is integral (i.e.\ all coefficients are in $\OK$) and primitive (not all coefficients are divisible by the uniformizer $\pi$). Then $\X\subset\PP^2_{\OK}$ is the hypersurface cut out by $F$. It follows that the special fibre is the plane curve $\X_s\subset\PP^2_k$ cut out by the reduction $\bar{F}\in k[X,Y,Z]$ of $F$. In particular, the generic points $\xi\in\X_s$ correspond to the irreducible factors of $\bar{F}$.
+
+\begin{proposition}\label{prop:plane-model-normality}
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item\label{prop:plane-model-normality-i}
+  $\X$ is normal if and only if it is regular at every generic point $\xi\in\X_s$.
+\item\label{prop:plane-model-normality-ii}
+  Let $\xi \in \X_s$ be a generic point, corresponding to an irreducible factor $\bar{G}$ of $\bar{F}$. Let $r$ be the multiplicity of $\bar G$ in $\bar F$, choose a homogeneous lift $G \in \OK[X,Y,Z]$, and write
+    \begin{align}
+        F = G^r H_1 + \pi^e H_2,
+    \end{align}
+    where $e\geq1$ is chosen so that $\bar H_2\neq0$ and $\bar{G}\nmid \bar{H}_1$.
+    Then $\X$ is regular at $\xi$ if and only if either $r=1$, or $e=1$ and $\bar{G}\nmid \bar{H}_2$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(cf.\ \cite[Example 8.2.26]{Liu})
+The ambient scheme $\PP^2_{\OK}$ is regular, and $\X$ is a hypersurface in it. Thus $\X$ is an effective Cartier divisor in a regular scheme, so it is locally a complete intersection and therefore Cohen--Macaulay. Serre's criterion then shows that $\X$ is normal if and only if it is regular at all its codimension-one points. Since $X$ is smooth over $K$, the only possible nonregular points of codimension one are the generic points of $\X_s$. This proves (i).
+
+Now let $\xi \in \X_s$ be a generic point. We may assume that $\xi$ lies on the affine chart $Z \neq 0$. We dehomogenize with  $x = X/Z$ and $y = Y/Z$ and consider $F,G,\ldots$ as elements of $\OK[x,y]$. Then $\xi$, as a point on the ambient space $\AA^2_{\OK}$, corresponds to the prime ideal $\p:=(\pi,G)\lhd\OK[x,y]$. The localization of $\OK[x,y]$ at $\p$ is the local ring $R\coloneqq\OO_{\AA^2_{\OK},\xi}$ with maximal ideal $\m=(\pi,G)R$. Therefore, $\OO_{\X,\xi}=R/(F)$. By \cite[Corollary 4.2.12]{Liu}, $\X$ is regular at $\xi$ if and only if $F \notin \m^2$ which in turn is the case if and only if either $r=1$, or $e=1$ and $\bar{H}_2 \notin \bar{G}(x,y)k[x,y]$.
+\end{proof}
+
+
+
+
+\begin{example}\label{ex:particular-model-of-plane-curve}
+    \begin{enumerate}[label=\textup{(\alph*)}]
+        \item
+          Consider the curve $X$ defined by $y^2 = x^3 + px$ over $K=\QQ_p$ with $p \neq 2$. In the setting of Proposition~\ref{prop:plane-model-normality},
+          \[
+            \X = \Proj{\OK[X,Y,Z]/(X^3 + pXZ^2 - Y^2Z)}
+          \]
+          is a proper and flat $\OK$-scheme with $\X_\eta = X$. The special fibre is given by $\X_s = \Proj{k[X,Y,Z]/(X^3 - Y^2Z)}$. On the affine chart $Z\neq 0$, its generic point $\xi$ corresponds to the ideal $\m = (p, x^3-y^2)$. Here $r=e=1$, so Proposition~\ref{prop:plane-model-normality} shows that $\X$ is normal and therefore a model of $X$. Its special fibre is the integral plane curve with equation $y^2=x^3$, which has a unique singularity at $(0,0)$.
+        \item Let $X: y^3 = 1 + x^3 + 3x$ be a curve over $K=\QQ_3$.
+            The scheme
+            \begin{align}
+                \X = \Proj{\OK[X,Y,Z]/(Y^3 - Z^3 - X^3 - 3XZ^2)}
+            \end{align}
+            has a non-reduced special fibre:
+            On the affine chart $Z \neq 0$ we have $\X_s: 0 = y^3 - x^3 - 1 = (y - x - 1)^3$ over $\FF_3$.
+            In the notation of Proposition~\ref{prop:plane-model-normality},
+            \begin{align*}
+                F(x,y) &= G(x,y)^r H_1(x,y) + 3 H_2(x,y) \\
+                    &\coloneqq (y-x-1)^3 + 3(-x^2y + xy^2 + x^2 - 2xy + y^2 - y),
+            \end{align*}
+            so $r=3$, but $e=1$ and $\bar{H}_2(x,y) \notin \bar{G}(x,y)\FF_3[x,y]$.
+            Proposition~\ref{prop:plane-model-normality} therefore shows that $\X$ is normal and hence a model of $X$. Its special fibre is a nonreduced hypersurface with multiplicity $3$; its reduced subscheme $\X_s^\red$ is the line $y-x-1=0$.
+    \end{enumerate}
+\end{example}
+
+The following example is the discrete-valuation-ring version of~\cite[Example \textrm{III}.9.8.4]{Hartshorne}.
+
+\begin{example}\label{ex:premodel-with-embedded-point}
+    Let $p$ be an odd prime, let $K=\QQ_p$, and let $\OK=\ZZ_p$.
+    Consider the morphism
+    \[
+        \iota\colon \PP^1_K \longrightarrow \PP^3_K,
+        \qquad
+        [S:T]\longmapsto [T^2S-S^3:T^3-TS^2:pTS^2:S^3].
+    \]
+    Since $p$ is invertible in $K$, these four cubic forms give the cubic Veronese embedding after a linear change of coordinates.
+    Thus, its image $X$ is a smooth projective curve isomorphic to $\PP^1_K$.
+    Let $\X$ be the schematic closure of $X$ in $\PP^3_{\OK}$.
+    Then $\X$ is proper over $\OK$ and integral.
+    It is therefore flat by Remark~\ref{rem:flatIffIntegral}, so $\X$ is a pre-model of $X$.
+
+    On the affine chart $W\neq 0$, set $x=X/W$, $y=Y/W$, and $z=Z/W$.
+    With $t=T/S$, the generic fibre is parametrized by
+    \[
+        x=t^2-1,\qquad y=t^3-t,\qquad z=pt.
+    \]
+    Eliminating $t$ and taking the $p$-saturated closure gives
+    \[
+        \X\cap\{W\neq 0\}
+        =\Spec{\ZZ_p[x,y,z]/I},
+    \]
+    where
+    \[
+        I=\bigl(p^2(x+1)-z^2,\;px(x+1)-yz,\;xz-py,\;
+        y^2-x^2(x+1)\bigr).
+    \]
+    Hence the coordinate ring of the special fibre on this chart is
+    \[
+        B=k[x,y,z]/\bigl(z^2,yz,xz,y^2-x^2(x+1)\bigr).
+    \]
+    Its reduced subscheme is the nodal cubic $z=0$, $y^2=x^2(x+1)$.
+    Let $\m=(x,y,z)$ be the maximal ideal of its node and let $\bar z$ denote the class of $z$ in $B_{\m}$.
+    The defining relations give $\m\bar z=0$.
+    Moreover, $\bar z\neq 0$: the homomorphism
+    \[
+        B\longrightarrow k[\epsilon]/(\epsilon^2),
+        \qquad x,y\longmapsto 0,\quad z\longmapsto\epsilon,
+    \]
+    extends to $B_{\m}$ and has nonzero image on $\bar z$.
+    It follows that $\operatorname{Ann}_{B_{\m}}(\bar z)=\m B_{\m}$.
+    Thus, the node is an embedded point of $\X_s$, and $\X$ is a pre-model that is not a model by Lemma~\ref{lem:conditions-for-normality}.
+\end{example}
+
+% Model with reduced special fibre: X: 0 = (y-1)(x^3+2) +3x
+
+\section{Components and geometric valuations}\label{sec:components-and-geometric-valuations}
+We now associate a valuation of the function field to each irreducible component of the special fibre. This construction also relates the multiplicity of a component to the value group of its valuation.
+
+\begin{definition}\label{def:type-II-valuation}
+    Let $F_X$ be the function field of $X$ over $K$.
+    A valuation $v: F_X \to \hat{\RR}$ is a \textit{type-II valuation} if
+    \begin{enumerate}[label=\textup{(\alph*)}]
+        \item $v|_K = v_K$,
+        \item $v$ is discrete, and
+        \item the residue field $\kappa(v)$ has transcendence degree $1$ over $k$.
+    \end{enumerate}
+    A valuation of this type is also known as a \textit{geometric valuation}.
+    We denote the set of all such valuations relative to $K$ by
+    \[
+        V_\mathrm{II}(F_X/K).
+    \]
+    When the base field is clear, we abbreviate this to $V_\mathrm{II}(F_X)$.
+    The number
+    \begin{align}
+        m_K(v) \coloneqq [\Gamma_v : \Gamma_K]
+    \end{align}
+    is called the \textit{multiplicity of $v$ relative to $K$}, where $\Gamma_v \coloneqq v(F_X^*)$ is the value group.
+    We write $m(v)$ when the base field is clear.
+    We say that $v$ is \textit{weakly unramified over $K$} if $m_K(v) = 1$.
+\end{definition}
+
+\begin{remark}\label{rem:type-II-multiplicity-finite}
+    The multiplicity in Definition~\ref{def:type-II-valuation} is finite.
+    Write $\Gamma_K=\gamma_K\ZZ$ with $\gamma_K>0$.
+    Since discreteness is part of the definition of a type-II valuation and $\Gamma_K\subseteq\Gamma_v$, there is a unique integer $m\geq1$ such that
+    \[
+        \Gamma_v=\frac{\gamma_K}{m}\ZZ.
+    \]
+    Hence
+    \[
+        [\Gamma_v:\Gamma_K]=m<\infty.
+    \]
+\end{remark}
+
+\begin{example}
+    The \textit{Gauß valuation} on the polynomial ring $K[x]$ is defined as
+    \begin{align}
+        v_{\scriptscriptstyle G}: K[x] &\to \hat{\RR}, \; v_{\scriptscriptstyle G}\left( \sum_i a_i x^{i} \right) = \min_i(v_K(a_i)).
+    \end{align}
+    Since $\kappa(v_{\scriptscriptstyle G}) = k(\bar{x})$ (where $\bar{x}$ is the image of $x$ in $\kappa(v_{\scriptscriptstyle G})$), the Gauß valuation
+    extends naturally and uniquely to $K(x)$, so $v_{\scriptscriptstyle G} \in V_\textrm{II}(K(x))$.
+\end{example}
+
+Let $\X$ be a model of $X$.
+We wish to assign a valuation in $V_\textrm{II}(F_X)$ to each generic point of the special fibre $\X_s$.
+Suppose that $Z$ is an irreducible component of $\X_s$ with generic point $\xi$.
+Since $\xi$ has codimension $1$ in $\X$, the stalk $\OO_{\X,\xi}$ is a discrete valuation ring\@.
+Thus, we can define a valuation on $F_X$,
+\begin{align} \label{eq:ValuationOfComponent}
+    v_Z: \mathrm{Frac}(\OO_{\X, \xi}) = F_X \to \hat{\RR}.
+\end{align}
+Since $\X$ is a flat $\OK $-scheme, $\OO_{\X, \xi}$ dominates $\OK$, and we choose the unique scaling of $v_Z$ whose restriction to $K$ is $v_K$.
+We set
+\begin{align}
+    V(\X) \coloneqq \lbrace v_Z: \; Z \subset \X_s \text{ is an irreducible component}\rbrace.
+\end{align}
+
+\begin{proposition}\label{prop:WellDefOfInducedValuation}
+    The valuation defined in~\eqref{eq:ValuationOfComponent} is a type-II valuation.
+\end{proposition}
+
+\begin{proof}
+    As mentioned above, we can assume $v_Z|_K = v_K$.
+    The residue field of the valuation is
+    \begin{align}
+        \kappa(v_Z)=\kappa(\xi)=k(Z).
+    \end{align}
+    Since $Z$ is an integral curve over $k$, it follows that
+    $\trdeg_k \kappa(v_Z)=1$, showing $v_Z \in V_\textrm{II}(F_X)$.
+\end{proof}
+
+\begin{definition}
+    The \textit{multiplicity} of the irreducible component $Z$ of $\X_s$ containing the generic point $\xi$ is defined as
+    \begin{align}
+        m(Z)
+        \coloneqq \length_{\OO_{\X,\xi}}\bigl(\OO_{\X_s,\xi}\bigr)
+        = \length_{\OO_{\X,\xi}}\bigl(\OO_{\X,\xi}/\pi\OO_{\X,\xi}\bigr),
+    \end{align}
+    where $\pi$ is a uniformising parameter of $\OK$.
+\end{definition}
+
+\begin{proposition}\label{prop:multiplicities-coincide}
+    We have $m(v_Z) = m(Z)$.
+\end{proposition}
+
+\begin{proof}
+    Since the model $\X$ is normal, the stalk $\OO_{\X,\xi}$ is a discrete valuation ring.
+    Let $\pi_\xi$ be a uniformising parameter of this ring.
+    There is a unit
+    $u\in\OO_{\X,\xi}^{\times}$ such that
+    \begin{align}
+        \pi=u\pi_\xi^{m(Z)}.
+    \end{align}
+    Indeed, the exponent on the right is the length of
+    $\OO_{\X,\xi}/\pi\OO_{\X,\xi}=\OO_{\X_s,\xi}$.
+    Write $\Gamma_K=\gamma_K\ZZ$ and choose $\pi$ so that $v_K(\pi)=\gamma_K$.
+    The displayed relation gives
+    $v_Z(\pi_\xi)=\gamma_K/m(Z)$, and hence $\Gamma_{v_Z}=(\gamma_K/m(Z))\ZZ$.
+    Hence
+    \begin{align}
+        m(Z)=[\Gamma_{v_Z}:\Gamma_K]=m(v_Z).
+    \end{align}
+\end{proof}
+
+We finish the section by recording the standard facts about valuations in finite field extensions.
+
+\begin{proposition}\label{prop:finite-extension-valued-fields}
+    Let $E/F$ be a finite extension of fields and let $v$ be a discrete real-valued valuation on $F$.
+    Then $v$ has at least one and only finitely many extensions to $E$.
+    For every extension $w$ of $v$, set
+    \[
+        e(w/v)\coloneqq[\Gamma_w:\Gamma_v]
+        \qquad\text{and}\qquad
+        f(w/v)\coloneqq[\kappa(w):\kappa(v)].
+    \]
+    Then:
+    \begin{enumerate}[label=\textup{(\roman*)}]
+        \item The ramification index $e(w/v)$ and residue degree $f(w/v)$ are finite, and
+        \[
+            e(w/v)f(w/v)\leq[E:F].
+        \]
+        \item Ramification indices and residue degrees are multiplicative in towers: if $M/E$ is finite and $u$ extends $w$ to $M$, then
+        \[
+            e(u/v)=e(u/w)e(w/v)
+            \qquad\text{and}\qquad
+            f(u/v)=f(u/w)f(w/v).
+        \]
+        \item The valuation $w$ is discrete, and $\kappa(w)/\kappa(v)$ is finite.
+        In particular, extension and restriction through a finite field extension preserve the transcendence degree of the residue field over any common subfield.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    Existence follows by applying~\cite[\href{https://stacks.math.columbia.edu/tag/00IA}{Lemma 10.50.2}]{Stacks} to the local subring $\OO_v\subseteq E$; the intersection of the resulting valuation ring with $F$ dominates $\OO_v$ and hence equals it.
+    For finiteness in the general case, let $E_s$ be the maximal separable subextension of $E/F$.
+    The extensions to $E_s$ are the localizations at the finitely many maximal ideals of the integral closure of $\OO_v$ in $E_s$; see~\cite[\href{https://stacks.math.columbia.edu/tag/0EXQ}{Remark 15.113.6}]{Stacks}.
+    Each of them extends uniquely through the purely inseparable extension $E/E_s$, because the relevant integral closure is a valuation ring by~\cite[\href{https://stacks.math.columbia.edu/tag/0H37}{Lemma 15.123.3}]{Stacks}.
+    Thus there are only finitely many extensions to $E$.
+
+    For a fixed $w$, part~(i) is~\cite[\href{https://stacks.math.columbia.edu/tag/0ASH}{Lemma 15.125.2}]{Stacks}, applied to $\OO_v\subseteq\OO_w$.
+    Part~(ii) follows from the multiplicativity of group indices and field degrees; compare~\cite[\href{https://stacks.math.columbia.edu/tag/0BRL}{Lemma 15.113.3}]{Stacks}.
+    If $\Gamma_v=\delta\ZZ$ and $e=e(w/v)$, then $e\Gamma_w\subseteq\Gamma_v$, so
+    \[
+        \Gamma_w\subseteq\frac{\delta}{e}\ZZ.
+    \]
+    This proves discreteness, while the remaining assertions in part~(iii) follow from the finiteness of $f(w/v)$.
+\end{proof}
+
+\begin{corollary}\label{cor:finite-extensions-type-II-valuations}
+    Let $F\subseteq E$ be a finite extension of one-variable function fields over $K$, let $w$ be a real-valued valuation on $E$, and set $v=w|_F$.
+    \begin{enumerate}[label=\textup{(\roman*)}]
+        \item Every extension to $E$ of a valuation in $V_\mathrm{II}(F/K)$ belongs to $V_\mathrm{II}(E/K)$.
+        \item If $w\in V_\mathrm{II}(E/K)$, then $v\in V_\mathrm{II}(F/K)$.
+        \item Under either hypothesis,
+        \[
+            m_K(w)=e(w/v)m_K(v).
+        \]
+    \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+    For part~(i), Proposition~\ref{prop:finite-extension-valued-fields} shows that $w$ is discrete and that $\kappa(w)/\kappa(v)$ is finite.
+    Thus $\kappa(w)$ and $\kappa(v)$ have the same transcendence degree over $k$, so $w$ is type II.
+    For part~(ii), $\Gamma_v$ is a nonzero subgroup of the discrete group $\Gamma_w$ and is therefore discrete.
+    Moreover, $\kappa(w)/\kappa(v)$ is finite by Proposition~\ref{prop:finite-extension-valued-fields}, so the two residue fields have the same transcendence degree over $k$.
+    The formula in part~(iii) is the identity
+    \[
+        [\Gamma_w:\Gamma_K]
+        =
+        [\Gamma_w:\Gamma_v][\Gamma_v:\Gamma_K].
+    \]
+\end{proof}
+
+If $E$ contains a finite extension $L/K$ and $w|_L=v_L$, then multiplicities relative to the two constant fields satisfy
+\[
+    m_K(w)=e(L/K)m_L(w),
+    \qquad
+    e(L/K)\coloneqq[\Gamma_L:\Gamma_K].
+\]
+
+The finite set $V(\X)$ motivates the classification of models developed in the next chapter.

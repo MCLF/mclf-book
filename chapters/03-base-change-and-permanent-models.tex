@@ -1,0 +1,483 @@
+\chapter{Base change and permanent models}\label{ch:base-change-and-permanent-models}
+\chaptermark{Base change and permanent models}
+
+This chapter studies models under finite extensions of the base field.
+The correspondence of Chapter~\ref{ch:correspondence-between-models-and-valuations} turns normalized base change into the extension of finitely many type-II valuations.
+For Galois extensions, the normalized base change carries a natural semilinear action and the original model is recovered as its quotient, while unramified base change is already normal and finite étale.
+Reducedness, permanence, and elimination of ramification can then be expressed in terms of their multiplicities.
+
+Throughout this chapter, $X$ is a smooth, projective and absolutely irreducible curve over the complete discretely valued field $K$ satisfying Assumption~\ref{ass:v_K}.
+
+\section{Normalized base change and extensions of valuations}\label{sec:normalized-base-change}
+
+We first adapt Proposition~\ref{prop:normalization-extension-valuations} to an extension of the constant field.
+Let $L/K$ be a finite extension.
+Since $X$ is absolutely irreducible, $X_L$ is integral and
+\[
+    F_{X_L}=F_X\otimes_K L % notation-check: allow -- this is a tensor product of fields, not a scheme base change
+\]
+is a field.
+After choosing embeddings into a common overfield, this field may equivalently be viewed as the compositum $F_X\mathbin{\cdot}L$.
+
+\begin{remark}\label{rem:nice-curve-after-base-change}
+    Smoothness, projectivity, and absolute irreducibility are preserved under extension of the ground field, so $X_L$ is a nice curve over $L$.
+    When regarded as a $K$-scheme, however, $X_L$ need not be absolutely irreducible over $K$.
+    Thus the discussion below is the relative analogue of Proposition~\ref{prop:normalization-extension-valuations} rather than a literal special case of it.
+\end{remark}
+
+The valuation $v_K$ has a unique extension $v_L$ to $L$ because $K$ is complete, and we always scale it so that
+\[
+    v_L|_K=v_K.
+\]
+We do not renormalize $v_L$ to have value group $\ZZ$.
+Thus, if $\Gamma_K=\ZZ$ and $e=e(L/K)$, then
+\[
+    \Gamma_L=\frac1e\ZZ.
+\]
+
+Let $\X$ be a model of $X$.
+The ordinary base change is
+\[
+    \X_{\OL}
+    \coloneqq
+    \X\times_{\Spec\OK}\Spec\OL.
+\]
+It is proper and flat over $\OL$, with generic fibre $X_L$; only normality may fail.
+We write
+\[
+    \X_L
+\]
+for the normalized base change, namely the normalization of $\X_{\OL}$ in $F_{X_L}$.
+It may also be obtained by normalizing $\X$ directly in the finite extension $F_{X_L}/F_X$.
+Indeed, on an affine open $\operatorname{Spec}A\subseteq\X$, the integral closure of $A$ in $F_{X_L}$ contains $\OL$, because every element of $\OL$ is integral over $\OK\subseteq A$.
+It therefore contains $A\otimes_{\OK}\OL$.
+Conversely, $A\otimes_{\OK}\OL$ is integral over $A$, so an element of $F_{X_L}$ is integral over $A$ if and only if it is integral over $A\otimes_{\OK}\OL$.
+Hence the two integral closures in $F_{X_L}$ coincide.
+Finiteness of the normalization follows from excellence; see \cite[Theorem 8.2.39(d)]{Liu}.
+
+For $v\in V_\mathrm{II}(F_X/K)$, set
+\begin{align}\label{eq:def-ext-L}
+    \operatorname{Ext}_L(v)
+    \coloneqq
+    \{w\in V_\mathrm{II}(F_{X_L}/L):w|_{F_X}=v\}.
+\end{align}
+Every extension of $v$ to $F_{X_L}$ restricts to $v_L$ on $L$.
+Corollary~\ref{cor:finite-extensions-type-II-valuations} shows that it is discrete and that its residue field is finite over $\kappa(v)$; since the residue field $l$ of $L$ is finite over $k$, it has residue-field transcendence degree one over $l$ and therefore belongs to the set in~\eqref{eq:def-ext-L}.
+For such an extension, the change-of-base formula from Chapter~\ref{ch:models-of-curves-over-valued-fields} reads
+\[
+    m_K(w)=e(L/K)m_L(w).
+\]
+
+The following is the relative version of Proposition~\ref{prop:normalization-extension-valuations}.
+
+\begin{proposition}\label{prop:valuations-normalized-base-change}
+    Restriction of valuations gives a surjection
+    \[
+        V(\X_L)\longrightarrow V(\X),
+    \]
+    and the fibre over $v\in V(\X)$ is $\operatorname{Ext}_L(v)$.
+    Thus
+    \begin{align}\label{eq:valuations-normalized-base-change}
+        V(\X_L)
+        =
+        \bigsqcup_{v\in V(\X)}\operatorname{Ext}_L(v).
+    \end{align}
+\end{proposition}
+
+\begin{proof}
+    Let $\xi$ be the generic point corresponding to $v\in V(\X)$.
+    The local ring $\OO_{\X,\xi}$ is the valuation ring $\OO_v$.
+    The generic points of the normalized base change above $\xi$ correspond to the maximal ideals of the integral closure of $\OO_v$ in $F_{X_L}$, and their local rings are the valuation rings of the elements of $\operatorname{Ext}_L(v)$.
+    This is the same discrete-valuation-ring argument as in Proposition~\ref{prop:normalization-extension-valuations}.
+    Every generic point of the special fibre maps to a generic point of $\X_s$ because the normalization morphism is finite.
+    Hence every component valuation occurs in exactly one of the displayed fibres.
+\end{proof}
+
+Computing normalized base change therefore amounts to understanding the extensions of each component valuation $v\in V(\X)$ to $F_{X_L}$.
+
+Suppose now that $L/K$ is finite Galois, with group $G=\operatorname{Gal}(L/K)$.
+Since $X$ is geometrically integral, $F_X$ and $L$ are linearly disjoint over $K$.
+Consequently, $F_{X_L}=F_X\otimes_K L$ is a Galois extension of $F_X$ with group $G$, acting by % notation-check: allow -- this is a tensor product of fields, not a scheme base change
+\[
+    g(f\otimes\lambda)=f\otimes g(\lambda).
+\]
+
+\begin{corollary}[Galois action on normalized base change]\label{cor:galois-action-normalized-base-change}
+    Suppose that $L/K$ is finite Galois with group $G$.
+    Then:
+    \begin{enumerate}[label=\textup{(\roman*)}]
+        \item The group $G$ acts naturally on $\X_L$ by $\OK$-automorphisms, and this action is semilinear over $\OL$.
+        Thus, for every $g\in G$, the diagram
+        \[
+            \begin{tikzcd}
+                \X_L \arrow[r, "g"] \arrow[d] & \X_L \arrow[d] \\
+                \Spec\OL \arrow[r, "g"] & \Spec\OL
+            \end{tikzcd}
+        \]
+        commutes.
+        \item The finite morphism $\X_L\to\X$ is $G$-invariant.
+        \item The quotient scheme exists, and the canonical morphism induces an isomorphism
+        \[
+            \X_L/G\cong\X.
+        \]
+        \item For every $v\in V(\X)$, the group $G$ acts transitively on $\operatorname{Ext}_L(v)$.
+        Equivalently, it acts transitively on the irreducible components of $(\X_L)_s$ lying above any fixed irreducible component of $\X_s$.
+    \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+    The action already exists on the ordinary base change $\X_{\OL}$: on an affine chart it is induced by
+    \[
+        g(a\otimes\lambda)=a\otimes g(\lambda).
+    \]
+    It preserves the integral closure of the coordinate ring in $F_{X_L}$ and therefore extends to the normalization $\X_L$.
+    The displayed formula also shows that the action is linear over $\OK$, semilinear over $\OL$, and leaves the morphism to $\X$ invariant.
+
+    The affine invariant-ring argument in Proposition~\ref{prop:galois-covers-quotients} applies without requiring $X_L$ to be a nice curve over $K$.
+    Indeed, if $U=\Spec A\subseteq\X$ and $B$ is the integral closure of $A$ in $F_{X_L}$, then
+    \[
+        B^G=A
+    \]
+    because $F_{X_L}^G=F_X$ and $A$ is normal.
+    These affine quotients glue and give $\X_L/G\cong\X$.
+
+    By Proposition~\ref{prop:valuations-normalized-base-change}, the set $\operatorname{Ext}_L(v)$ corresponds to the generic points of $(\X_L)_s$ above the generic point associated with $v$.
+    Equivalently, it corresponds to the maximal ideals in the integral closure of $\OO_v$ in $F_{X_L}$.
+    The transitivity assertion is therefore~\cite[\href{https://stacks.math.columbia.edu/tag/09EA}{Lemma 15.114.1}]{Stacks}.
+\end{proof}
+
+As in Remark~\ref{rem:galois-quotient-descent}, the quotient is an assertion about the total schemes and does not, without further hypotheses, identify $\X_s$ with $(\X_L)_s/G$.
+
+\begin{proposition}[Unramified base change]\label{prop:unramified-base-change}
+    Let $L/K$ be a finite unramified extension.
+    Then the ordinary base change $\X_{\OL}$ is normal, and hence
+    \[
+        \X_L=\X_{\OL}.
+    \]
+    Moreover, the canonical morphism
+    \[
+        \X_L\longrightarrow\X
+    \]
+    is finite étale.
+\end{proposition}
+
+\begin{proof}
+    Since $L/K$ is a finite unramified extension of complete discretely valued fields, $\OL$ is finite over $\OK$ and $\OK\to\OL$ is unramified; see~\cite[\href{https://stacks.math.columbia.edu/tag/0EXQ}{Remark 15.113.6 and Definition 15.113.7}]{Stacks} and~\cite[\href{https://stacks.math.columbia.edu/tag/024L}{Lemma 41.3.3}]{Stacks}.
+    It is flat because $\OL$ is torsion-free over the discrete valuation ring $\OK$, and is therefore finite étale.
+    Hence $\X_{\OL}\to\X$ is finite étale by base change.
+    Since $\X$ is normal, $\X_{\OL}$ is normal by~\cite[\href{https://stacks.math.columbia.edu/tag/025P}{Proposition 41.19.7}]{Stacks}.
+    Thus ordinary base change already equals its normalization.
+\end{proof}
+
+\begin{remark}\label{rem:consequences-unramified-base-change}
+    Finite unramified base change preserves and reflects regularity:
+    \[
+        \X\text{ is regular}
+        \quad\Longleftrightarrow\quad
+        \X_L\text{ is regular}.
+    \]
+    Indeed, $\X_L\to\X$ is faithfully flat and finite étale, and regularity is preserved and reflected by étale local homomorphisms; see~\cite[\href{https://stacks.math.columbia.edu/tag/025N}{Proposition 41.19.4}]{Stacks}.
+    More generally, properties of locally Noetherian schemes that are local for the étale topology may be checked after finite unramified base change.
+
+    If $l/k$ is the residue-field extension, then
+    \[
+        (\X_L)_s=\X_s\times_{\Spec k}\Spec l.
+    \]
+    Irreducible components may split after extending the residue field, but their multiplicities are unchanged.
+    More precisely, for $v\in V(\X)$ and $w\in\operatorname{Ext}_L(v)$, the induced extension $\OO_v\subseteq\OO_w$ is étale and hence has ramification index $e(w/v)=1$.
+    Since also $e(L/K)=1$, the multiplicity formulas from Chapter~\ref{ch:models-of-curves-over-valued-fields} give
+    \[
+        m_L(w)=m_K(w)=e(w/v)m_K(v)=m_K(v).
+    \]
+\end{remark}
+
+Thus unramified extensions do not create a normalization problem and do not alter component multiplicities.
+The phenomenon studied below is therefore entirely associated with ramified extensions of the constant field.
+
+\begin{definition}\label{def:eliminates-ramification}
+    Let $v\in V_\mathrm{II}(F_X/K)$.
+    A finite extension $L/K$ \textit{eliminates the ramification of $v$} if
+    \[
+        m_L(w)=1
+    \]
+    for every $w\in\operatorname{Ext}_L(v)$.
+    It \textit{eliminates the ramification of a finite set} $V\subseteq V_\mathrm{II}(F_X/K)$ if it eliminates the ramification of every $v\in V$.
+\end{definition}
+
+\section{Reduced special fibres and permanence}\label{sec:reduced-special-fibres-and-permanence}
+
+The multiplicity criterion of Chapter~\ref{ch:models-of-curves-over-valued-fields} immediately detects reduced special fibres.
+
+\begin{proposition}\label{prop:criterion-reducedness}
+    Let $\X$ be a model of $X$.
+    The following conditions are equivalent:
+    \begin{enumerate}[label=\textup{(\alph*)}]
+        \item $\X_s$ is reduced;
+        \item $\OO_{\X_s,\xi}$ is a field for every generic point $\xi\in\X_s$;
+        \item $m_K(v)=1$ for every $v\in V(\X)$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    The special fibre has no embedded points by Lemma~\ref{lem:conditions-for-normality}, because $\X$ is normal.
+    Hence it is reduced if and only if it is reduced at all its generic points, which is equivalent to condition~(b).
+    If $Z$ is the component with generic point $\xi$, Proposition~\ref{prop:multiplicities-coincide} gives
+    \[
+        m_K(v_Z)=\operatorname{length}_{\OO_{\X,\xi}}\OO_{\X_s,\xi}.
+    \]
+    This length is one exactly when $\OO_{\X_s,\xi}$ is a field.
+\end{proof}
+
+\begin{definition}\label{def:permanent-model}
+    A model $\X$ of $X$ is called \textit{permanent} if $\X_{\OL}$ is normal for every finite extension $L/K$.
+\end{definition}
+
+Component valuations alone do not detect normality at closed points of an ordinary base change.
+The following proof therefore uses the normality criterion from Chapter~\ref{ch:models-of-curves-over-valued-fields}.
+
+\begin{proposition}\label{prop:reducedness-implies-permanence}
+    If $\X_s$ is reduced, then $\X$ is permanent.
+\end{proposition}
+
+\begin{proof}
+    Let $L/K$ be finite, let $l/k$ be the induced residue-field extension, and set $\X'=\X_{\OL}$.
+    Since $k$ is perfect and $\X_s$ is reduced, the finite-type $k$-scheme $\X_s$ is geometrically reduced; see \cite[\href{https://stacks.math.columbia.edu/tag/020I}{Lemma 33.6.3}]{Stacks}.
+    Thus
+    \[
+        \X'_s=(\X_s)_l
+    \]
+    is reduced and in particular has no embedded points.
+
+    Let $\xi'$ be a generic point of $\X'_s$.
+    The ring $A'=\OO_{\X',\xi'}$ is a one-dimensional Noetherian local domain, and
+    \[
+        A'/\pi_LA'=\OO_{\X'_s,\xi'}
+    \]
+    is a field.
+    Hence the maximal ideal of $A'$ is generated by the nonzero element $\pi_L$, so $A'$ is a discrete valuation ring by \cite[\href{https://stacks.math.columbia.edu/tag/00PD}{Lemma 10.119.7}]{Stacks}.
+    Lemma~\ref{lem:conditions-for-normality} now shows that $\X'$ is normal.
+\end{proof}
+
+\section{Epp's theorem and elimination of ramification}\label{sec:epp-elimination-ramification}
+
+Epp's theorem supplies the extensions required in Definition~\ref{def:eliminates-ramification}.
+The original result is \cite{Epp}; a gap in one part of its proof was corrected in \cite{KuhlmannEppCorrection}.
+We use the solution form given by \cite[\href{https://stacks.math.columbia.edu/tag/09II}{Proposition 15.118.8}]{Stacks}, whose hypotheses fit the local rings occurring here.
+
+\begin{theorem}[Epp: elimination of ramification]\label{thm:epp}
+    Let $v\in V_\mathrm{II}(F_X/K)$.
+    There exists a finite extension $L/K$ that eliminates the ramification of $v$.
+\end{theorem}
+
+\begin{proof}
+    By Theorem~\ref{thm:bijectionModelsAndComponents}, the valuation $v$ is a component valuation on some model of $X$.
+    Its valuation ring $\OO_v$ is therefore a discrete valuation ring essentially of finite type over $\OK$.
+    Apply \cite[\href{https://stacks.math.columbia.edu/tag/09II}{Proposition 15.118.8}]{Stacks} to the extension $\OK\subset\OO_v$.
+    It gives a finite extension $L/K$ such that every localization of the integral closure of $\OO_v$ in $F_{X_L}$ is weakly unramified over $\OL$.
+    These localizations are precisely the valuation rings of the elements of $\operatorname{Ext}_L(v)$, so $m_L(w)=1$ for every such $w$.
+\end{proof}
+
+For completeness, the more general form of Epp's theorem requires, in positive residue characteristic $p$, that every element of $\bigcap_{n\geq1}\kappa(v)^{p^n}$ be separable algebraic over $k$; see \cite[\href{https://stacks.math.columbia.edu/tag/09F9}{Theorem 15.117.18}]{Stacks}.
+The essentially-finite-type form used above removes the need to verify this condition separately.
+
+\begin{corollary}\label{cor:epp-finite-set}
+    For every finite subset $V\subseteq V_\mathrm{II}(F_X/K)$, there exists a finite extension $L/K$ that eliminates the ramification of every $v\in V$.
+\end{corollary}
+
+\begin{proof}
+    For each $v\in V$, choose a finite solution $L_v/K$ as in the proof of Theorem~\ref{thm:epp}, and let $L$ be a finite extension containing all $L_v$.
+    A solution remains a solution after every further finite extension by \cite[\href{https://stacks.math.columbia.edu/tag/0GLR}{Lemma 15.118.1}]{Stacks}.
+    Thus $L/K$ eliminates the ramification of every $v\in V$.
+\end{proof}
+
+\begin{corollary}\label{cor:permanent-normalized-base-change}
+    Given a model $\X$, there exists a finite extension $L/K$ such that $\X_L$ has reduced special fibre and is permanent.
+\end{corollary}
+
+\begin{proof}
+    Apply Corollary~\ref{cor:epp-finite-set} to the finite set $V(\X)$.
+    Proposition~\ref{prop:valuations-normalized-base-change} and Definition~\ref{def:eliminates-ramification} show that every component valuation of $\X_L$ has multiplicity one relative to $L$.
+    Its special fibre is therefore reduced by Proposition~\ref{prop:criterion-reducedness}.
+    The residue field of $L$ is a finite extension of the perfect field $k$ and is therefore perfect, so the standing hypotheses used in Proposition~\ref{prop:reducedness-implies-permanence} remain valid over $L$.
+    Applying that proposition over $L$ shows that $\X_L$ is permanent.
+\end{proof}
+
+\section{Permanent models}\label{sec:permanent-models}
+
+The preceding results combine into the main theorem of the chapter.
+
+\begin{theorem}\label{thm:permanence}
+    Let $\X$ be a model of $X$.
+    \begin{enumerate}[label=\textup{(\roman*)}]
+        \item\label{thm:permanence-i} The following conditions are equivalent:
+        \begin{enumerate}[label=\textup{(\alph*)}]
+            \item\label{thm:permanence-i-a} $\X$ is permanent;
+            \item\label{thm:permanence-i-b} $\X_s$ is reduced;
+            \item\label{thm:permanence-i-c} every $v\in V(\X)$ is weakly unramified over $K$, equivalently $m_K(v)=1$.
+        \end{enumerate}
+        \item\label{thm:permanence-ii} There exists a finite extension $L/K$ such that $\X_L$ is permanent.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Proposition~\ref{prop:criterion-reducedness} proves the equivalence of conditions~\ref{thm:permanence-i-b} and~\ref{thm:permanence-i-c}.
+    Proposition~\ref{prop:reducedness-implies-permanence} proves that condition~\ref{thm:permanence-i-b} implies condition~\ref{thm:permanence-i-a}.
+    Part~\ref{thm:permanence-ii} is Corollary~\ref{cor:permanent-normalized-base-change}.
+
+    Suppose now that $\X$ is permanent.
+    Choose $L/K$ as in Corollary~\ref{cor:permanent-normalized-base-change} and set $\Y=\X_L$.
+    Since $\X_{\OL}$ is normal, its normalization map $\Y\to\X_{\OL}$ is an isomorphism.
+    Hence $(\X_s)_l=\Y_s$ is reduced, where $l$ is the residue field of $L$.
+    The extension $l/k$ is faithfully flat, so reducedness descends to $\X_s$.
+    This proves that condition~\ref{thm:permanence-i-a} implies condition~\ref{thm:permanence-i-b}.
+\end{proof}
+
+\section{Abhyanka's lemma and tame elimination}\label{sec:abhyanka-tame-elimination}
+
+Epp's theorem is needed in the presence of wild ramification.
+For tame component valuations, Abhyanka's lemma gives an explicit choice of base extension.
+
+\begin{definition}\label{def:tame-type-II-valuation}
+    The extension of discrete valuation rings $\OK\subseteq\OO_v$ associated with $v\in V_\mathrm{II}(F_X/K)$ is \textit{tame} if $\kappa(v)/k$ is separable and either $\operatorname{char}k=0$, or $\operatorname{char}k=p>0$ and $p\nmid m_K(v)$.
+    We call $v$ \textit{tame over $K$} when this extension of discrete valuation rings is tame.
+\end{definition}
+
+The residue-field condition is automatic under the standing assumption that $k$ is perfect, but it is included to make the hypothesis of Abhyanka's lemma explicit.
+The following statement is a direct application of \cite[\href{https://stacks.math.columbia.edu/tag/0BRM}{Lemma 15.116.4}]{Stacks}.
+
+\begin{lemma}[Abhyanka]\label{lem:abhyanka}
+    Let $v\in V_\mathrm{II}(F_X/K)$ be tame over $K$, and let $L/K$ be a finite extension such that
+    \[
+        m_K(v)\mid e(L/K).
+    \]
+    Then $L/K$ eliminates the ramification of $v$.
+\end{lemma}
+
+\begin{proof}
+    Apply Abhyanka's lemma to the extension of discrete valuation rings $\OK\subset\OO_v$ and the finite extension $L/K$.
+    Its hypotheses are exactly the tameness conditions in Definition~\ref{def:tame-type-II-valuation} and the displayed divisibility.
+    Every localization of the integral closure of $\OO_v$ in $F_{X_L}$ is then weakly unramified over $\OL$.
+    These localizations are the valuation rings of the elements $w\in\operatorname{Ext}_L(v)$, and hence $m_L(w)=1$ for all of them.
+\end{proof}
+
+\begin{corollary}\label{cor:abhyanka-finite-set}
+    Let $V\subseteq V_\mathrm{II}(F_X/K)$ be a finite set of tame valuations, and set
+    \[
+        e=\operatorname{lcm}\{m_K(v):v\in V\}.
+    \]
+    If $\pi_K$ is a uniformising parameter of $K$ and $L=K(\pi_K^{1/e})$, then $L/K$ is totally ramified of ramification index $e$ and eliminates the ramification of every $v\in V$.
+\end{corollary}
+
+\begin{proof}
+    If $\operatorname{char}k=p>0$, then $e$ is prime to $p$; in residue characteristic zero there is no such restriction.
+    The polynomial $T^e-\pi_K$ is Eisenstein, and its root generates a totally ramified extension of ramification index $e$; see \cite[\href{https://stacks.math.columbia.edu/tag/09EV}{Lemma 15.116.2}]{Stacks}.
+    The result follows by applying Lemma~\ref{lem:abhyanka} to every $v\in V$.
+\end{proof}
+
+\section{Wild examples}\label{sec:tame-and-wild-examples}
+
+The following examples concern wild component valuations and illustrate that the ramification index of the constant-field extension alone does not determine whether ramification is eliminated.
+
+\begin{example}[Eliminating the ramification of a component]\label{ex:cubic-elimination}
+    Let $K=\QQ_3$ and consider the projective plane curve with affine equation
+    \[
+        X:\quad y^3=3x^2+1.
+    \]
+    Its plane model $\X$ over $\ZZ_3$ is normal by Proposition~\ref{prop:plane-model-normality}.
+    The special fibre is the triple line $y-1=0$, so it has a unique component valuation $v$.
+    Put $z=y-1$.
+    The equation
+    \[
+        z^3+3z^2+3z-3x^2=0
+    \]
+    is Eisenstein over the Gauß valuation on $K(x)$.
+    The component valuation $v$ restricts to this Gauß valuation on $K(x)$.
+    Hence $v(z)=1/3$, $\Gamma_v=\frac13\ZZ$, and
+    \[
+        m_K(v)=3.
+    \]
+
+    Let $L=K(\theta)$ with $\theta^3=3$, and write $y=1+\theta y_1$.
+    The equation becomes
+    \[
+        y_1^3+\theta^2y_1^2+\theta y_1=x^2.
+    \]
+    Its reduction is the integral curve $y_1^3=x^2$, because $x^2$ is not a cube in $\FF_3(x)$.
+    The local ring at its generic point is a discrete valuation ring containing the corresponding local ring of the ordinary base change $\X_{\OL}$ and integral over it, so it is the local normalization above the generic point of $\X_s$.
+    In particular, there is one component above that point.
+    Thus $\operatorname{Ext}_L(v)=\{w\}$.
+    Since the corresponding special-fibre component is reduced, Proposition~\ref{prop:criterion-reducedness} gives
+    \[
+        m_L(w)=1.
+    \]
+    Therefore $L/K$ eliminates the ramification of $v$, and $\X_L$ has reduced special fibre and is permanent.
+\end{example}
+
+\begin{example}[Two wildly ramified quadratic extensions]\label{ex:wild-quadratic-extensions}
+    Let $K=\QQ_2$ and consider
+    \[
+        X:\quad y^2=8x^3-2.
+    \]
+    Its projective equation is
+    \[
+        Y^2Z=8X^3-2Z^3.
+    \]
+    The plane model $\X$ is normal by Proposition~\ref{prop:plane-model-normality}.
+    Its special fibre has the affine component $Z$ given by $y=0$ with multiplicity two and a component $Z_\infty$ at infinity with multiplicity one.
+    Let $v$ be the component valuation associated with $Z$.
+    Its restriction to $K(x)$ is the Gauß valuation.
+    Since
+    \[
+        y^2=2(4x^3-1),
+    \]
+    where $4x^3-1$ is a unit at the generic point of $Z$, we have $v(y)=1/2$ and
+    \[
+        m_K(v)=2.
+    \]
+    This valuation is wild because the residue characteristic is two.
+    The component valuation $v_\infty$ associated with $Z_\infty$ has $m_K(v_\infty)=1$ and is tame.
+    Lemma~\ref{lem:abhyanka} shows that every finite extension considered below eliminates its ramification.
+
+    \begin{enumerate}[label=\textup{(\alph*)}]
+        \item Let $L_1=K(\theta_1)$ with $\theta_1^2=2$ and set
+        \[
+            y=2y_1-\theta_1-2.
+        \]
+        Then
+        \[
+            y_1^2-(\theta_1+2)y_1=2x^3-(2+\theta_1).
+        \]
+        Relative to the valuation on $L_1(x)$, this quadratic is Eisenstein.
+        It therefore defines the unique component valuation $w_1$ in the normalization above the generic point of $Z$, so $\operatorname{Ext}_{L_1}(v)=\{w_1\}$, and its Newton polygon gives $w_1(y_1)=1/4$.
+        Since $\Gamma_{L_1}=\frac12\ZZ$, it follows that
+        \[
+            m_{L_1}(w_1)=2.
+        \]
+        Thus $L_1/K$ does not eliminate the ramification of $v$, and the corresponding component occurs with multiplicity two in the normalized special fibre of $\X_{L_1}$.
+        In particular, $\X_{L_1}$ is not permanent.
+
+        \item Let $L_2=K(\theta_2)$ with $\theta_2^2=-2$ and set
+        \[
+            y=2\theta_2y_2+\theta_2.
+        \]
+        The equation becomes
+        \[
+            y_2^2+y_2=-x^3.
+        \]
+        Its reduction is the Artin--Schreier equation $y_2^2+y_2=x^3$.
+        This polynomial is irreducible over $\FF_2(x)$: an element of the form $a^2+a$ cannot have a pole of odd order.
+        It is also separable, so it defines the unique reduced component above $Z$.
+        Thus $\operatorname{Ext}_{L_2}(v)=\{w_2\}$.
+        Hence
+        \[
+            m_{L_2}(w_2)=1.
+        \]
+        The extension $L_2/K$ eliminates the ramification of $v$.
+        It also eliminates the ramification of $v_\infty$, as observed above.
+        Proposition~\ref{prop:valuations-normalized-base-change} therefore shows that all component valuations of $\X_{L_2}$ have multiplicity one relative to $L_2$.
+        Its special fibre is reduced by Proposition~\ref{prop:criterion-reducedness}, and the model is permanent by Proposition~\ref{prop:reducedness-implies-permanence}.
+    \end{enumerate}
+
+    The extensions $L_1/K$ and $L_2/K$ have the same ramification index, but only the second eliminates the ramification of $v$.
+    This is precisely the behaviour not covered by the tame form of Abhyanka's lemma.
+\end{example}
