@@ -130,19 +130,26 @@ By construction, $v\leq v'$, and $v < v'$ if and only if $v(\phi) < \lambda$.
 \section{Minimal augmentation chains}\label{sec:minimal-augmentation-chains}
 The central structure result for these constructions describes Mac Lane pseudovaluations by minimal augmentation chains.
 
-The existence assertion below draws on~\cite[Theorem 8.1]{MacLane}, while~\cite[Theorem 15.3]{MacLane} gives the relevant criterion for comparing minimal chains.
-The precise uniqueness formulation requires revision, as recorded below.
+The following result combines the existence statements in~\cite[Theorem 4.31 and Corollary 4.67]{Rueth} with the uniqueness criterion in~\cite[Theorem 4.33]{Rueth}.
 
-\begin{theorem}
-    Let $v \in V(K[x])^*$.
-    Then there exists a unique minimal augmentation chain representing $v$.
-    In particular, $v$ is inductive.
+\begin{theorem}[Minimal augmentation chains]\label{thm:minimal-augmentation-chains}
+    \begin{enumerate}[label=\textup{(\roman*)}]
+        \item Every $v\in V(K[x])$ is inductive and can be represented by a minimal augmentation chain.
+        \item If $K$ is complete, then every $v\in V(K[x])^*$ is inductive and can be represented by a minimal augmentation chain.
+        \item Let
+        \begin{align*}
+            v_n&=[v_0,v_1(\phi_1)=\lambda_1,\dots,v_n(\phi_n)=\lambda_n],\\
+            w_m&=[v_0,w_1(\psi_1)=\mu_1,\dots,w_m(\psi_m)=\mu_m]
+        \end{align*}
+        be inductive pseudovaluations represented by minimal augmentation chains.
+        Then $v_n=w_m$ if and only if $m=n$ and, for every $i=1,\dots,n$,
+        \begin{enumerate}[label=\textup{(\alph*)}]
+            \item $\lambda_i=\mu_i$,
+            \item $\deg\phi_i=\deg\psi_i$, and
+            \item $v_{i-1}(\phi_i-\psi_i)\geq\lambda_i$.
+        \end{enumerate}
+    \end{enumerate}
 \end{theorem}
-
-% AUTHOR WARNING:
-\begin{authorwarning}
-The cited uniqueness theorem does not give literal uniqueness of all key polynomials in an augmentation chain. Different key polynomials can represent the same successive valuations, subject to Mac Lane's equivalence criterion. The statement must therefore be reformulated using the intended equivalence of minimal chains, and that equivalence must be defined.
-\end{authorwarning}
 
 \section{Discs, discoids, and valuations}\label{sec:discs-discoids-and-valuations}
 We conclude by introducing discs and discoids in $\overline K$, which give a geometric description of subsets defined by valuation conditions on polynomials.
