@@ -22,6 +22,7 @@ Chapter-local notation remains possible when it is declared clearly and does not
 - `X` usually denotes a smooth, projective, absolutely irreducible curve over `K`; Chapter 1 calls such a curve *nice*.
 - `F_X=K(X)` denotes its function field.
 - After the function field has been identified, prefer `F_X` in arguments involving valuations and field extensions; `K(X)` may be used when its construction as a function field is being emphasized.
+- An unqualified *cover* of curves is a finite dominant morphism. Write *finite separable cover* when separability is relevant.
 
 ## Models and fibres
 
@@ -53,7 +54,8 @@ Do not normally write `X\otimes_R S` for the base change of a scheme.
 The shorthand `X\times_R S` may be used only after its meaning has been declared; after the displayed definition, prefer `X_S`.
 A genuine fibre product of two schemes is not replaced by this convention; write its base scheme explicitly when needed.
 
-For finite `L/K`, write the normalized base change as `(\X_{\OL})^\sim`.
+For finite `L/K`, write `\X_{\OL}` for ordinary base change and `\X_L` for its normalization in `F_{X_L}`.
+Thus `X_L` is the base-changed curve, `\X_{\OL}` is ordinary base change, and `\X_L` is normalized base change; do not add a superscript to `\X_L`.
 Write a function-field compositum as `F_X\mathbin{\cdot}L`, not as the ambiguous juxtaposition `F_XL`.
 
 ## Components and valuations
@@ -62,7 +64,10 @@ Write a function-field compositum as `F_X\mathbin{\cdot}L`, not as the ambiguous
 - `\xi_Z`, or simply `\xi`, denotes its generic point.
 - `v_Z` denotes the associated geometric valuation.
 - `V(\mathcal X)` (entered as `V(\X)`) denotes the finite set of component valuations.
-- The terms *geometric valuation* and *type-II valuation* are both used; `V_{\mathrm{II}}(F_X)` denotes the set of type-II valuations of `F_X` in the established chapter notation.
+- The terms *geometric valuation* and *type-II valuation* are both used; `V_{\mathrm{II}}(F_X/K)` denotes the set of type-II valuations of `F_X` relative to `K`, and the base field may be suppressed when it is clear.
+- Write `m_K(v)=[\Gamma_v:\Gamma_K]` for multiplicity relative to `K`; after a finite extension `L/K`, write `m_L(w)=[\Gamma_w:\Gamma_L]`.
+- For an extension `w` of a valuation `v` through a finite field extension, write `e(w/v)=[\Gamma_w:\Gamma_v]` for the ramification index and `f(w/v)=[\kappa(w):\kappa(v)]` for the residue degree.
+- For a finite extension `E/F`, `\operatorname{Ext}_{E/F}(v)` denotes the set of extensions of `v` to `E`. For a finite constant-field extension `L/K`, `\operatorname{Ext}_L(v)` denotes the extensions to `F_{X_L}` relative to `L`.
 - Use *weakly unramified* when the valuation and base valuation have the same value group.
 
 ## Mac Lane theory
@@ -227,7 +232,3 @@ Otherwise use the following replacements unless explicit editorial approval has 
 
 Chapter-local notation is allowed when declared clearly near its first use.
 It must not conflict with these global conventions or silently assign a second global meaning to an established symbol.
-
-## Open notation questions
-
-- The notation in the provisional Abhyanka lemma in Chapter 3 remains unresolved: its existing author warning records the distinction between `V(X)` and `V(\X)` and the notation for extended valuations. Do not resolve this independently of the mathematical revision requested there.

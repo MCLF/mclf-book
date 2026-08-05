@@ -1,7 +1,10 @@
 \chapter{The correspondence between models and valuations}\label{ch:correspondence-between-models-and-valuations}
 \chaptermark{Models--valuations correspondence}
 
-Building on the valuations associated with components in Chapter~\ref{ch:models-of-curves-over-valued-fields}, this chapter proves that models of a fixed curve correspond to finite nonempty sets of geometric valuations of its function field. The proof is based on Chapter~3 of Julian Rüth's thesis~\cite{Rueth}.
+Building on the valuations associated with components in Chapter~\ref{ch:models-of-curves-over-valued-fields}, this chapter proves that models of a fixed curve correspond to finite nonempty sets of geometric valuations of its function field.
+By a cover of nice curves we mean a finite dominant morphism.
+The proof is based on Chapter~3 of Julian Rüth's thesis~\cite{Rueth}.
+The final section applies the correspondence to normalization in a finite cover, a viewpoint emphasized in Rüth's Proposition~5.2.
 
 \section{Statement and interpretation of the correspondence theorem}\label{sec:statement-correspondence-theorem}
 
@@ -26,7 +29,7 @@ The central result of this chapter says that the assignment $\X\mapsto V(\X)$ cl
 \end{theorem}
 
 \medskip\noindent
-The proof of this theorem will occupy the rest of this chapter.
+The proof occupies \S\S\ref{sec:modifications-and-injectivity}--\ref{sec:completion-correspondence-proof}.
 
 \section{Modifications and injectivity}\label{sec:modifications-and-injectivity}
 We first prove the injective part of the correspondence theorem.
@@ -43,21 +46,21 @@ We will show that these comparison maps induce inclusions between the correspond
 
 \begin{proof}
     We follow the argument of~\cite[Lemma 3.6]{Rueth}.
-    Let $Z \subset \X_s$ be the irreducible component that contains $\xi$.
     The graph argument in the proof of Proposition~\ref{prop:elementary-properties-of-modifications} shows that $\varphi$ is proper.
     Since its generic-fibre map is dominant, $\varphi$ is dominant and therefore surjective.
-    Hence there is a point $\xi'$ on an irreducible component $Z' \subset \X_s'$ that maps to $\xi$.
-    Since $\varphi$ is dominant, the induced ring homomorphism $\OO_{\X,\xi} \to \OO_{\X',\xi'}$ is injective.
-    This is an extension of discrete valuation rings and thus $\xi' \in Z'$ must be generic.
-    In particular, if $\varphi$ is birational, then both rings are integrally closed in the same field of fractions and hence are equal.
-    Therefore, $\xi'$ must be unique since $\X'$ is separated.
+    Let $\xi'$ be any point above $\xi$.
+    Dominance gives an injection $\kappa(\xi)\hookrightarrow\kappa(\xi')$, and $\operatorname{trdeg}_k\kappa(\xi)=1$.
+    The point $\xi'$ cannot be a closed point of the finite-type curve $\X'_s$, because the residue field of such a point is finite over $k$.
+    It is therefore the generic point of an irreducible component of $\X'_s$.
+    If $\varphi$ is birational, then it is an isomorphism over the codimension-one point $\xi$ by the standard fact used in Proposition~\ref{prop:elementary-properties-of-modifications}.
+    Hence there is exactly one point above $\xi$.
 \end{proof}
 
 Rüth records the following consequence of the comparison of components and their valuations as~\cite[Lemma 3.7]{Rueth}.
 
 \begin{lemma}\label{lemma:induced-order-on-valuations}
     Let $\varphi: \X' \to \X$ be a modification of models of $X$.
-    Then $V(\X) \subset V(\X')$.
+    Then $V(\X) \subseteq V(\X')$.
     In particular, the partial order $\X \leq \X'$ of models on $X$ induces a partial order on the corresponding finite
     subsets of $V_{\mathrm{II}}(F_X)$ via inclusion maps.
 \end{lemma}
@@ -69,13 +72,13 @@ Rüth records the following consequence of the comparison of components and thei
 The converse comparison is stated in~\cite[Lemma 3.8]{Rueth}.
 
 \begin{proposition}
-    Let $\X$ and $\X'$ be models of $X$ with $V(\X) \subset V(\X')$.
+    Let $\X$ and $\X'$ be models of $X$ with $V(\X) \subseteq V(\X')$.
     Then there is a modification $\X' \to \X$.
 \end{proposition}
 
 \begin{proof}
-    If $V(\X) \subset V(\X')$, then for every valuation $v_Z \in V(\X)$ corresponding to an irreducible component $Z\subset \X_s$ with generic point $\xi$,
-    there is an irreducible component $Z' \subset \X'_s$ with generic point $\xi'$, such that $\OO_{\X,\xi} = \OO_{\X',\xi'} \subset F_X$.
+    If $V(\X) \subseteq V(\X')$, then for every valuation $v_Z \in V(\X)$ corresponding to an irreducible component $Z\subseteq \X_s$ with generic point $\xi$,
+    there is an irreducible component $Z' \subseteq \X'_s$ with generic point $\xi'$, such that $\OO_{\X,\xi} = \OO_{\X',\xi'} \subseteq F_X$.
     Together with the identification $\X_\eta = X = \X'_\eta$, this induces a birational map $\X' \dashrightarrow \X$ (cf. for example \cite[Lemma 29.50.2.]{Stacks}).
     By \cite[Theorem 8.3.20]{Liu}, this map is a morphism. Since it identifies $\X_\eta$ and $\X'_\eta$, it is a modification.
 \end{proof}
@@ -116,12 +119,13 @@ Rüth states the resulting injectivity assertion as~\cite[Proposition 3.9]{Rueth
 \end{proof}
 
 \begin{example}
-    We continue with Example~\ref{ex:model-of-plane-curve}.
-    Let $F\in \ZZ_p[X,Y,Z]$ be homogenous, irreducible and primitive. Then
+    We continue the discussion of plane models from Proposition~\ref{prop:plane-model-normality}.
+    Let $F\in \ZZ_p[X,Y,Z]$ be homogeneous, irreducible, and primitive, and assume that the resulting plane pre-model
     \begin{align}
         \X = \Proj{\ZZ_p[X,Y,Z]/(F)}
     \end{align}
-    is a model of the plane projective curve $X$ over $\QQ_p$ given by $F$.
+    of the plane projective curve $X$ over $\QQ_p$ is normal, for instance by the criterion of Proposition~\ref{prop:plane-model-normality}.
+    Thus $\X$ is a model.
     Suppose that $\bar{F} \in \FF_p[X,Y,Z]$ is irreducible.
     Then $\X_s$ has precisely one irreducible component $Z$
     with generic point $\xi$ corresponding to the ideal $(p, \bar{F})$.
@@ -153,7 +157,7 @@ Rüth states the resulting injectivity assertion as~\cite[Proposition 3.9]{Rueth
 \section{Centres and extraction of valuations}\label{sec:centres-and-extraction}
 For the proof of Theorem~\ref{thm:bijectionModelsAndComponents}, it remains to show the surjectivity of the map (\eqref{eq:mapFromModelToValuation}),
 i.e., for a given finite, non-empty set of valuations
-$V \subset V_\textrm{II}(F_X)$, there is a model $\X$ of $X$ such that $V = V(\X)$.
+$V \subseteq V_\textrm{II}(F_X)$, there is a model $\X$ of $X$ such that $V = V(\X)$.
 We will prove this in two steps, which we state in the following proposition.
 The extraction statement is based on~\cite[Proposition 3.14]{Rueth}, while the contraction statement is~\cite[Proposition 3.16]{Rueth}, whose proof invokes~\cite[Theorem 8.3.36]{Liu}.
 
@@ -162,18 +166,18 @@ The extraction statement is based on~\cite[Proposition 3.14]{Rueth}, while the c
         %\item[]
         \item Given a model $\X$ and a valuation $v \in V_\textrm{II}(F_X)$, there exists a modification
         $\varphi \colon \X' \to \X$ such that $v \in V(\X')$. \label{prop:constructing_models_i}
-        \item Given a model $\X$ and a nonempty subset $V \subset V(\X)$,
+        \item Given a model $\X$ and a nonempty subset $V \subseteq V(\X)$,
         there exists a modification $\varphi \colon \X \to \X'$ such that $V = V(\X')$. \label{prop:constructing_models_ii}
     \end{enumerate}
 \end{proposition}
 
 After proving Proposition~\ref{prop:constructing_models}, the proof is complete:
-Starting with a model $\X$ of $X$, we can apply part~\ref{prop:constructing_models_i} for every $v \in V \subset V_\textrm{II}(F_X)$
+Starting with a model $\X$ of $X$, we can apply part~\ref{prop:constructing_models_i} for every $v \in V \subseteq V_\textrm{II}(F_X)$
 to obtain a new model that induces all valuations in $V$, but possibly more.
 We then apply part~\ref{prop:constructing_models_ii} to construct a model that induces exactly the valuations in $V$.
 
 
-We fix a model $\X$ of $X$ and a type II valuation $v \in V_\textrm{II}(F_X)$.
+We fix a model $\X$ of $X$ and a type-II valuation $v \in V_\textrm{II}(F_X)$.
 
 \begin{definition}
     A point $x \in \X$ is called a \textit{centre} of $v$ if there exists a morphism $f \colon \Spec \OO_v  \to \X$ of $\OK $-schemes
@@ -218,14 +222,16 @@ The following criterion is the observation made in~\cite[Example 3.11]{Rueth}.
     The canonical morphism $\Spec \OO_{\X, \xi} \to \X$ shows that $v$ has centre $\xi$,  which is indeed a point of codimension one.
     Conversely, suppose $v \in V_\textrm{II}(F_X)$ has centre $x \in \X$ of codimension one.
     The morphism $\Spec \OO_v \to \X$ uniquely factors through $\Spec \OO_v \to \Spec \OO_{\X, x}$, so $\OO_v$ dominates $\OO_{\X, x}$.
-    Since these are both valuation rings with common fraction field $F_X$, it follows that they are in fact equal.
+    Both are valuation rings in the common fraction field $F_X$, and $\OO_v$ dominates $\OO_{\X,x}$.
+    A valuation ring is maximal among local subrings of its fraction field under domination, so the domination cannot be proper; see~\cite[\href{https://stacks.math.columbia.edu/tag/00I8}{Definition 10.50.1}]{Stacks}.
+    Hence $\OO_v=\OO_{\X,x}$.
     Thus \(v \in V(\X)\).
 \end{proof}
 
 The next lemma combines~\cite[Lemmas 3.12 and 3.13]{Rueth} in a form convenient for the extraction argument.
 
 \begin{lemma} \label{lem:condition_induced}
-    Let $x \in \X$ be the centre of $v$, and let $f \in \OO_v^* \subset F_X$ be such that the reduction $\bar{f} \in k(v)$ is transcendental over $k$.
+    Let $x \in \X$ be the centre of $v$, and let $f \in \OO_v^* \subset F_X$ be such that the reduction $\bar{f} \in \kappa(v)$ is transcendental over $k$.
     Then:
     \begin{enumerate}[label=\textup{(\roman*)}]
     \item If $f \in \OO_{\X,x}$, then $v \in V(\X)$. \label{lem:condition_induced_i}
@@ -251,7 +257,7 @@ The next lemma combines~\cite[Lemmas 3.12 and 3.13]{Rueth} in a form convenient 
     and hence equals one.
     Thus, it suffices to show that $A/\p$ is not a field.
     If $A/\p$ were a field, it would be a finite extension
-    of $k$, but this is impossible since $\bar{f} \in A/\p \subset k(v)$ is transcendental over $k$.
+    of $k$, but this is impossible since $\bar{f} \in A/\p \subset \kappa(v)$ is transcendental over $k$.
     \item It suffices to show, using part~\ref{lem:condition_induced_i}, that $f \in \OO_{\X, x}$.
     Let $P = V(f^{-1})$ and $Z = V(f)$ be the sets of poles and zeros of $f$, respectively.
     Then the rational map $\X \dashrightarrow \PP^1_{\OK}$ is obtained by gluing the morphisms
@@ -293,7 +299,7 @@ The next lemma combines~\cite[Lemmas 3.12 and 3.13]{Rueth} in a form convenient 
 We can now finish the proof of Proposition \ref{prop:constructing_models}\ref{prop:constructing_models_i}.
 
 \begin{proof}[Proof of Proposition \ref{prop:constructing_models}\ref{prop:constructing_models_i}]
-    Let $f \in \OO_v^\times \subset F_X$ be such that the reduction $\bar{f} \in k(v)$ is transcendental over $k$.
+    Let $f \in \OO_v^\times \subset F_X$ be such that the reduction $\bar{f} \in \kappa(v)$ is transcendental over $k$.
     We also write $f \colon \X \dashrightarrow \PP^1_{\OK}$ for the rational map induced by $f$, and let $U$ be its domain of definition.
     Define $\Gamma_f \subset \X \times_{\Spec\OK } \PP^1_{\OK}$ to be the graph of $f$.
     Recall that it is defined to be the closure of the graph $f|_U$ in $\X \times_{\Spec\OK } \PP^1_{\OK} \supset U \times_{\Spec\OK } \PP^1_{\OK}$.
@@ -316,7 +322,7 @@ We can now finish the proof of Proposition \ref{prop:constructing_models}\ref{pr
 \section{Contraction of components}\label{sec:contraction-of-components}
 The extraction construction may introduce component valuations outside the prescribed set. We now prepare the converse operation, which contracts precisely the components corresponding to these unwanted valuations.
 
-We fix a model $\X$ of $X$ and a nonempty subset $V \subset V(\X)$.
+We fix a model $\X$ of $X$ and a nonempty subset $V \subseteq V(\X)$.
 Denote by $\EE$ the set of irreducible (integral) components of $\X_s$ that induce the valuations in $V(\X)\setminus V$.
 
 \begin{definition}
@@ -439,7 +445,7 @@ For the following existence statement, see~\cite[Lemma 8.3.35]{Liu}.
         \item Let $E \coloneqq V(g)$ and let $W$ be as in~\ref{lem:proof:exist_div_i}.
             Then $E$ is an effective Cartier divisor on $W$.
             Moreover, $E \to \Spec \OO_K$ is quasi-projective and quasi-finite because $\dim{}E_s < \dim{}\X_s = 1$.
-            By a corollary of Zariski's Main Theorem (\cite[Corollary 4.4.8]{Liu}), there exists an affine open neighborhood
+            By a corollary of Zariski's Main Theorem (\cite[Corollary 4.4.8]{Liu}), there exists an affine open neighbourhood
             $U$ of $x$ such that $E \cap U$ is an open subscheme of a scheme $Z$ that is finite over $\Spec \OO_K$.
 
             \begin{center}
@@ -452,18 +458,23 @@ For the following existence statement, see~\cite[Lemma 8.3.35]{Liu}.
 
             Let $D$ be the connected component of $Z$ containing $x$.
             Since $\OO_{K}$ is a Henselian local ring, $Z$ is a disjoint union of local schemes.
-            Hence $D$ is local, and consequently $D \subset E \cap U \subset \X$. %(Tippfehler in Liu)
+            Hence $D$ is local, and consequently $D \subseteq E \cap U \subseteq \X$.
 
             Finally, since $D$ is closed in $Z$, it is finite over $\Spec \OO_K$.
             A finite morphism $D \to \Spec \OO_K$ between affine schemes is projective (\cite[Exercise 3.3.22]{Liu}),
             and therefore proper (\cite[Theorem 3.3.30]{Liu}).
-            So the morphisms
+            The morphism $D\to\Spec\OO_K$ and the structural morphism $\X\to\Spec\OO_K$ are proper.
+            Since $\X$ is separated over $\Spec\OO_K$, it follows that $D\to\X$ is proper by~\cite[Proposition 3.3.16(e)]{Liu}.
+            Hence its image is closed in $\X$.
+
+            The scheme $D$ is an open-and-closed component of the effective Cartier divisor $E\cap U$ on $U$.
+            After shrinking to an open neighbourhood $U'\subseteq U$ of $D$, we may arrange that
             \[
-                D \to \X \to \Spec \OO_K \quad
-                \textrm{and} \quad
-                \X \to \OO_K
+                E\cap U'=D.
             \]
-            are proper, which implies that $D \to \X$ is also proper (\cite[Proposition 3.3.16(e)]{Liu}). Consequently, $D$ is closed in $\X$ and therefore a Cartier divisor, as required.
+            Thus $D$ is an effective Cartier divisor on $U'$.
+            Since $D$ is closed in $\X$, the open sets $U'$ and $\X\setminus D$ cover $\X$, and this Cartier divisor glues with the empty divisor on $\X\setminus D$.
+            The result is an effective horizontal Cartier divisor on $\X$ whose support meets $\X_s$ only at $x$.
     \end{enumerate}
 \end{proof}
 
@@ -472,7 +483,7 @@ For the following existence statement, see~\cite[Lemma 8.3.35]{Liu}.
 Now we can finally prove Proposition~\ref{prop:constructing_models}\ref{prop:constructing_models_ii}.
 
 \begin{proof}[Proof of Proposition \ref{prop:constructing_models}\ref{prop:constructing_models_ii}]
-    Let $Z_1, \dots, Z_n$ be the irreducible components of $\X_s$ that induce the valuations in $V \subset V(\X)$.
+    Let $Z_1, \dots, Z_n$ be the irreducible components of $\X_s$ that induce the valuations in $V \subseteq V(\X)$.
     By Lemma~\ref{lem:exist_div}\ref{lem:exist_div_ii}, there exists an effective horizontal Cartier divisor $D_i$
     such that $\X_s \cap \Supp D_i$ is a point of $Z_i$ that belongs to none of the components of $\EE$.
     Let $D = \sum_{i=1}^n D_i$.
@@ -499,3 +510,88 @@ Now we can finally prove Proposition~\ref{prop:constructing_models}\ref{prop:con
     It follows from \cite[Corollary 5.3.24]{Liu} that $\OO_\X(D)$ is ample.
     Thus, $\X \to \Spec \OO_K$ is projective (\cite[Proposition 5.3.6]{Liu}).
 \end{remark}
+
+The correspondence theorem therefore describes both the order structure on models and the construction of a model from its component valuations.
+We finish by explaining its functorial form for finite covers.
+
+\section{Normalization in finite covers}\label{sec:normalization-in-finite-covers}
+
+Let
+\[
+    \varphi\colon Y\longrightarrow X
+\]
+be a cover of nice curves over $K$, and denote the induced finite extension of function fields by $F_Y/F_X$.
+If $\X$ is a model of $X$, let $\Y$ be the normalization of $\X$ in $F_Y$.
+For a valuation $v$ on $F_X$, set
+\[
+    \operatorname{Ext}_{F_Y/F_X}(v)
+    \coloneqq
+    \{w:w\text{ is a valuation on }F_Y\text{ and }w|_{F_X}=v\}.
+\]
+By Corollary~\ref{cor:finite-extensions-type-II-valuations}, every element of this set is a type-II valuation.
+The following proposition identifies these extensions geometrically and, in particular, proves that the set is finite and nonempty.
+It is Proposition~5.2 of Rüth's thesis~\cite{Rueth}, stated in the notation of this book.
+
+\begin{proposition}[Normalization and valuations]\label{prop:normalization-extension-valuations}
+    \begin{enumerate}[label=\textup{(\roman*)}]
+        \item The scheme $\Y$ is a model of $Y$.
+        \item The cover $\varphi$ extends uniquely to a finite morphism
+        \[
+            \Y\longrightarrow\X.
+        \]
+        \item Restriction of valuations induces a surjection
+        \[
+            V(\Y)\longrightarrow V(\X).
+        \]
+        \item For every $v\in V(\X)$, the fibre over $v$ is
+        \[
+            \operatorname{Ext}_{F_Y/F_X}(v).
+        \]
+        Consequently,
+        \[
+            V(\Y)
+            =
+            \bigsqcup_{v\in V(\X)}
+            \operatorname{Ext}_{F_Y/F_X}(v),
+        \]
+        where the union is disjoint because a valuation on $F_Y$ has a unique restriction to $F_X$.
+        In particular, $\operatorname{Ext}_{F_Y/F_X}(v)$ is finite and nonempty for every $v\in V(\X)$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    Since $\X$ is excellent, its normalization in the finite extension $F_Y/F_X$ is finite over $\X$; see \cite[Theorem 8.2.39(d)]{Liu}.
+    Thus $\Y$ is proper over $\OK$.
+    It is normal and integral by construction, and it is flat over the discrete valuation ring $\OK$ because it is integral.
+    Its generic fibre is the normalization of $X$ in $F_Y$, which is $Y$.
+    This proves (i), and the normalization morphism gives the finite extension in (ii).
+    Uniqueness follows because it is already determined on the dense generic fibre.
+
+    We explain the valuation statement, following the proof of \cite[Proposition 5.2]{Rueth}.
+    Let $v\in V(\X)$ and let $\xi$ be the corresponding generic point of $\X_s$.
+    The local ring $\OO_{\X,\xi}$ is the valuation ring $\OO_v$.
+    The generic points of $\Y_s$ above $\xi$ correspond to the maximal ideals in the integral closure of $\OO_v$ in $F_Y$.
+    Their local rings are precisely the valuation rings of the extensions in $\operatorname{Ext}_{F_Y/F_X}(v)$.
+    Conversely, every generic point of $\Y_s$ lies over a generic point of $\X_s$ because the morphism $\Y\to\X$ is finite.
+    Parts (iii) and (iv) now follow from the standard description of the integral closure of a discrete valuation ring in a finite extension.
+    For a separable extension this is~\cite[\href{https://stacks.math.columbia.edu/tag/0EXQ}{Remark 15.113.6}]{Stacks}; the general case follows by passing through the maximal separable subextension and using~\cite[\href{https://stacks.math.columbia.edu/tag/0H37}{Lemma 15.123.3}]{Stacks} for the remaining purely inseparable extension, as in the proof of Proposition~\ref{prop:finite-extension-valued-fields}.
+\end{proof}
+
+\begin{example}[Realization as a cover of the projective line]\label{ex:normalization-cover-projective-line}
+    Let $Y$ be a nice curve over $K$.
+    Since $F_Y/K$ is a separably generated function field of transcendence degree one, it contains a separating transcendence element $x$ such that $F_Y/K(x)$ is finite and separable.
+    The element $x$ defines a finite separable morphism
+    \[
+        Y\longrightarrow\PP^1_K.
+    \]
+    Hence every model $\X$ of $\PP^1_K$ gives a model $\Y$ of $Y$ by normalization, and
+    \[
+        V(\Y)
+        =
+        \bigsqcup_{v\in V(\X)}
+        \operatorname{Ext}_{F_Y/K(x)}(v).
+    \]
+    For the standard model $\PP^1_{\OK}$, the special fibre has one component, whose valuation is the Gauß valuation on $K(x)$.
+    This is the simplest instance of the description above.
+    Chapter~\ref{ch:mac-lane-valuations} develops Mac Lane valuations, which provide the starting point for explicit computations of such extensions.
+\end{example}

@@ -18,7 +18,7 @@ The classification of models by finite nonempty sets of geometric valuations. Th
 
 ### Chapter 3. Base change and permanent models
 
-Normalized base change, reduced special fibres, permanent models, and extensions of component valuations. The chapter also discusses elimination of ramification, Epp's theorem, Abhyanka's lemma, and tame and wild examples.
+Normalized base change, reduced special fibres, permanent models, and extensions of component valuations. The chapter also discusses elimination of ramification, Epp's theorem, Abhyanka's lemma, and wild examples.
 
 ## Part II. Analytic and computational tools
 
