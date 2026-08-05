@@ -1,4 +1,1 @@
-Better reference for [Arzdorf, Wewers] (i.e. no preprint) (don't forget to adjust theorem numbers in citations if necessary)
 
-Questions--------------------------------------------------------------------------------------------------------------------
-Proof of Lemma 1.26 is just sketched. Should we give a full proof?
