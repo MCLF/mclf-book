@@ -41,17 +41,24 @@ latexmk -pdf main.tex
 
 Generated LaTeX auxiliary files and compiled PDFs should normally not be committed to the repository.
 
-## Use of AI tools
-
-AI tools may be used in the preparation of this book for editorial and technical assistance, including language editing, LaTeX work, consistency checks, and the expository expansion of mathematical arguments explicitly supplied by the authors.
-
-All mathematical content, arguments, and substantive intellectual contributions are provided and approved by the human authors. AI tools are not used as independent mathematical authors.
 
 ## Contributing
 
 Contributions should be made through branches and pull requests.
 
 When editing LaTeX files, please use one sentence per line whenever possible. This makes Git diffs and collaborative editing much easier to read.
+
+## Use of AI and agents
+
+The responsible use of generative-AI tools and AI agents is welcome and encouraged, especially for editorial, technical, and consistency-checking work.
+Before using an agent to work in this repository, please read and follow [`AGENTS.md`](AGENTS.md); all contributions must also comply with [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+AI-generated output is not authoritative and must be reviewed carefully by a human contributor.
+The human contributor remains responsible for the mathematical correctness, originality, references, copyright compliance, and final form of every contribution.
+AI systems must not be credited as authors or used as independent sources of new mathematical results.
+Generated mathematical claims, proofs, computations, quotations, and references must be checked, and genuine gaps or uncertainties must not be concealed.
+Substantial AI-assisted drafting or agent-generated changes should be mentioned in the pull-request description.
+Confidential, personal, or unpublished material must not be submitted to an external AI service without the necessary authorization.
 
 ## Citation
 
