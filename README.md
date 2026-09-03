@@ -25,6 +25,7 @@ See [`BOOK_PLAN.md`](BOOK_PLAN.md) for a description of the current contents and
 * `frontmatter/`: unnumbered front-matter sections.
 * `figures/`: figures and figure sources.
 * `notes/`: background material, seminar programs, and other source documents.
+* `versions/`: dated PDF snapshots that can be cited as fixed versions of the book.
 * `NOTATION.md`: authoritative mathematical notation and terminology.
 * `CONTRIBUTING.md`: contribution and compilation guidelines.
 * `AGENTS.md`: repository-wide instructions for AI agents.
@@ -42,7 +43,7 @@ The book is written in LaTeX. The intended way to compile it is
 latexmk -pdf main.tex
 ```
 
-Generated LaTeX auxiliary files and compiled PDFs should normally not be committed to the repository.
+Generated LaTeX auxiliary files and compiled PDFs should normally not be committed to the repository, except for the dated snapshots in `versions/`.
 
 
 ## Contributing
@@ -65,7 +66,9 @@ Confidential, personal, or unpublished material must not be submitted to an exte
 
 ## Citation
 
-For now, please cite a specific Git commit or release rather than the moving `main` branch.
+Until the book has a mature, officially numbered release, dated PDF snapshots are stored in [`versions/`](versions/).
+The current snapshot is [`mclf-book.2026-08-05.pdf`](versions/mclf-book.2026-08-05.pdf).
+To refer to a fixed version, cite the date-stamped PDF and link to that file on GitHub rather than to the moving `main.pdf`.
 
 ## License
 
