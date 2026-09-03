@@ -38,6 +38,8 @@
 !notes/**/*.pdf
 !releases/
 !releases/**/*.pdf
+!versions/
+!versions/**/*.pdf
 
 # Temporary files
 *.tmp
